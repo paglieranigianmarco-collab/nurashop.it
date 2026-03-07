@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Header Scroll Effect
     const header = document.getElementById('mainHeader');
-    
+
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
             header.classList.add('scrolled');
@@ -15,15 +15,15 @@ document.addEventListener('DOMContentLoaded', () => {
         anchor.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
-            
+
             e.preventDefault();
             const targetElement = document.querySelector(targetId);
-            
+
             if (targetElement) {
                 const headerOffset = 80; // Height of the fixed header
                 const elementPosition = targetElement.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                
+
                 window.scrollTo({
                     top: offsetPosition,
                     behavior: 'smooth'
@@ -74,5 +74,38 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('mouseleave', () => {
             btn.style.transform = '';
         });
+    });
+
+    // Scroll Reveal Animations
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                // Optional: Stop observing once revealed
+                // observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Elements to animate
+    const revealElements = document.querySelectorAll('.reveal-up, .reveal-fade, .category-card, .product-card');
+
+    // Add default reveal class to cards if not present
+    document.querySelectorAll('.category-card, .product-card').forEach((el, index) => {
+        if (!el.classList.contains('reveal-up') && !el.classList.contains('reveal-fade')) {
+            el.classList.add('reveal-up');
+            // Stagger delay based on index for grid items
+            el.style.transitionDelay = `${(index % 4) * 100}ms`;
+        }
+    });
+
+    revealElements.forEach(el => {
+        observer.observe(el);
     });
 });

@@ -1,28 +1,40 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NURA | La Tua Destinazione Wellness Premium</title>
-    <meta name="description" content="Esplora NURA: Il brand italiano leader per la vitalità quotidiana. Prodotti per la longevità, sonno, energia e salute dell'intestino basati sulla scienza.">
-    
+    <meta name="description"
+        content="Esplora NURA: Il brand italiano leader per la vitalità quotidiana. Prodotti per la longevità, sonno, energia e salute dell'intestino basati sulla scienza.">
+
     <!-- Fonts: Inter for minimal interface readability, Outfit for premium display typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    
+
     <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
     <!-- JS -->
     <script defer src="script.js"></script>
 </head>
+
 <body>
     <!-- Announcement Bar -->
-    <div class="announcement-bar">
-        <p>Spedizione gratuita in tutta Italia per ordini superiori a 50€ ✨</p>
+    <div class="announcement-bar-wrapper bg-vibrant">
+        <div class="announcement-marquee">
+            <span>SPEDIZIONE GRATUITA IN TUTTA ITALIA OLTRE 50€ <i class="ph-fill ph-check-circle"></i></span>
+            <span>100.000+ CLIENTI SODDISFATTI <i class="ph-fill ph-star"></i></span>
+            <span>SVILUPPATO CON ESPERTI DI LONGEVITÀ <i class="ph-fill ph-flask"></i></span>
+            <span>SPEDIZIONE GRATUITA IN TUTTA ITALIA OLTRE 50€ <i class="ph-fill ph-check-circle"></i></span>
+            <span>100.000+ CLIENTI SODDISFATTI <i class="ph-fill ph-star"></i></span>
+            <span>SVILUPPATO CON ESPERTI DI LONGEVITÀ <i class="ph-fill ph-flask"></i></span>
+        </div>
     </div>
 
     <!-- Header Navigation -->
@@ -31,7 +43,7 @@
             <div class="mobile-menu-btn">
                 <i class="ph ph-list"></i>
             </div>
-            
+
             <a href="#" class="brand-logo">NURA.</a>
 
             <nav class="desktop-nav">
@@ -57,16 +69,32 @@
     <main>
         <!-- Hero Section -->
         <section class="hero-section">
-            <div class="hero-background">
-                <!-- Abstract gradients CSS background placeholder -->
+            <!-- Vibrant Animated Background -->
+            <div class="hero-background-vibrant">
+                <div class="blob blob-1"></div>
+                <div class="blob blob-2"></div>
+                <div class="blob blob-3"></div>
+                <div class="hero-noise"></div>
             </div>
-            <div class="hero-content container">
-                <span class="hero-badge">Nuova Era del Wellness</span>
-                <h1 class="hero-title">Ottimizza la Tua<br>Vitalità Quotidiana</h1>
-                <p class="hero-description">NURA seleziona gli strumenti e gli integratori d'avanguardia per elevarti fisicamente e mentalmente. Benvenuto nel tuo nuovo standard di salute.</p>
-                <div class="hero-cta-group">
-                    <a href="#categories" class="btn btn-primary">Esplora la Collezione <i class="ph ph-arrow-right"></i></a>
+
+            <div class="hero-content container reveal-up">
+                <span class="hero-badge reveal-item">Nuova Era del Wellness</span>
+                <h1 class="hero-title reveal-item" style="transition-delay: 100ms;">Ottimizza la Tua<br>Vitalità
+                    Quotidiana</h1>
+                <p class="hero-description reveal-item" style="transition-delay: 200ms;">NURA seleziona gli strumenti e
+                    gli integratori d'avanguardia per elevarti fisicamente e mentalmente. Benvenuto nel tuo nuovo
+                    standard di salute.</p>
+
+                <div class="hero-cta-group reveal-item" style="transition-delay: 300ms;">
+                    <a href="#categories" class="btn btn-primary btn-glow">Esplora la Collezione <i
+                            class="ph ph-arrow-right"></i></a>
                     <a href="#quiz" class="btn btn-secondary">Inizia il Quiz</a>
+                </div>
+
+                <div class="hero-trust-badges reveal-item" style="transition-delay: 400ms;">
+                    <div class="trust-item"><i class="ph-fill ph-shield-check"></i> Scienza Clinica</div>
+                    <div class="trust-item"><i class="ph-fill ph-leaf"></i> Ingredienti Puri</div>
+                    <div class="trust-item"><i class="ph-fill ph-truck"></i> Consegna 24/48h</div>
                 </div>
             </div>
             <div class="hero-scroll-indicator">
@@ -77,9 +105,12 @@
         <!-- Brand Ethos Marquee (Optional for vibrant style) -->
         <div class="marquee-section">
             <div class="marquee-content">
-                <span>SCIENZA CONTEMPORANEA</span> • <span>VITALITÀ QUOTIDIANA</span> • <span>QUALITÀ CURATA</span> • <span>DESIGN ITALIANO</span> • 
-                <span>SCIENZA CONTEMPORANEA</span> • <span>VITALITÀ QUOTIDIANA</span> • <span>QUALITÀ CURATA</span> • <span>DESIGN ITALIANO</span> •
-                <span>SCIENZA CONTEMPORANEA</span> • <span>VITALITÀ QUOTIDIANA</span> • <span>QUALITÀ CURATA</span> • <span>DESIGN ITALIANO</span> •
+                <span>SCIENZA CONTEMPORANEA</span> • <span>VITALITÀ QUOTIDIANA</span> • <span>QUALITÀ CURATA</span> •
+                <span>DESIGN ITALIANO</span> •
+                <span>SCIENZA CONTEMPORANEA</span> • <span>VITALITÀ QUOTIDIANA</span> • <span>QUALITÀ CURATA</span> •
+                <span>DESIGN ITALIANO</span> •
+                <span>SCIENZA CONTEMPORANEA</span> • <span>VITALITÀ QUOTIDIANA</span> • <span>QUALITÀ CURATA</span> •
+                <span>DESIGN ITALIANO</span> •
             </div>
         </div>
 
@@ -90,7 +121,7 @@
                     <h2 class="section-title">Soluzioni Mirate</h2>
                     <a href="#" class="link-arrow">Vedi tutte le categorie <i class="ph ph-arrow-right"></i></a>
                 </div>
-                
+
                 <div class="categories-grid">
                     <!-- Gut Health -->
                     <a href="#" class="category-card" style="--card-color: var(--color-gut);">
@@ -166,7 +197,9 @@
                                 <span class="current-price">€45.00</span>
                             </div>
                             <div class="product-rating">
-                                <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                                <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                                    class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                                    class="ph-fill ph-star"></i>
                                 <span>(128)</span>
                             </div>
                         </div>
@@ -187,7 +220,9 @@
                                 <span class="current-price">€38.00</span>
                             </div>
                             <div class="product-rating">
-                                <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph ph-star"></i>
+                                <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                                    class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                                    class="ph ph-star"></i>
                                 <span>(84)</span>
                             </div>
                         </div>
@@ -209,12 +244,14 @@
                                 <span class="current-price">€85.00</span>
                             </div>
                             <div class="product-rating">
-                                <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                                <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                                    class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                                    class="ph-fill ph-star"></i>
                                 <span>(210)</span>
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Product 4 -->
                     <div class="product-card">
                         <div class="product-image-wrapper">
@@ -230,7 +267,9 @@
                                 <span class="current-price">€42.00</span>
                             </div>
                             <div class="product-rating">
-                                <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-half ph-star"></i>
+                                <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                                    class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                                    class="ph-half ph-star"></i>
                                 <span>(95)</span>
                             </div>
                         </div>
@@ -245,7 +284,10 @@
                 <div class="ethos-content">
                     <div class="ethos-icon"><i class="ph ph-sparkle"></i></div>
                     <h2 class="ethos-title">Una visione moderna della salute</h2>
-                    <p class="ethos-text">Non crediamo nei "rimedi miracolosi". Crediamo nella <strong>Scienza Contemporanea</strong>. In NURA certifichiamo rigorosamente ogni ingrediente. Selezioniamo solo i nutrienti, le tecnologie e gli strumenti più performanti a livello globale per elevare la tua routine di salute a un'esperienza premium senza compromessi.</p>
+                    <p class="ethos-text">Non crediamo nei "rimedi miracolosi". Crediamo nella <strong>Scienza
+                            Contemporanea</strong>. In NURA certifichiamo rigorosamente ogni ingrediente. Selezioniamo
+                        solo i nutrienti, le tecnologie e gli strumenti più performanti a livello globale per elevare la
+                        tua routine di salute a un'esperienza premium senza compromessi.</p>
                     <div class="ethos-features">
                         <div class="feature-item">
                             <i class="ph ph-check-circle"></i>
@@ -264,14 +306,15 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- Newsletter / Social Proof -->
         <section class="newsletter-section section-padding">
             <div class="container newsletter-container">
                 <div class="newsletter-grid">
                     <div class="newsletter-text">
                         <h2>Unisciti al NURA Club</h2>
-                        <p>Iscriviti per ricevere insight scientifici sulla longevità, accesso anticipato ai lanci esclusivi e 10% di sconto sul tuo primo ordine.</p>
+                        <p>Iscriviti per ricevere insight scientifici sulla longevità, accesso anticipato ai lanci
+                            esclusivi e 10% di sconto sul tuo primo ordine.</p>
                     </div>
                     <div class="newsletter-form">
                         <form action="#" onsubmit="event.preventDefault();">
@@ -279,7 +322,8 @@
                                 <input type="email" placeholder="La tua email..." required>
                                 <button type="submit" class="btn btn-primary">Iscriviti</button>
                             </div>
-                            <p class="form-disclaimer">Iscrivendoti, accetti la nostra Privacy Policy. Nessuno spam, solo valore puro.</p>
+                            <p class="form-disclaimer">Iscrivendoti, accetti la nostra Privacy Policy. Nessuno spam,
+                                solo valore puro.</p>
                         </form>
                     </div>
                 </div>
@@ -299,7 +343,7 @@
                     <a href="#"><i class="ph ph-youtube-logo"></i></a>
                 </div>
             </div>
-            
+
             <div class="footer-links">
                 <h4>Esplora</h4>
                 <ul>
@@ -310,7 +354,7 @@
                     <li><a href="#">Energy</a></li>
                 </ul>
             </div>
-            
+
             <div class="footer-links">
                 <h4>Informazioni</h4>
                 <ul>
@@ -321,7 +365,7 @@
                     <li><a href="#">Contatti</a></li>
                 </ul>
             </div>
-            
+
             <div class="footer-links">
                 <h4>Tutele</h4>
                 <ul>
@@ -342,4 +386,5 @@
         </div>
     </footer>
 </body>
+
 </html>
