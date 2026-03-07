@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NURA | La Tua Destinazione Wellness Premium</title>
+    <meta name="description" content="Esplora NURA: Il brand italiano leader per la vitalità quotidiana. Prodotti per la longevità, sonno, energia e salute dell'intestino basati sulla scienza.">
+    
+    <!-- Fonts: Inter for minimal interface readability, Outfit for premium display typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- JS -->
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        <p>Spedizione gratuita in tutta Italia per ordini superiori a 50€ ✨</p>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="main-header" id="mainHeader">
+        <div class="header-container container">
+            <div class="mobile-menu-btn">
+                <i class="ph ph-list"></i>
+            </div>
+            
+            <a href="#" class="brand-logo">NURA.</a>
+
+            <nav class="desktop-nav">
+                <ul class="nav-links">
+                    <li><a href="#categories">Shop <i class="ph ph-caret-down"></i></a></li>
+                    <li><a href="#featured">Bestseller</a></li>
+                    <li><a href="#ethos">Scienza & Ethos</a></li>
+                    <li><a href="#">Il Club</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="#" class="action-btn"><i class="ph ph-magnifying-glass"></i></a>
+                <a href="#" class="action-btn"><i class="ph ph-user"></i></a>
+                <a href="#" class="action-btn cart-btn">
+                    <i class="ph ph-shopping-bag"></i>
+                    <span class="cart-count">2</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-background">
+                <!-- Abstract gradients CSS background placeholder -->
+            </div>
+            <div class="hero-content container">
+                <span class="hero-badge">Nuova Era del Wellness</span>
+                <h1 class="hero-title">Ottimizza la Tua<br>Vitalità Quotidiana</h1>
+                <p class="hero-description">NURA seleziona gli strumenti e gli integratori d'avanguardia per elevarti fisicamente e mentalmente. Benvenuto nel tuo nuovo standard di salute.</p>
+                <div class="hero-cta-group">
+                    <a href="#categories" class="btn btn-primary">Esplora la Collezione <i class="ph ph-arrow-right"></i></a>
+                    <a href="#quiz" class="btn btn-secondary">Inizia il Quiz</a>
+                </div>
+            </div>
+            <div class="hero-scroll-indicator">
+                <i class="ph ph-caret-down"></i>
+            </div>
+        </section>
+
+        <!-- Brand Ethos Marquee (Optional for vibrant style) -->
+        <div class="marquee-section">
+            <div class="marquee-content">
+                <span>SCIENZA CONTEMPORANEA</span> • <span>VITALITÀ QUOTIDIANA</span> • <span>QUALITÀ CURATA</span> • <span>DESIGN ITALIANO</span> • 
+                <span>SCIENZA CONTEMPORANEA</span> • <span>VITALITÀ QUOTIDIANA</span> • <span>QUALITÀ CURATA</span> • <span>DESIGN ITALIANO</span> •
+                <span>SCIENZA CONTEMPORANEA</span> • <span>VITALITÀ QUOTIDIANA</span> • <span>QUALITÀ CURATA</span> • <span>DESIGN ITALIANO</span> •
+            </div>
+        </div>
+
+        <!-- 6 Core Categories Grid -->
+        <section id="categories" class="categories-section section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Soluzioni Mirate</h2>
+                    <a href="#" class="link-arrow">Vedi tutte le categorie <i class="ph ph-arrow-right"></i></a>
+                </div>
+                
+                <div class="categories-grid">
+                    <!-- Gut Health -->
+                    <a href="#" class="category-card" style="--card-color: var(--color-gut);">
+                        <div class="card-icon"><i class="ph ph-leaf"></i></div>
+                        <h3 class="card-title">Gut Health</h3>
+                        <p class="card-desc">Equilibrio del microbioma</p>
+                        <div class="card-image-bg pattern-dots"></div>
+                    </a>
+                    <!-- Sleep -->
+                    <a href="#" class="category-card" style="--card-color: var(--color-sleep);">
+                        <div class="card-icon"><i class="ph ph-moon-stars"></i></div>
+                        <h3 class="card-title">Sleep</h3>
+                        <p class="card-desc">Riposo profondo e ristoratore</p>
+                        <div class="card-image-bg pattern-waves"></div>
+                    </a>
+                    <!-- Energy -->
+                    <a href="#" class="category-card" style="--card-color: var(--color-energy);">
+                        <div class="card-icon"><i class="ph ph-lightning"></i></div>
+                        <h3 class="card-title">Energy</h3>
+                        <p class="card-desc">Energia cellulare sostenuta</p>
+                        <div class="card-image-bg pattern-rays"></div>
+                    </a>
+                    <!-- Brain -->
+                    <a href="#" class="category-card" style="--card-color: var(--color-brain);">
+                        <div class="card-icon"><i class="ph ph-brain"></i></div>
+                        <h3 class="card-title">Brain</h3>
+                        <p class="card-desc">Focus e chiarezza mentale</p>
+                        <div class="card-image-bg pattern-grid"></div>
+                    </a>
+                    <!-- Longevity -->
+                    <a href="#" class="category-card" style="--card-color: var(--color-longevity);">
+                        <div class="card-icon"><i class="ph ph-dna"></i></div>
+                        <h3 class="card-title">Longevity</h3>
+                        <p class="card-desc">Longevità e anti-aging</p>
+                        <div class="card-image-bg pattern-rings"></div>
+                    </a>
+                    <!-- Fitness Recovery -->
+                    <a href="#" class="category-card" style="--card-color: var(--color-fitness);">
+                        <div class="card-icon"><i class="ph ph-activity"></i></div>
+                        <h3 class="card-title">Fitness Recovery</h3>
+                        <p class="card-desc">Recupero muscolare ottimale</p>
+                        <div class="card-image-bg pattern-lines"></div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Collection -->
+        <section id="featured" class="featured-section section-padding bg-light">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Curati per l'Eccellenza</h2>
+                    <div class="slider-controls">
+                        <button class="slider-btn prev-btn"><i class="ph ph-arrow-left"></i></button>
+                        <button class="slider-btn next-btn"><i class="ph ph-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <div class="featured-slider">
+                    <!-- Product 1 -->
+                    <div class="product-card">
+                        <div class="product-image-wrapper">
+                            <span class="tag tag-new">Bestseller</span>
+                            <div class="product-image mock-image p-bg-1">
+                                <i class="ph ph-bottle"></i>
+                            </div>
+                            <button class="add-to-cart-quick"><i class="ph ph-plus"></i></button>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-vendor">NURA Core</div>
+                            <h4 class="product-name">Neuro Protocol</h4>
+                            <div class="product-price">
+                                <span class="current-price">€45.00</span>
+                            </div>
+                            <div class="product-rating">
+                                <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                                <span>(128)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="product-card">
+                        <div class="product-image-wrapper">
+                            <div class="product-image mock-image p-bg-2">
+                                <i class="ph ph-pill"></i>
+                            </div>
+                            <button class="add-to-cart-quick"><i class="ph ph-plus"></i></button>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-vendor">NURA Sleep</div>
+                            <h4 class="product-name">Deep Rest Formula</h4>
+                            <div class="product-price">
+                                <span class="current-price">€38.00</span>
+                            </div>
+                            <div class="product-rating">
+                                <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph ph-star"></i>
+                                <span>(84)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="product-card">
+                        <div class="product-image-wrapper">
+                            <span class="tag tag-trend">Trending</span>
+                            <div class="product-image mock-image p-bg-3">
+                                <i class="ph ph-drop"></i>
+                            </div>
+                            <button class="add-to-cart-quick"><i class="ph ph-plus"></i></button>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-vendor">NURA Longevity</div>
+                            <h4 class="product-name">Cellular NAD+ Booster</h4>
+                            <div class="product-price">
+                                <span class="current-price">€85.00</span>
+                            </div>
+                            <div class="product-rating">
+                                <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                                <span>(210)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 4 -->
+                    <div class="product-card">
+                        <div class="product-image-wrapper">
+                            <div class="product-image mock-image p-bg-4">
+                                <i class="ph ph-barbell"></i>
+                            </div>
+                            <button class="add-to-cart-quick"><i class="ph ph-plus"></i></button>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-vendor">NURA Fitness</div>
+                            <h4 class="product-name">Recovery Aminos</h4>
+                            <div class="product-price">
+                                <span class="current-price">€42.00</span>
+                            </div>
+                            <div class="product-rating">
+                                <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-half ph-star"></i>
+                                <span>(95)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Brand Ethos Section -->
+        <section id="ethos" class="ethos-section section-padding">
+            <div class="container container-narrow">
+                <div class="ethos-content">
+                    <div class="ethos-icon"><i class="ph ph-sparkle"></i></div>
+                    <h2 class="ethos-title">Una visione moderna della salute</h2>
+                    <p class="ethos-text">Non crediamo nei "rimedi miracolosi". Crediamo nella <strong>Scienza Contemporanea</strong>. In NURA certifichiamo rigorosamente ogni ingrediente. Selezioniamo solo i nutrienti, le tecnologie e gli strumenti più performanti a livello globale per elevare la tua routine di salute a un'esperienza premium senza compromessi.</p>
+                    <div class="ethos-features">
+                        <div class="feature-item">
+                            <i class="ph ph-check-circle"></i>
+                            <span>Testati in Laboratorio</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="ph ph-check-circle"></i>
+                            <span>Formule Biodisponibili</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="ph ph-check-circle"></i>
+                            <span>Sostenibilità Trasparente</span>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-outline" style="margin-top: 2rem;">Scopri i Nostri Standard</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Newsletter / Social Proof -->
+        <section class="newsletter-section section-padding">
+            <div class="container newsletter-container">
+                <div class="newsletter-grid">
+                    <div class="newsletter-text">
+                        <h2>Unisciti al NURA Club</h2>
+                        <p>Iscriviti per ricevere insight scientifici sulla longevità, accesso anticipato ai lanci esclusivi e 10% di sconto sul tuo primo ordine.</p>
+                    </div>
+                    <div class="newsletter-form">
+                        <form action="#" onsubmit="event.preventDefault();">
+                            <div class="input-group">
+                                <input type="email" placeholder="La tua email..." required>
+                                <button type="submit" class="btn btn-primary">Iscriviti</button>
+                            </div>
+                            <p class="form-disclaimer">Iscrivendoti, accetti la nostra Privacy Policy. Nessuno spam, solo valore puro.</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="brand-logo">NURA.</a>
+                <p>Eleva la tua routine quotidiana. <br>Design italo-europeo. <br>Scienza globale.</p>
+                <div class="social-links">
+                    <a href="#"><i class="ph ph-instagram-logo"></i></a>
+                    <a href="#"><i class="ph ph-tiktok-logo"></i></a>
+                    <a href="#"><i class="ph ph-youtube-logo"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Esplora</h4>
+                <ul>
+                    <li><a href="#">Tutti i Prodotti</a></li>
+                    <li><a href="#">Gut Health</a></li>
+                    <li><a href="#">Longevity</a></li>
+                    <li><a href="#">Sleep</a></li>
+                    <li><a href="#">Energy</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Informazioni</h4>
+                <ul>
+                    <li><a href="#">La Nostra Storia</a></li>
+                    <li><a href="#">Gli Standard NURA</a></li>
+                    <li><a href="#">Journal & Scienza</a></li>
+                    <li><a href="#">FAQ & Spedizioni</a></li>
+                    <li><a href="#">Contatti</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Tutele</h4>
+                <ul>
+                    <li><a href="#">Termini e Condizioni</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                    <li><a href="#">Rimborsi</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 NURA Wellness. Tutti i diritti riservati.</p>
+            <div class="payment-icons">
+                <i class="ph ph-stripe-logo"></i>
+                <i class="ph ph-paypal-logo"></i>
+                <i class="ph ph-apple-logo"></i>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
