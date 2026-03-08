@@ -1,5 +1,5 @@
 /**
- * NURA — La Mia Routine
+ * nura — La Mia Routine
  * Supplement tracker with weekly calendar, localStorage persistence,
  * check-offs, running-low alerts, and re-order CTAs.
  */
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const remaining = getRemainingPills(s);
             const days = getRemainingDays(s);
 
-            new Notification('⚠️ NURA — Integratore in Esaurimento', {
+            new Notification('⚠️ nura — Integratore in Esaurimento', {
                 body: `${s.name}: ${remaining} pillole rimaste (~${days} giorni). Riordina ora!`,
                 icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">💊</text></svg>',
                 tag: `nura-low-${s.id}`,

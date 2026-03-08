@@ -40,8 +40,8 @@
     /* Crimson Red */
 
     /* Typography */
-    --font-heading: 'Outfit', sans-serif;
-    --font-body: 'Inter', sans-serif;
+    --font-heading: 'Sora', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
 
     /* Spacing & Layout */
     --container-max: 1280px;
@@ -508,8 +508,8 @@ i {
 .brand-logo {
     font-family: var(--font-heading);
     font-size: 1.75rem;
-    font-weight: 800;
-    letter-spacing: -0.05em;
+    font-weight: 900;
+    letter-spacing: -0.04em;
 }
 
 .desktop-nav .nav-links {
