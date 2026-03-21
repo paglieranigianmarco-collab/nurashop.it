@@ -1,14 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Header Scroll Effect
+    // ─── Header Scroll Effect ────────────────────────────────
     const header = document.getElementById('mainHeader');
 
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
+        header?.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
 
     // Smooth Scrolling for Anchor Links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -69,89 +65,49 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ─── Enhanced Scroll Reveal System ──────────────────────
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px 0px -60px 0px',
-        threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries) => {
+    // ─── Scroll Reveal (Apple-style staggered) ──────────────
+    const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
+                revealObserver.unobserve(entry.target); // fire once
             }
         });
-    }, observerOptions);
-
-    // Reveal classes for all sections
-    const revealElements = document.querySelectorAll(
-        '.reveal-up, .reveal-fade, .category-card, .product-card, ' +
-        '.pillar-card, .curation-card, .testimonial-card, .trust-promise, ' +
-        '.ethos-content, .section-header, .hero-content, .curation-arrow'
-    );
-
-    // Add staggered reveal to grid items
-    document.querySelectorAll('.category-card, .product-card').forEach((el, index) => {
-        if (!el.classList.contains('reveal-up') && !el.classList.contains('reveal-fade')) {
-            el.classList.add('reveal-up');
-            el.style.transitionDelay = `${(index % 4) * 100}ms`;
-        }
+    }, {
+        rootMargin: '0px 0px -60px 0px',
+        threshold: 0.12
     });
 
-    // Pillar cards with stagger
-    document.querySelectorAll('.pillar-card').forEach((el, index) => {
+    // Stagger product cards
+    document.querySelectorAll('.product-card').forEach((el, i) => {
         el.classList.add('reveal-up');
-        el.style.transitionDelay = `${index * 120}ms`;
+        el.style.transitionDelay = `${i * 80}ms`;
     });
 
-    // Curation cards with stagger
-    document.querySelectorAll('.curation-card').forEach((el, index) => {
-        el.classList.add('reveal-up');
-        el.style.transitionDelay = `${index * 150}ms`;
-    });
-
-    // Curation arrows
-    document.querySelectorAll('.curation-arrow').forEach((el, index) => {
-        el.classList.add('reveal-fade');
-        el.style.transitionDelay = `${150 + index * 150}ms`;
-    });
-
-    // Trust promise items with stagger
-    document.querySelectorAll('.trust-promise').forEach((el, index) => {
-        el.classList.add('reveal-up');
-        el.style.transitionDelay = `${index * 100}ms`;
-    });
-
-    // Section headers
-    document.querySelectorAll('.section-header').forEach(el => {
-        el.classList.add('reveal-fade');
-    });
-
-    // Ethos content
-    document.querySelectorAll('.ethos-content').forEach(el => {
-        el.classList.add('reveal-up');
-    });
-
-    // Observe all reveal elements (re-query to include newly added classes)
+    // Observe all reveal elements
     document.querySelectorAll('.reveal-up, .reveal-fade').forEach(el => {
-        observer.observe(el);
+        revealObserver.observe(el);
     });
 
-    // ─── Smooth Parallax for Hero ───────────────────────────
+    // ─── Apple-style Hero Parallax ──────────────────────────
     const heroSection = document.querySelector('.hero-section');
-    if (heroSection) {
+    const heroContent = document.querySelector('.hero-content');
+    const heroGoals   = document.getElementById('heroGoals');
+
+    if (heroSection && heroContent) {
         window.addEventListener('scroll', () => {
             const scrolled = window.scrollY;
             const heroHeight = heroSection.offsetHeight;
-            if (scrolled < heroHeight) {
-                const heroContent = heroSection.querySelector('.hero-content');
-                if (heroContent) {
-                    heroContent.style.transform = `translateY(${scrolled * 0.15}px)`;
-                    heroContent.style.opacity = 1 - (scrolled / heroHeight) * 0.5;
+            if (scrolled < heroHeight * 1.2) {
+                const p = Math.min(1, scrolled / heroHeight);
+                heroContent.style.transform = `translateY(${scrolled * 0.18}px)`;
+                heroContent.style.opacity   = String(1 - p * 1.4);
+                if (heroGoals) {
+                    heroGoals.style.transform = `translateY(${scrolled * 0.09}px)`;
+                    heroGoals.style.opacity   = String(1 - p * 1.6);
                 }
             }
-        });
+        }, { passive: true });
     }
 
     // ─── Scroll Progress Indicator ──────────────────────────
@@ -379,15 +335,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }, Math.random() * 60000 + 30000);
     }
 
-    // ─── Product notify buttons (pre-launch) ─────────────────
-    document.querySelectorAll('.add-to-cart-quick').forEach(btn => {
+    // ─── Notify buttons (pre-launch "Avvisami") ──────────────
+    document.querySelectorAll('.notify-btn, .add-to-cart-quick').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
-            // Support both old .product-name selector and new data-product attribute
             const name = btn.dataset.product
-                || btn.closest('.n-product-card')?.querySelector('.n-product-name')?.textContent
                 || btn.closest('.product-card')?.querySelector('.product-name')?.textContent
+                || btn.closest('.n-product-card')?.querySelector('.n-product-name')?.textContent
                 || 'Prodotto';
             btn.classList.add('notified');
             btn.innerHTML = '<i class="ph ph-check"></i> Fatto!';
@@ -399,14 +354,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ─── Floating CTA bar ───────────────────────────────────
+    // ─── Floating CTA bar ────────────────────────────────────
     const floatingBar = document.getElementById('floatingCtaBar');
     if (floatingBar) {
         window.addEventListener('scroll', () => {
-            const heroHeight = (document.querySelector('.n-hero') || document.querySelector('.hero-section'))?.offsetHeight || 500;
+            const heroH = (document.querySelector('.hero-section') || document.querySelector('.n-hero'))?.offsetHeight || 500;
             const nearBottom = window.scrollY + window.innerHeight > document.documentElement.scrollHeight - 200;
-            floatingBar.classList.toggle('visible', window.scrollY > heroHeight && !nearBottom);
-        });
+            floatingBar.classList.toggle('visible', window.scrollY > heroH && !nearBottom);
+        }, { passive: true });
     }
 });
 

@@ -8,19 +8,13 @@
     <meta name="description"
         content="I migliori supplementi e prodotti wellness per longevità, sonno, energia e focus — in un unico posto. Un solo ordine, una sola spedizione.">
 
-    <!-- Fonts: DM Sans body + Sora display headings -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Sora:wght@200;300;400;500;600;700;800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Sora:wght@200;300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-
-    <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-    <!-- CSS -->
     <link rel="stylesheet" href="assets/css/styles.css">
-    <!-- JS -->
     <script defer src="assets/js/intro-canvas.js"></script>
     <script defer src="assets/js/script.js"></script>
 </head>
@@ -36,38 +30,52 @@
     </div>
 
     <!-- Announcement bar -->
-    <div class="announcement-bar-wrapper">
-        <div class="announcement-marquee">
+    <div class="announcement-bar">
+        <div class="announcement-track">
+            <span>SPEDIZIONE GRATUITA OLTRE €50 <i class="ph-fill ph-truck"></i></span>
+            <span aria-hidden="true">·</span>
             <span>ACCESSO ANTICIPATO DISPONIBILE <i class="ph-fill ph-sparkle"></i></span>
-            <span>UN SOLO ORDINE. UNA SOLA SPEDIZIONE. <i class="ph-fill ph-package"></i></span>
+            <span aria-hidden="true">·</span>
             <span>I MIGLIORI BRAND PER LA LONGEVITY <i class="ph-fill ph-globe"></i></span>
+            <span aria-hidden="true">·</span>
             <span>LISTA PRIVATA — POSTI LIMITATI <i class="ph-fill ph-lock"></i></span>
-            <span>COMING SOON IN ITALIA <i class="ph-fill ph-flag"></i></span>
+            <span aria-hidden="true">·</span>
+            <span>SPEDIZIONE GRATUITA OLTRE €50 <i class="ph-fill ph-truck"></i></span>
+            <span aria-hidden="true">·</span>
             <span>ACCESSO ANTICIPATO DISPONIBILE <i class="ph-fill ph-sparkle"></i></span>
-            <span>UN SOLO ORDINE. UNA SOLA SPEDIZIONE. <i class="ph-fill ph-package"></i></span>
+            <span aria-hidden="true">·</span>
             <span>I MIGLIORI BRAND PER LA LONGEVITY <i class="ph-fill ph-globe"></i></span>
+            <span aria-hidden="true">·</span>
             <span>LISTA PRIVATA — POSTI LIMITATI <i class="ph-fill ph-lock"></i></span>
-            <span>COMING SOON IN ITALIA <i class="ph-fill ph-flag"></i></span>
         </div>
     </div>
 
     <!-- Header -->
-    <header class="main-header main-header-minimal" id="mainHeader">
-        <div class="header-container container">
+    <header class="site-header" id="mainHeader">
+        <div class="header-inner container">
             <a href="#" class="brand-logo">nura.</a>
-            <nav class="header-minimal-nav">
-                <a href="#come-funziona" class="header-minimal-link">Come Funziona</a>
-                <a href="#prodotti" class="header-minimal-link">Prodotti</a>
-                <a href="quiz.html" class="header-minimal-link">
-                    <i class="ph ph-sparkle" style="display:inline;margin-right:4px"></i>Quiz
+
+            <nav class="header-nav">
+                <a href="#come-funziona" class="nav-link">Come Funziona</a>
+                <a href="#prodotti" class="nav-link">Prodotti</a>
+                <a href="quiz.html" class="nav-link nav-link-accent">
+                    <i class="ph ph-sparkle"></i> Quiz
                 </a>
-                <a href="routine.html" class="header-minimal-link">
-                    <i class="ph ph-calendar-check" style="display:inline;margin-right:4px"></i>Routine
-                </a>
+                <a href="routine.html" class="nav-link">Routine</a>
             </nav>
+
             <div class="header-actions">
-                <a href="#lista-privata" class="btn btn-primary btn-header-cta">Accedi in Anteprima</a>
-                <button class="mobile-menu-btn" aria-label="Apri menu">
+                <button class="action-icon" id="searchToggle" aria-label="Cerca">
+                    <i class="ph ph-magnifying-glass"></i>
+                </button>
+                <button class="action-icon" id="profileToggle" aria-label="Profilo">
+                    <i class="ph ph-user"></i>
+                </button>
+                <button class="action-icon cart-action" id="cartToggle" aria-label="Carrello">
+                    <i class="ph ph-shopping-bag"></i>
+                    <span class="cart-badge" id="cartCount" style="display:none">0</span>
+                </button>
+                <button class="mobile-menu-btn" aria-label="Menu">
                     <i class="ph ph-list"></i>
                 </button>
             </div>
@@ -76,322 +84,295 @@
 
     <main>
 
-        <!-- ══════════════════════════════════════════════════════════
-             HERO — Dark editorial. Karpicky-inspired orb + labels.
-             ══════════════════════════════════════════════════════════ -->
-        <section class="n-hero">
-            <!-- Ambient background -->
-            <div class="n-hero-bg">
-                <div class="n-blob n-blob-1"></div>
-                <div class="n-blob n-blob-2"></div>
-                <div class="n-grain"></div>
+        <!-- ═══════════════════════════════════════════════════
+             HERO — Light editorial, centered, healf-inspired
+             ═══════════════════════════════════════════════════ -->
+        <section class="hero-section" id="heroSection">
+
+            <div class="hero-bg" aria-hidden="true">
+                <div class="hero-orb hero-orb-1"></div>
+                <div class="hero-orb hero-orb-2"></div>
             </div>
 
-            <div class="container n-hero-inner">
-
-                <!-- Left: editorial text -->
-                <div class="n-hero-text">
-                    <div class="n-hero-badge">
-                        <span class="n-live-dot"></span>
-                        <span id="waitlistCounter">247</span>&nbsp;persone in lista privata
-                    </div>
-
-                    <h1 class="n-hero-headline">
-                        Longevity,<br>
-                        <em>semplificata.</em>
-                    </h1>
-
-                    <p class="n-hero-desc">
-                        I migliori supplementi del mondo — sonno, energia, focus, longevità.<br>
-                        <strong>Un solo ordine. Una sola spedizione.</strong>
-                    </p>
-
-                    <form class="n-hero-form" id="heroEmailForm" onsubmit="handleHeroEmail(event)">
-                        <div class="n-form-row">
-                            <input type="email" class="n-email-input" placeholder="La tua email..."
-                                id="heroEmail" required>
-                            <button type="submit" class="n-cta-btn">
-                                Accedi in Anteprima <i class="ph ph-arrow-right"></i>
-                            </button>
-                        </div>
-                        <p class="n-form-note">
-                            <i class="ph ph-lock-simple"></i>
-                            Nessuno spam. Solo accesso anticipato.
-                        </p>
-                    </form>
-
-                    <div class="n-trust-row">
-                        <span><i class="ph-fill ph-shield-check"></i> Brand Certificati</span>
-                        <span><i class="ph-fill ph-package"></i> Una Spedizione</span>
-                        <span><i class="ph-fill ph-sparkle"></i> Longevity Focus</span>
-                    </div>
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="live-dot"></span>
+                    <span id="waitlistCounter">247</span>&nbsp;persone in lista privata
                 </div>
 
-                <!-- Right: Karpicky-inspired wellness orb + floating pills -->
-                <div class="n-hero-visual" aria-hidden="true">
+                <h1 class="hero-headline">
+                    Longevity,<br><em>semplificata.</em>
+                </h1>
 
-                    <!-- Central glowing orb -->
-                    <div class="n-orb">
-                        <div class="n-orb-core">
-                            <span class="n-orb-brand">n.</span>
-                        </div>
-                        <div class="n-orb-ring n-ring-1"></div>
-                        <div class="n-orb-ring n-ring-2"></div>
-                        <div class="n-orb-ring n-ring-3"></div>
-                        <div class="n-orbit-dot n-dot-1"></div>
-                        <div class="n-orbit-dot n-dot-2"></div>
-                    </div>
+                <p class="hero-sub">
+                    I migliori supplementi del mondo — sonno, energia, focus, longevità.<br>
+                    Un solo ordine. Una sola spedizione.
+                </p>
 
-                    <!-- Floating wellness category pills — Karpicky style -->
-                    <div class="n-pill n-pill-1">
-                        <span class="n-pill-dot"></span>
-                        <span class="n-pill-text"><i class="ph-fill ph-moon-stars"></i> Sonno</span>
-                    </div>
-                    <div class="n-pill n-pill-2">
-                        <span class="n-pill-text"><i class="ph-fill ph-lightning"></i> Energia</span>
-                        <span class="n-pill-dot"></span>
-                    </div>
-                    <div class="n-pill n-pill-3">
-                        <span class="n-pill-dot"></span>
-                        <span class="n-pill-text"><i class="ph-fill ph-brain"></i> Focus</span>
-                    </div>
-                    <div class="n-pill n-pill-4">
-                        <span class="n-pill-text"><i class="ph-fill ph-leaf"></i> Gut Health</span>
-                        <span class="n-pill-dot"></span>
-                    </div>
-                    <div class="n-pill n-pill-5">
-                        <span class="n-pill-dot"></span>
-                        <span class="n-pill-text"><i class="ph-fill ph-dna"></i> Longevità</span>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="n-scroll-hint" aria-hidden="true">
-                <i class="ph ph-caret-down"></i>
-            </div>
-        </section>
-
-
-        <!-- ══════════════════════════════════════════════════════════
-             PROBLEMA — Visual before/after
-             ══════════════════════════════════════════════════════════ -->
-        <section class="n-problema">
-            <div class="container n-problema-inner">
-
-                <div class="n-problema-before reveal-up">
-                    <p class="n-problema-label n-label-bad">Come stai facendo ora</p>
-                    <div class="n-problema-lines">
-                        <div class="n-problema-line">
-                            <i class="ph ph-x-circle"></i><span>Amazon → Magnesio</span>
-                        </div>
-                        <div class="n-problema-line">
-                            <i class="ph ph-x-circle"></i><span>iHerb → Omega-3</span>
-                        </div>
-                        <div class="n-problema-line">
-                            <i class="ph ph-x-circle"></i><span>Farmacia → Vitamina D</span>
-                        </div>
-                        <div class="n-problema-line">
-                            <i class="ph ph-x-circle"></i><span>Sito USA → Collagene</span>
-                        </div>
-                        <div class="n-problema-line">
-                            <i class="ph ph-x-circle"></i><span>Altro sito → Ashwagandha</span>
-                        </div>
-                    </div>
-                    <p class="n-problema-result n-result-bad">5 siti · 5 spedizioni · caos totale</p>
-                </div>
-
-                <div class="n-vs" aria-hidden="true">→</div>
-
-                <div class="n-problema-after reveal-up" style="transition-delay: 100ms">
-                    <p class="n-problema-label n-label-good">Con nura.</p>
-                    <div class="n-problema-box">
-                        <i class="ph-fill ph-sparkle n-box-icon"></i>
-                        <p class="n-box-title">Tutto in un posto</p>
-                        <p class="n-box-desc">Magnesio · Omega-3 · Vitamina D<br>Collagene · Ashwagandha</p>
-                    </div>
-                    <p class="n-problema-result n-result-good">1 posto · 1 ordine · tutto chiaro</p>
-                </div>
-
-            </div>
-        </section>
-
-
-        <!-- ══════════════════════════════════════════════════════════
-             COME FUNZIONA — 3 steps, dark, editorial
-             ══════════════════════════════════════════════════════════ -->
-        <section id="come-funziona" class="n-steps">
-            <div class="container">
-
-                <div class="n-section-header">
-                    <span class="n-eyebrow">Semplice</span>
-                    <h2 class="n-section-title">Come funziona</h2>
-                </div>
-
-                <div class="n-steps-grid">
-                    <div class="n-step reveal-up">
-                        <span class="n-step-num">01</span>
-                        <div class="n-step-icon"><i class="ph ph-target"></i></div>
-                        <h3 class="n-step-title">Scegli il tuo obiettivo</h3>
-                        <p class="n-step-desc">Sonno, Focus, Energia, Gut Health o Longevità. Nura ti guida verso i prodotti più adatti al tuo profilo.</p>
-                    </div>
-                    <div class="n-step-arrow" aria-hidden="true"><i class="ph ph-arrow-right"></i></div>
-                    <div class="n-step reveal-up" style="transition-delay: 100ms">
-                        <span class="n-step-num">02</span>
-                        <div class="n-step-icon"><i class="ph ph-selection-all"></i></div>
-                        <h3 class="n-step-title">Scegli i prodotti curati</h3>
-                        <p class="n-step-desc">Solo brand premium, solo formule scientificamente validate. Nessun compromesso sulla qualità.</p>
-                    </div>
-                    <div class="n-step-arrow" aria-hidden="true"><i class="ph ph-arrow-right"></i></div>
-                    <div class="n-step reveal-up" style="transition-delay: 200ms">
-                        <span class="n-step-num">03</span>
-                        <div class="n-step-icon"><i class="ph ph-package"></i></div>
-                        <h3 class="n-step-title">Ricevi in un unico ordine</h3>
-                        <p class="n-step-desc">Un checkout. Una spedizione. Il tuo protocollo completo arriva a casa in 24/48h.</p>
-                    </div>
-                </div>
-
-                <div class="n-steps-cta reveal-up" style="transition-delay: 300ms">
-                    <a href="#lista-privata" class="n-cta-btn n-cta-outline">
-                        Accedi in Anteprima <i class="ph ph-arrow-right"></i>
-                    </a>
-                </div>
-
-            </div>
-        </section>
-
-
-        <!-- ══════════════════════════════════════════════════════════
-             PRODOTTI — 4 cards, clean 2×2 grid
-             ══════════════════════════════════════════════════════════ -->
-        <section id="prodotti" class="n-products">
-            <div class="container">
-
-                <div class="n-section-header n-header-light">
-                    <span class="n-eyebrow n-eyebrow-dark">Selezione nura.</span>
-                    <h2 class="n-section-title n-title-dark">I Prodotti del Lancio</h2>
-                </div>
-
-                <div class="n-products-grid">
-
-                    <!-- Magnesio -->
-                    <div class="n-product-card reveal-up">
-                        <div class="n-product-visual n-visual-sleep">
-                            <div class="n-product-icon"><i class="ph-fill ph-moon-stars"></i></div>
-                            <span class="n-product-tag">Sonno & Stress</span>
-                        </div>
-                        <div class="n-product-body">
-                            <span class="n-product-brand">nura × Thorne</span>
-                            <h3 class="n-product-name">Magnesio Glicinate 400</h3>
-                            <p class="n-product-desc">La forma più biodisponibile. Sonno profondo, rilassamento muscolare, riduzione dello stress.</p>
-                            <div class="n-product-footer">
-                                <span class="n-product-price">€38</span>
-                                <button class="n-notify-btn add-to-cart-quick" data-product="Magnesio Glicinate 400">
-                                    <i class="ph ph-bell"></i> Avvisami
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Mushroom Coffee -->
-                    <div class="n-product-card reveal-up" style="transition-delay: 75ms">
-                        <div class="n-product-visual n-visual-focus">
-                            <div class="n-product-icon"><i class="ph-fill ph-brain"></i></div>
-                            <span class="n-product-tag">Focus</span>
-                        </div>
-                        <div class="n-product-body">
-                            <span class="n-product-brand">nura × Four Sigmatic</span>
-                            <h3 class="n-product-name">Mushroom Coffee Lion's Mane</h3>
-                            <p class="n-product-desc">Lion's Mane + Chaga per focus cognitivo, energia pulita. Zero ansia da caffeina.</p>
-                            <div class="n-product-footer">
-                                <span class="n-product-price">€42</span>
-                                <button class="n-notify-btn add-to-cart-quick" data-product="Mushroom Coffee Lion's Mane">
-                                    <i class="ph ph-bell"></i> Avvisami
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Elettroliti -->
-                    <div class="n-product-card reveal-up" style="transition-delay: 150ms">
-                        <div class="n-product-visual n-visual-energy">
-                            <div class="n-product-icon"><i class="ph-fill ph-lightning"></i></div>
-                            <span class="n-product-tag">Energia & Recovery</span>
-                        </div>
-                        <div class="n-product-body">
-                            <span class="n-product-brand">nura × LMNT</span>
-                            <h3 class="n-product-name">Elettroliti LMNT Zero Sugar</h3>
-                            <p class="n-product-desc">Sodio, potassio e magnesio in proporzioni ottimali. Zero zuccheri, massima idratazione.</p>
-                            <div class="n-product-footer">
-                                <span class="n-product-price">€45</span>
-                                <button class="n-notify-btn add-to-cart-quick" data-product="Elettroliti LMNT Zero Sugar">
-                                    <i class="ph ph-bell"></i> Avvisami
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Collagene -->
-                    <div class="n-product-card reveal-up" style="transition-delay: 225ms">
-                        <div class="n-product-visual n-visual-longevity">
-                            <div class="n-product-icon"><i class="ph-fill ph-heart"></i></div>
-                            <span class="n-product-tag">Pelle & Longevità</span>
-                        </div>
-                        <div class="n-product-body">
-                            <span class="n-product-brand">nura × Vital Proteins</span>
-                            <h3 class="n-product-name">Collagene Marino Idrolizzato</h3>
-                            <p class="n-product-desc">Peptidi di tipo I e III per pelle, capelli, unghie e articolazioni. Risultati in 4 settimane.</p>
-                            <div class="n-product-footer">
-                                <span class="n-product-price">€52</span>
-                                <button class="n-notify-btn add-to-cart-quick" data-product="Collagene Marino Idrolizzato">
-                                    <i class="ph ph-bell"></i> Avvisami
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-
-        <!-- ══════════════════════════════════════════════════════════
-             LISTA PRIVATA — Final CTA, dark editorial
-             ══════════════════════════════════════════════════════════ -->
-        <section id="lista-privata" class="n-lista">
-            <div class="n-lista-glow" aria-hidden="true"></div>
-            <div class="container n-lista-inner reveal-up">
-
-                <span class="n-lista-eyebrow">
-                    <i class="ph ph-lock-simple"></i> Lista Privata
-                </span>
-
-                <h2 class="n-lista-title">Unisciti alla lista privata</h2>
-                <p class="n-lista-desc">Accesso anticipato ai prodotti. Offerte di lancio esclusive.<br>Protocolli personalizzati basati sulla scienza.</p>
-
-                <div class="n-lista-benefits">
-                    <span><i class="ph-fill ph-rocket-launch"></i> Accesso anticipato</span>
-                    <span><i class="ph-fill ph-tag"></i> Offerte di lancio</span>
-                    <span><i class="ph-fill ph-dna"></i> Protocolli esclusivi</span>
-                </div>
-
-                <form class="n-lista-form" id="listaPrivataForm" onsubmit="handleListaEmail(event)">
-                    <div class="n-form-row n-lista-form-row">
-                        <input type="email" class="n-email-input n-lista-input"
-                            placeholder="La tua email..." id="listaEmail" required>
-                        <button type="submit" class="n-cta-btn n-lista-btn">
-                            Accedi Ora <i class="ph ph-arrow-right"></i>
+                <form class="hero-form" id="heroEmailForm" onsubmit="handleHeroEmail(event)">
+                    <div class="form-row">
+                        <input type="email" id="heroEmail" class="email-input"
+                            placeholder="La tua email..." required autocomplete="email">
+                        <button type="submit" class="cta-btn">
+                            Accedi in Anteprima <i class="ph ph-arrow-right"></i>
                         </button>
                     </div>
-                    <p class="n-form-note n-lista-note">
-                        <i class="ph ph-lock-simple"></i>
-                        Zero spam. Puoi cancellarti in qualsiasi momento.
+                    <p class="form-note">
+                        <i class="ph ph-lock-simple"></i> Nessuno spam. Solo accesso anticipato.
                     </p>
                 </form>
 
-                <div class="n-lista-counter">
-                    <span class="lista-counter-dot"></span>
-                    <span id="listaCounterNum">247</span> persone già in lista — unisciti a loro
+                <div class="hero-trust">
+                    <span><i class="ph-fill ph-shield-check"></i> Brand Certificati</span>
+                    <span><i class="ph-fill ph-package"></i> Una Spedizione</span>
+                    <span><i class="ph-fill ph-sparkle"></i> Longevity Focus</span>
+                </div>
+            </div>
+
+            <!-- Goal pills — healf-style horizontal strip -->
+            <div class="hero-goals" id="heroGoals">
+                <a href="#prodotti" class="goal-pill goal-sleep reveal-up">
+                    <i class="ph-fill ph-moon-stars"></i><span>Sonno</span>
+                </a>
+                <a href="#prodotti" class="goal-pill goal-energy reveal-up" style="transition-delay:60ms">
+                    <i class="ph-fill ph-lightning"></i><span>Energia</span>
+                </a>
+                <a href="#prodotti" class="goal-pill goal-focus reveal-up" style="transition-delay:120ms">
+                    <i class="ph-fill ph-brain"></i><span>Focus</span>
+                </a>
+                <a href="#prodotti" class="goal-pill goal-gut reveal-up" style="transition-delay:180ms">
+                    <i class="ph-fill ph-leaf"></i><span>Gut Health</span>
+                </a>
+                <a href="#prodotti" class="goal-pill goal-longevity reveal-up" style="transition-delay:240ms">
+                    <i class="ph-fill ph-dna"></i><span>Longevità</span>
+                </a>
+                <a href="#prodotti" class="goal-pill goal-fitness reveal-up" style="transition-delay:300ms">
+                    <i class="ph-fill ph-heartbeat"></i><span>Recovery</span>
+                </a>
+            </div>
+
+            <div class="scroll-hint" aria-hidden="true">
+                <i class="ph ph-caret-down"></i>
+            </div>
+
+        </section>
+
+
+        <!-- ═══════════════════════════════════════════════════
+             COME FUNZIONA — 3 clean steps
+             ═══════════════════════════════════════════════════ -->
+        <section id="come-funziona" class="how-section">
+            <div class="container">
+
+                <div class="section-header reveal-fade">
+                    <span class="eyebrow">Semplice per design</span>
+                    <h2 class="section-title">Come funziona</h2>
+                </div>
+
+                <div class="steps-row">
+                    <div class="step-card reveal-up">
+                        <span class="step-num">01</span>
+                        <div class="step-icon"><i class="ph ph-target"></i></div>
+                        <h3>Scegli il tuo obiettivo</h3>
+                        <p>Sonno, Focus, Energia, Gut Health o Longevità. Nura ti guida verso i prodotti più adatti.</p>
+                    </div>
+
+                    <div class="step-connector reveal-fade" style="transition-delay:80ms" aria-hidden="true">
+                        <div class="connector-line"></div>
+                        <i class="ph ph-arrow-right connector-arrow"></i>
+                    </div>
+
+                    <div class="step-card reveal-up" style="transition-delay:100ms">
+                        <span class="step-num">02</span>
+                        <div class="step-icon"><i class="ph ph-selection-all"></i></div>
+                        <h3>Scopri i prodotti curati</h3>
+                        <p>Solo brand premium, solo formule scientificamente validate. Nessun compromesso sulla qualità.</p>
+                    </div>
+
+                    <div class="step-connector reveal-fade" style="transition-delay:160ms" aria-hidden="true">
+                        <div class="connector-line"></div>
+                        <i class="ph ph-arrow-right connector-arrow"></i>
+                    </div>
+
+                    <div class="step-card reveal-up" style="transition-delay:200ms">
+                        <span class="step-num">03</span>
+                        <div class="step-icon"><i class="ph ph-package"></i></div>
+                        <h3>Ricevi in un unico ordine</h3>
+                        <p>Un checkout. Una spedizione. Il tuo protocollo arriva a casa in 24/48h.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ═══════════════════════════════════════════════════
+             PRODOTTI — Clean product grid, editorial cards
+             ═══════════════════════════════════════════════════ -->
+        <section id="prodotti" class="products-section">
+            <div class="container">
+
+                <div class="section-header reveal-fade">
+                    <span class="eyebrow">Selezione nura.</span>
+                    <h2 class="section-title">I Prodotti del Lancio</h2>
+                    <p class="section-sub">Solo le migliori formule. Validate dalla scienza. Selezionate per te.</p>
+                </div>
+
+                <div class="products-grid">
+
+                    <article class="product-card">
+                        <div class="product-visual pv-sleep">
+                            <div class="product-icon-wrap">
+                                <i class="ph-fill ph-moon-stars"></i>
+                            </div>
+                            <span class="product-cat-tag">Sonno & Stress</span>
+                        </div>
+                        <div class="product-body">
+                            <span class="product-brand">nura × Thorne</span>
+                            <h3 class="product-name">Magnesio Glicinate 400</h3>
+                            <p class="product-why">"La forma più biodisponibile — sonno profondo, senza effetti collaterali."</p>
+                            <div class="product-footer">
+                                <span class="product-price">€38</span>
+                                <button class="notify-btn" data-product="Magnesio Glicinate 400">
+                                    <i class="ph ph-bell"></i> Avvisami
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <div class="product-visual pv-focus">
+                            <div class="product-icon-wrap">
+                                <i class="ph-fill ph-brain"></i>
+                            </div>
+                            <span class="product-cat-tag">Focus</span>
+                        </div>
+                        <div class="product-body">
+                            <span class="product-brand">nura × Four Sigmatic</span>
+                            <h3 class="product-name">Mushroom Coffee Lion's Mane</h3>
+                            <p class="product-why">"Focus cognitivo + energia pulita. Zero ansia da caffeina."</p>
+                            <div class="product-footer">
+                                <span class="product-price">€42</span>
+                                <button class="notify-btn" data-product="Mushroom Coffee Lion's Mane">
+                                    <i class="ph ph-bell"></i> Avvisami
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <div class="product-visual pv-energy">
+                            <div class="product-icon-wrap">
+                                <i class="ph-fill ph-lightning"></i>
+                            </div>
+                            <span class="product-cat-tag">Energia & Recovery</span>
+                        </div>
+                        <div class="product-body">
+                            <span class="product-brand">nura × LMNT</span>
+                            <h3 class="product-name">Elettroliti LMNT Zero Sugar</h3>
+                            <p class="product-why">"Sodio, potassio e magnesio in proporzioni ottimali. Zero zuccheri."</p>
+                            <div class="product-footer">
+                                <span class="product-price">€45</span>
+                                <button class="notify-btn" data-product="Elettroliti LMNT Zero Sugar">
+                                    <i class="ph ph-bell"></i> Avvisami
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <div class="product-visual pv-longevity">
+                            <div class="product-icon-wrap">
+                                <i class="ph-fill ph-heart"></i>
+                            </div>
+                            <span class="product-cat-tag">Pelle & Longevità</span>
+                        </div>
+                        <div class="product-body">
+                            <span class="product-brand">nura × Vital Proteins</span>
+                            <h3 class="product-name">Collagene Marino Idrolizzato</h3>
+                            <p class="product-why">"Peptidi tipo I e III per pelle, capelli e articolazioni. Risultati in 4 settimane."</p>
+                            <div class="product-footer">
+                                <span class="product-price">€52</span>
+                                <button class="notify-btn" data-product="Collagene Marino Idrolizzato">
+                                    <i class="ph ph-bell"></i> Avvisami
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ═══════════════════════════════════════════════════
+             QUIZ CTA — Dark green contrast break
+             ═══════════════════════════════════════════════════ -->
+        <section class="quiz-cta-section">
+            <div class="container quiz-cta-inner">
+                <div class="quiz-cta-content reveal-up">
+                    <span class="eyebrow eyebrow-light">Personalizzazione</span>
+                    <h2 class="quiz-cta-title">Non sai da dove<br>iniziare?</h2>
+                    <p class="quiz-cta-sub">Il nostro quiz di 4 domande costruisce il tuo protocollo longevity su misura. 1 minuto. Gratuito.</p>
+                    <a href="quiz.html" class="cta-btn-light">
+                        <i class="ph ph-sparkle"></i> Fai il Quiz &rarr;
+                    </a>
+                    <div class="quiz-cta-stats">
+                        <span><i class="ph ph-timer"></i> Solo 1 minuto</span>
+                        <span><i class="ph ph-users"></i> 247 già completati</span>
+                        <span><i class="ph ph-shield-check"></i> Protocollo personalizzato</span>
+                    </div>
+                </div>
+                <div class="quiz-cta-visual reveal-fade" style="transition-delay:150ms" aria-hidden="true">
+                    <div class="quiz-visual-orb">
+                        <span class="quiz-visual-brand">n.</span>
+                        <div class="quiz-ring quiz-ring-1"></div>
+                        <div class="quiz-ring quiz-ring-2"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ═══════════════════════════════════════════════════
+             LISTA PRIVATA — Final CTA
+             ═══════════════════════════════════════════════════ -->
+        <section id="lista-privata" class="lista-section">
+            <div class="container lista-inner">
+
+                <div class="lista-content reveal-up">
+                    <span class="eyebrow">
+                        <i class="ph ph-lock-simple"></i> Lista Privata
+                    </span>
+                    <h2 class="lista-title">Unisciti alla lista privata</h2>
+                    <p class="lista-sub">
+                        Accesso anticipato ai prodotti. Offerte di lancio esclusive.<br>
+                        Protocolli personalizzati basati sulla scienza.
+                    </p>
+
+                    <div class="lista-benefits">
+                        <span><i class="ph-fill ph-rocket-launch"></i> Accesso anticipato</span>
+                        <span><i class="ph-fill ph-tag"></i> Offerte di lancio</span>
+                        <span><i class="ph-fill ph-dna"></i> Protocolli esclusivi</span>
+                    </div>
+
+                    <form class="lista-form" id="listaPrivataForm" onsubmit="handleListaEmail(event)">
+                        <div class="form-row">
+                            <input type="email" id="listaEmail" class="email-input"
+                                placeholder="La tua email..." required autocomplete="email">
+                            <button type="submit" class="cta-btn">
+                                Accedi Ora <i class="ph ph-arrow-right"></i>
+                            </button>
+                        </div>
+                        <p class="form-note">
+                            <i class="ph ph-lock-simple"></i> Zero spam. Puoi cancellarti in qualsiasi momento.
+                        </p>
+                    </form>
+
+                    <div class="lista-counter">
+                        <span class="counter-dot"></span>
+                        <span id="listaCounterNum">247</span> persone già in lista — unisciti a loro
+                    </div>
                 </div>
 
             </div>
@@ -401,31 +382,35 @@
 
 
     <!-- Footer -->
-    <footer class="n-footer">
-        <div class="container n-footer-inner">
-            <a href="#" class="brand-logo n-footer-logo">nura.</a>
-            <div class="n-footer-links">
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <a href="#" class="brand-logo footer-logo">nura.</a>
+            <div class="footer-links">
                 <a href="mailto:hello@nura.life">hello@nura.life</a>
                 <a href="#">Privacy</a>
                 <a href="#">Termini</a>
+                <a href="quiz.html">Quiz</a>
+                <a href="routine.html">Routine</a>
             </div>
-            <div class="n-footer-right">
-                <span class="n-footer-soon"><i class="ph ph-flag"></i> Coming Soon — Italia</span>
-                <div class="n-footer-social">
+            <div class="footer-right">
+                <span class="footer-soon"><i class="ph ph-flag"></i> Coming Soon — Italia</span>
+                <div class="footer-social">
                     <a href="#" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
                     <a href="#" aria-label="TikTok"><i class="ph ph-tiktok-logo"></i></a>
                 </div>
             </div>
         </div>
-        <div class="container n-footer-bottom">
+        <div class="container footer-bottom">
             <p>© 2026 nura. Tutti i diritti riservati.</p>
         </div>
     </footer>
 
 
-    <!-- ═══ OVERLAYS & DRAWERS (keep for JS compatibility) ═══ -->
+    <!-- ══════════════════════════════════════
+         OVERLAYS & DRAWERS
+         ══════════════════════════════════════ -->
 
-    <!-- Overlay Backdrop -->
+    <!-- Backdrop overlay -->
     <div class="drawer-overlay" id="drawerOverlay"></div>
 
     <!-- Profile Drawer -->
@@ -453,20 +438,21 @@
             </form>
             <div class="profile-links">
                 <a href="quiz.html"><i class="ph ph-sparkle"></i> Fai il Quiz Wellness</a>
+                <a href="routine.html"><i class="ph ph-calendar-check"></i> La Mia Routine</a>
             </div>
         </div>
     </div>
 
-    <!-- Cart Drawer (pre-launch empty state) -->
+    <!-- Cart Drawer -->
     <div class="drawer drawer-right" id="cartDrawer">
         <div class="drawer-header">
             <h3><i class="ph ph-shopping-bag" style="display:inline;margin-right:6px"></i> Carrello</h3>
             <button class="drawer-close" data-close-drawer><i class="ph ph-x"></i></button>
         </div>
         <div class="drawer-body" id="cartItems">
-            <div class="n-cart-empty">
-                <i class="ph ph-package" style="font-size:3rem;color:rgba(245,240,232,0.12);display:block;margin-bottom:1.25rem;"></i>
-                <p style="color:rgba(245,240,232,0.35);text-align:center;font-size:0.9rem;line-height:1.6;">Il carrello è vuoto.<br>I prodotti saranno disponibili al lancio.</p>
+            <div class="cart-empty-state">
+                <i class="ph ph-package"></i>
+                <p>Il carrello è vuoto.<br>I prodotti saranno disponibili al lancio.</p>
             </div>
         </div>
         <div class="drawer-footer">
@@ -483,17 +469,15 @@
             <button class="mobile-nav-close" id="mobileNavClose"><i class="ph ph-x"></i></button>
         </div>
         <nav class="mobile-nav-body">
-            <div class="mobile-nav-section">
-                <a href="#come-funziona" class="mobile-nav-link" data-close-mobile>Come Funziona</a>
-                <a href="#prodotti" class="mobile-nav-link" data-close-mobile>I Prodotti</a>
-                <a href="#lista-privata" class="mobile-nav-link" data-close-mobile>Lista Privata</a>
-                <a href="quiz.html" class="mobile-nav-link">
-                    <i class="ph ph-sparkle" style="display:inline;margin-right:6px"></i>Quiz Wellness
-                </a>
-                <a href="routine.html" class="mobile-nav-link">
-                    <i class="ph ph-calendar-check" style="display:inline;margin-right:6px"></i>La Mia Routine
-                </a>
-            </div>
+            <a href="#come-funziona" class="mobile-nav-link" data-close-mobile>Come Funziona</a>
+            <a href="#prodotti" class="mobile-nav-link" data-close-mobile>I Prodotti</a>
+            <a href="#lista-privata" class="mobile-nav-link" data-close-mobile>Lista Privata</a>
+            <a href="quiz.html" class="mobile-nav-link">
+                <i class="ph ph-sparkle" style="margin-right:8px"></i>Quiz Wellness
+            </a>
+            <a href="routine.html" class="mobile-nav-link">
+                <i class="ph ph-calendar-check" style="margin-right:8px"></i>La Mia Routine
+            </a>
         </nav>
         <div class="mobile-nav-footer">
             <a href="#lista-privata" class="btn btn-primary" style="width:100%;text-align:center;" data-close-mobile>
@@ -514,7 +498,7 @@
             <div class="search-popular">
                 <p class="search-popular-label">Ricerche Popolari</p>
                 <div class="search-chips">
-                    <a href="#prodotti" class="search-chip" id="searchToggle">Magnesio</a>
+                    <a href="#prodotti" class="search-chip">Magnesio</a>
                     <a href="#prodotti" class="search-chip">Sonno</a>
                     <a href="#prodotti" class="search-chip">Energia</a>
                     <a href="#prodotti" class="search-chip">Focus</a>
@@ -531,7 +515,9 @@
                 <strong>Lista Privata</strong>
                 <span>Accesso anticipato</span>
             </div>
-            <a href="#lista-privata" class="btn btn-primary btn-sm">Accedi <i class="ph ph-arrow-right"></i></a>
+            <a href="#lista-privata" class="btn btn-primary btn-sm">
+                Accedi <i class="ph ph-arrow-right"></i>
+            </a>
         </div>
     </div>
 
@@ -547,5 +533,4 @@
     <script src="assets/js/chat.js"></script>
 
 </body>
-
 </html>
