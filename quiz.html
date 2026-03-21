@@ -14,33 +14,27 @@
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="quiz.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/quiz.css">
 </head>
 
 <body>
-    <!-- Header -->
-    <header class="main-header" id="mainHeader">
+    <!-- Header — dark editorial, consistent with index -->
+    <header class="main-header main-header-minimal" id="mainHeader">
         <div class="header-container container">
-            <div class="mobile-menu-btn"><i class="ph ph-list"></i></div>
             <a href="index.html" class="brand-logo">nura.</a>
-            <nav class="desktop-nav">
-                <ul class="nav-links">
-                    <li><a href="index.html#categories">Shop <i class="ph ph-caret-down"></i></a></li>
-                    <li><a href="index.html#featured">Bestseller</a></li>
-                    <li><a href="index.html#ethos">Scienza & Ethos</a></li>
-                    <li><a href="index.html">Il Club</a></li>
-                    <li><a href="routine.html"><i class="ph ph-calendar-check"
-                                style="display:inline;margin-right:4px"></i>La Mia Routine</a></li>
-                    <li><a href="quiz.html" class="nav-quiz-btn"><i class="ph ph-sparkle"
-                                style="display:inline;margin-right:4px"></i>Quiz</a></li>
-                </ul>
+            <nav class="header-minimal-nav">
+                <a href="index.html#prodotti" class="header-minimal-link">Prodotti</a>
+                <a href="routine.html" class="header-minimal-link">
+                    <i class="ph ph-calendar-check" style="display:inline;margin-right:4px"></i>La Mia Routine
+                </a>
+                <a href="quiz.html" class="header-minimal-link" style="color:rgba(74,222,128,0.75)">
+                    <i class="ph ph-sparkle" style="display:inline;margin-right:4px"></i>Quiz
+                </a>
             </nav>
             <div class="header-actions">
-                <a href="#" class="action-btn"><i class="ph ph-magnifying-glass"></i></a>
-                <a href="#" class="action-btn"><i class="ph ph-user"></i></a>
-                <a href="#" class="action-btn cart-btn"><i class="ph ph-shopping-bag"></i><span
-                        class="cart-count">2</span></a>
+                <a href="index.html#lista-privata" class="btn btn-primary btn-header-cta">Accedi in Anteprima</a>
+                <button class="mobile-menu-btn" aria-label="Apri menu"><i class="ph ph-list"></i></button>
             </div>
         </div>
     </header>
@@ -114,8 +108,8 @@
         </div>
     </footer>
 
-    <script src="quiz.js"></script>
-    <script src="chat.js"></script>
+    <script src="assets/js/quiz.js"></script>
+    <script src="assets/js/chat.js"></script>
 </body>
 
 </html>
