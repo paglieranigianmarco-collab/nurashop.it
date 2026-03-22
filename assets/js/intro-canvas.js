@@ -11,6 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const overlay = document.getElementById('simple-intro');
     if (!overlay) return;
 
+    // Skip if already seen this session
+    if (sessionStorage.getItem('nura_seen')) {
+        overlay.style.display = 'none';
+        return;
+    }
+    sessionStorage.setItem('nura_seen', '1');
+
     document.body.style.overflow = 'hidden';
     overlay.style.background = '#000';
 
@@ -205,9 +212,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // ── "Made for you." element ────────────────────────────────
+    // ── "Made for you." / "Fatto per te." element ─────────────
+    const isIT = (localStorage.getItem('nura_lang') || 'it') === 'it';
     const mfyEl = document.createElement('div');
-    mfyEl.textContent = 'Made for you.';
+    mfyEl.textContent = isIT ? 'Fatto per te.' : 'Made for you.';
     Object.assign(mfyEl.style, {
         position: 'absolute', top: '50%', left: '50%',
         transform: 'translate(-50%, -50%)',
@@ -264,7 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fb.style.cssText = 'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2rem;';
         fb.innerHTML = `
             <span style="font-family:Sora,sans-serif;font-size:clamp(5rem,14vw,11rem);font-weight:800;color:white;letter-spacing:-0.06em;opacity:0;animation:fbIn 0.8s 0.4s ease forwards">nura.</span>
-            <span style="font-family:Sora,sans-serif;font-size:clamp(1.2rem,2.8vw,2.2rem);font-weight:200;color:rgba(255,255,255,0.8);opacity:0;animation:fbIn 0.8s 2.2s ease forwards">Made for you.</span>
+            <span style="font-family:Sora,sans-serif;font-size:clamp(1.2rem,2.8vw,2.2rem);font-weight:200;color:rgba(255,255,255,0.8);opacity:0;animation:fbIn 0.8s 2.2s ease forwards">${isIT ? 'Fatto per te.' : 'Made for you.'}</span>
         `;
         const st = document.createElement('style');
         st.textContent = '@keyframes fbIn{to{opacity:1}}';

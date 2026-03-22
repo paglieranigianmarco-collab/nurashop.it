@@ -1,11 +1,22 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" data-lang="it">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>nura. | Prenota il tuo Box</title>
+    <title>nura. | nura.box</title>
     <meta name="description" content="Tre domande. Un box costruito su di te.">
+
+    <!-- Restore language from localStorage before paint -->
+    <script>
+        (function () {
+            var l = localStorage.getItem('nura_lang');
+            if (l === 'en') {
+                document.documentElement.dataset.lang = 'en';
+                document.documentElement.lang = 'en';
+            }
+        })();
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,7 +42,7 @@
             left: 0;
             right: 0;
             z-index: 100;
-            background: rgba(12, 5, 0, 0.88);
+            background: rgba(0, 0, 0, 0.88);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
@@ -50,10 +61,18 @@
 
         .quiz-brand {
             font-family: var(--font-display);
-            font-size: 1.4rem;
+            font-size: 1.9rem;
             font-weight: 800;
             color: var(--cream);
-            letter-spacing: -0.05em;
+            letter-spacing: -0.01em;
+        }
+
+        .quiz-header-right {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            min-width: 3rem;
+            justify-content: flex-end;
         }
 
         .quiz-step-label {
@@ -61,8 +80,6 @@
             color: var(--cream-3);
             letter-spacing: 0.06em;
             font-weight: 500;
-            min-width: 3rem;
-            text-align: right;
         }
 
         .quiz-progress {
@@ -420,6 +437,7 @@
             .pillar-grid { grid-template-columns: 1fr; }
             .quiz-header { padding: 1.25rem 1rem; }
             .quiz-main { padding-top: 6rem; }
+            .btn-step-next { width: 100%; justify-content: center; }
         }
     </style>
 </head>
@@ -432,10 +450,18 @@
 
     <header class="quiz-header">
         <a href="index.html" class="quiz-back">
-            <i class="ph ph-arrow-left"></i> Torna al sito
+            <i class="ph ph-arrow-left"></i>
+            <span class="it">Torna al sito</span>
+            <span class="en">Back</span>
         </a>
         <span class="quiz-brand">nura.</span>
-        <span class="quiz-step-label" id="stepLabel">1 / 3</span>
+        <div class="quiz-header-right">
+            <button class="lang-toggle" id="langToggle" aria-label="Switch language">
+                <span class="it">EN</span>
+                <span class="en">IT</span>
+            </button>
+            <span class="quiz-step-label" id="stepLabel">1 / 3</span>
+        </div>
     </header>
 
     <main class="quiz-main">
@@ -445,41 +471,56 @@
             <div class="quiz-step active" id="step1">
                 <p class="step-eyebrow">Step 1</p>
                 <h1 class="step-title">
-                    Quali aree vuoi<br>
-                    <em>migliorare?</em>
+                    <span class="it">Quali aree vuoi<br><em>migliorare?</em></span>
+                    <span class="en">Which areas do you want<br><em>to improve?</em></span>
                 </h1>
-                <p class="step-sub">Seleziona tutti i pilastri che ti interessano.</p>
+                <p class="step-sub">
+                    <span class="it">Seleziona tutti i pilastri che ti interessano.</span>
+                    <span class="en">Select all the pillars that interest you.</span>
+                </p>
 
                 <div class="pillar-grid">
                     <div class="pillar-card" data-pillar="sonno" onclick="togglePillar(this)">
                         <span class="pillar-check"><i class="ph-fill ph-check"></i></span>
                         <i class="ph-fill ph-moon-stars pillar-icon" style="color:#8B7CE8"></i>
-                        <div class="pillar-card-name">Sonno</div>
-                        <div class="pillar-card-desc">Recupero notturno, qualità del sonno profondo, riduzione del cortisolo.</div>
+                        <div class="pillar-card-name"><span class="it">Sonno</span><span class="en">Sleep</span></div>
+                        <div class="pillar-card-desc">
+                            <span class="it">Recupero notturno, qualità del sonno profondo, riduzione del cortisolo.</span>
+                            <span class="en">Nighttime recovery, deep sleep quality, cortisol reduction.</span>
+                        </div>
                     </div>
                     <div class="pillar-card" data-pillar="energia" onclick="togglePillar(this)">
                         <span class="pillar-check"><i class="ph-fill ph-check"></i></span>
                         <i class="ph-fill ph-lightning pillar-icon" style="color:#E88040"></i>
-                        <div class="pillar-card-name">Energia</div>
-                        <div class="pillar-card-desc">Performance fisica, vitalità quotidiana, riduzione della fatica.</div>
+                        <div class="pillar-card-name"><span class="it">Energia</span><span class="en">Energy</span></div>
+                        <div class="pillar-card-desc">
+                            <span class="it">Performance fisica, vitalità quotidiana, riduzione della fatica.</span>
+                            <span class="en">Physical performance, daily vitality, fatigue reduction.</span>
+                        </div>
                     </div>
                     <div class="pillar-card" data-pillar="focus" onclick="togglePillar(this)">
                         <span class="pillar-check"><i class="ph-fill ph-check"></i></span>
                         <i class="ph-fill ph-brain pillar-icon" style="color:#4AA8D4"></i>
                         <div class="pillar-card-name">Focus</div>
-                        <div class="pillar-card-desc">Chiarezza mentale, concentrazione, memoria e cognizione.</div>
+                        <div class="pillar-card-desc">
+                            <span class="it">Chiarezza mentale, concentrazione, memoria e cognizione.</span>
+                            <span class="en">Mental clarity, concentration, memory and cognition.</span>
+                        </div>
                     </div>
                     <div class="pillar-card" data-pillar="longevita" onclick="togglePillar(this)">
                         <span class="pillar-check"><i class="ph-fill ph-check"></i></span>
                         <i class="ph-fill ph-heart pillar-icon" style="color:#3CB870"></i>
-                        <div class="pillar-card-name">Longevità</div>
-                        <div class="pillar-card-desc">Salute cellulare, antiossidanti, pelle e invecchiamento sano.</div>
+                        <div class="pillar-card-name"><span class="it">Longevità</span><span class="en">Longevity</span></div>
+                        <div class="pillar-card-desc">
+                            <span class="it">Salute cellulare, antiossidanti, pelle e invecchiamento sano.</span>
+                            <span class="en">Cellular health, antioxidants, skin and healthy aging.</span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="step-nav">
                     <button class="btn-step-next" id="nextStep1" onclick="goToStep(2)" disabled>
-                        Avanti <i class="ph ph-arrow-right"></i>
+                        <span class="it">Avanti</span><span class="en">Next</span> <i class="ph ph-arrow-right"></i>
                     </button>
                 </div>
             </div>
@@ -489,37 +530,40 @@
             <div class="quiz-step" id="step2">
                 <p class="step-eyebrow">Step 2</p>
                 <h1 class="step-title">
-                    Quanto spendi al mese<br>
-                    <em>in integratori?</em>
+                    <span class="it">Quanto spendi al mese<br><em>in integratori?</em></span>
+                    <span class="en">How much do you spend monthly<br><em>on supplements?</em></span>
                 </h1>
-                <p class="step-sub">Ci aiuta a costruire il box più adatto a te.</p>
+                <p class="step-sub">
+                    <span class="it">Ci aiuta a costruire il box più adatto a te.</span>
+                    <span class="en">Helps us build the box that fits you best.</span>
+                </p>
 
                 <div class="budget-list">
                     <div class="budget-option" onclick="selectBudget(this, 'meno-20')">
                         <div>
-                            <div class="budget-label">Meno di €20</div>
-                            <div class="budget-tag">Sto iniziando</div>
+                            <div class="budget-label"><span class="it">Meno di €20</span><span class="en">Less than €20</span></div>
+                            <div class="budget-tag"><span class="it">Sto iniziando</span><span class="en">Just starting out</span></div>
                         </div>
                         <div class="budget-radio"></div>
                     </div>
                     <div class="budget-option" onclick="selectBudget(this, '20-50')">
                         <div>
                             <div class="budget-label">€20 – €50</div>
-                            <div class="budget-tag">Uso qualche integratore</div>
+                            <div class="budget-tag"><span class="it">Uso qualche integratore</span><span class="en">I take some supplements</span></div>
                         </div>
                         <div class="budget-radio"></div>
                     </div>
                     <div class="budget-option" onclick="selectBudget(this, '50-100')">
                         <div>
                             <div class="budget-label">€50 – €100</div>
-                            <div class="budget-tag">Ho già una routine</div>
+                            <div class="budget-tag"><span class="it">Ho già una routine</span><span class="en">I have a routine</span></div>
                         </div>
                         <div class="budget-radio"></div>
                     </div>
                     <div class="budget-option" onclick="selectBudget(this, 'oltre-100')">
                         <div>
-                            <div class="budget-label">Oltre €100</div>
-                            <div class="budget-tag">Sono già ottimizzato</div>
+                            <div class="budget-label"><span class="it">Oltre €100</span><span class="en">Over €100</span></div>
+                            <div class="budget-tag"><span class="it">Sono già ottimizzato</span><span class="en">Already optimized</span></div>
                         </div>
                         <div class="budget-radio"></div>
                     </div>
@@ -527,10 +571,10 @@
 
                 <div class="step-nav">
                     <button class="btn-step-back" onclick="goToStep(1)">
-                        <i class="ph ph-arrow-left"></i> Indietro
+                        <i class="ph ph-arrow-left"></i> <span class="it">Indietro</span><span class="en">Back</span>
                     </button>
                     <button class="btn-step-next" id="nextStep2" onclick="goToStep(3)" disabled>
-                        Avanti <i class="ph ph-arrow-right"></i>
+                        <span class="it">Avanti</span><span class="en">Next</span> <i class="ph ph-arrow-right"></i>
                     </button>
                 </div>
             </div>
@@ -540,28 +584,33 @@
             <div class="quiz-step" id="step3">
                 <p class="step-eyebrow">Step 3</p>
                 <h1 class="step-title">
-                    Assicurati la tua<br>
-                    <em>nura Box.</em>
+                    <span class="it">Assicurati la tua<br><em>nura.box.</em></span>
+                    <span class="en">Secure your<br><em>nura.box.</em></span>
                 </h1>
-                <p class="step-sub">Il tuo box personalizzato è pronto. Inserisci la tua email e ottieni il 20% di sconto.</p>
+                <p class="step-sub">
+                    <span class="it">Il tuo box personalizzato è pronto. Inserisci la tua email e ottieni il 20% di sconto.</span>
+                    <span class="en">Your personalized box is ready. Enter your email and get 20% off.</span>
+                </p>
 
                 <div class="recap-pills" id="recapPills"></div>
 
                 <form class="reg-form" id="regForm" onsubmit="submitQuiz(event)">
-                    <input type="email" class="reg-input" id="regEmail" placeholder="La tua email" required autocomplete="email">
+                    <input type="email" class="reg-input" id="regEmail" placeholder="Email" required autocomplete="email">
 
                     <div class="step-nav" style="margin-top:0.5rem">
                         <button type="button" class="btn-step-back" onclick="goToStep(2)">
-                            <i class="ph ph-arrow-left"></i> Indietro
+                            <i class="ph ph-arrow-left"></i> <span class="it">Indietro</span><span class="en">Back</span>
                         </button>
                         <button type="submit" class="btn-step-next">
-                            Assicurati il tuo posto <i class="ph ph-arrow-right"></i>
+                            <span class="it">Assicurati il tuo posto</span><span class="en">Secure your spot</span> <i class="ph ph-arrow-right"></i>
                         </button>
                     </div>
                 </form>
 
                 <p style="font-size:0.72rem;color:var(--cream-3);display:flex;align-items:center;gap:0.3rem;">
-                    <i class="ph ph-lock-simple"></i> Nessuno spam. Solo aggiornamenti sul tuo box.
+                    <i class="ph ph-lock-simple"></i>
+                    <span class="it">Nessuno spam. Solo aggiornamenti sul tuo box.</span>
+                    <span class="en">No spam. Only updates about your box.</span>
                 </p>
             </div>
 
@@ -569,13 +618,17 @@
             <!-- SUCCESS -->
             <div class="quiz-success" id="quizSuccess">
                 <div class="success-icon"><i class="ph-fill ph-check"></i></div>
-                <h2 class="success-title">Box prenotato.<br><em>Ci vediamo presto.</em></h2>
+                <h2 class="success-title">
+                    <span class="it">Box prenotato.<br><em>Ci vediamo presto.</em></span>
+                    <span class="en">Box secured.<br><em>See you soon.</em></span>
+                </h2>
                 <p class="success-sub">
-                    Hai prenotato il tuo nura Box con il 20% di sconto.<br>
-                    Ti contatteremo non appena sarà disponibile.
+                    <span class="it">Hai prenotato la tua nura.box con il 20% di sconto.<br>Ti contatteremo non appena sarà disponibile.</span>
+                    <span class="en">You've secured your nura.box with 20% off.<br>We'll be in touch as soon as it's ready.</span>
                 </p>
                 <a href="index.html" style="display:inline-flex;align-items:center;gap:0.5rem;color:var(--amber-light);font-weight:600;font-size:0.9rem;">
-                    <i class="ph ph-arrow-left"></i> Torna alla home
+                    <i class="ph ph-arrow-left"></i>
+                    <span class="it">Torna alla home</span><span class="en">Back to home</span>
                 </a>
             </div>
 
@@ -604,31 +657,28 @@
         }
 
         const pillarLabels = {
-            sonno: 'Sonno',
-            energia: 'Energia',
-            focus: 'Focus',
-            longevita: 'Longevità'
+            it: { sonno: 'Sonno', energia: 'Energia', focus: 'Focus', longevita: 'Longevità' },
+            en: { sonno: 'Sleep', energia: 'Energy', focus: 'Focus', longevita: 'Longevity' }
         };
         const budgetLabels = {
-            'meno-20': '< €20 / mese',
-            '20-50': '€20–€50 / mese',
-            '50-100': '€50–€100 / mese',
-            'oltre-100': '> €100 / mese'
+            it: { 'meno-20': '< €20 / mese', '20-50': '€20–€50 / mese', '50-100': '€50–€100 / mese', 'oltre-100': '> €100 / mese' },
+            en: { 'meno-20': '< €20 / mo', '20-50': '€20–€50 / mo', '50-100': '€50–€100 / mo', 'oltre-100': '> €100 / mo' }
         };
 
         function buildRecap() {
+            const lang = document.documentElement.dataset.lang || 'it';
             const pills = document.getElementById('recapPills');
             pills.innerHTML = '';
             state.pillars.forEach(p => {
                 const el = document.createElement('span');
                 el.className = 'recap-pill';
-                el.textContent = pillarLabels[p];
+                el.textContent = pillarLabels[lang][p] || p;
                 pills.appendChild(el);
             });
             if (state.budget) {
                 const el = document.createElement('span');
                 el.className = 'recap-pill';
-                el.textContent = budgetLabels[state.budget];
+                el.textContent = budgetLabels[lang][state.budget];
                 pills.appendChild(el);
             }
         }
@@ -652,6 +702,20 @@
             document.getElementById('stepLabel').textContent = '✓';
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
+        // Language toggle
+        (function () {
+            var btn = document.getElementById('langToggle');
+            if (!btn) return;
+            btn.addEventListener('click', function () {
+                var cur = document.documentElement.dataset.lang || 'it';
+                var next = cur === 'it' ? 'en' : 'it';
+                document.documentElement.dataset.lang = next;
+                document.documentElement.lang = next;
+                localStorage.setItem('nura_lang', next);
+                if (document.getElementById('step3').classList.contains('active')) buildRecap();
+            });
+        })();
     </script>
 
 </body>
