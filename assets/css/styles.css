@@ -392,7 +392,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../images/ComfyUI_00007_.png');
+    background-image: url('../images/ComfyUI_00007_.webp');
     background-size: cover;
     background-position: 80% center;
     z-index: -1;
@@ -1855,18 +1855,9 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 
 /* ── 19. RESPONSIVE ───────────────────────────────────────── */
 @media (max-width: 1024px) {
-    .products-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
     .pillars-inner {
         grid-template-columns: 1fr;
         gap: 3rem;
-    }
-
-    .pillars-canvas {
-        width: 340px;
-        height: 340px;
     }
 
     .club-inner {
@@ -1892,15 +1883,13 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
         font-size: clamp(3rem, 11vw, 5rem);
     }
 
-    .products-grid {
-        grid-template-columns: 1fr;
-        max-width: 380px;
-        margin: 0 auto;
-    }
+    .pillar-visual-wrap { height: 300px; }
 
-    .pillars-canvas {
-        width: 280px;
-        height: 280px;
+    .hero-cta,
+    .box-cta {
+        width: 100%;
+        justify-content: center;
+        min-height: 48px;
     }
 
     .footer-inner {
@@ -1925,12 +1914,11 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
         width: 100%;
         justify-content: center;
     }
-
-    .floating-cta-bar { bottom: 1rem; }
 }
 
 @media (max-width: 480px) {
     .hero-trust { flex-direction: column; gap: 0.75rem; align-items: flex-start; }
     .club-benefits { flex-direction: column; gap: 0.75rem; }
-    .pillars-canvas { width: 240px; height: 240px; }
+    .pillar-visual-wrap { height: 260px; }
+    input, select, textarea { font-size: 16px; }
 }
