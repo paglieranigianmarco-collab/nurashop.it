@@ -190,16 +190,20 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .announcement-track span {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
     font-family: var(--font-display);
-    font-size: 0.6rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
+    font-size: 0.58rem;
+    font-weight: 300;
+    letter-spacing: 0.22em;
+    text-transform: lowercase;
+    color: rgba(245, 237, 224, 0.7);
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.9);
 }
 
-.announcement-track i { color: var(--amber-light); }
+.announcement-sep {
+    color: rgba(200, 80, 16, 0.6);
+    font-size: 0.5rem;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.9);
+}
 
 
 /* ── 5. HEADER ────────────────────────────────────────────── */
@@ -1090,6 +1094,118 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 @keyframes clubSpin {
     from { transform: rotate(0deg); }
     to   { transform: rotate(360deg); }
+}
+
+
+/* Box CTA + counter */
+.box-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--amber);
+    color: var(--cream);
+    padding: 1rem 2.2rem;
+    border-radius: var(--r-pill);
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    transition: background 0.22s, transform 0.22s var(--ease-spring), box-shadow 0.22s;
+}
+
+.box-cta:hover {
+    background: var(--amber-mid);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-amber);
+}
+
+.box-cta:active { transform: scale(0.98); }
+
+.box-counter {
+    margin-top: 0.25rem;
+}
+
+.box-counter-bar {
+    width: 100%;
+    max-width: 340px;
+    height: 2px;
+    background: rgba(245, 237, 224, 0.08);
+    border-radius: 2px;
+    margin-bottom: 0.6rem;
+    overflow: hidden;
+}
+
+.box-counter-fill {
+    height: 100%;
+    background: linear-gradient(to right, var(--amber), var(--amber-light));
+    border-radius: 2px;
+}
+
+.box-counter span {
+    font-size: 0.8rem;
+    color: var(--cream-3);
+    letter-spacing: 0.01em;
+}
+
+.box-counter strong { color: var(--amber-light); }
+
+/* Founders card (right visual) */
+.founders-card {
+    width: 240px;
+    height: 320px;
+    border: 1px solid rgba(200, 80, 16, 0.22);
+    border-radius: 20px;
+    background: linear-gradient(145deg, rgba(200, 80, 16, 0.07) 0%, rgba(12, 5, 0, 0.5) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 2rem;
+    position: relative;
+    margin: auto;
+    box-shadow: 0 0 60px rgba(200, 80, 16, 0.08), inset 0 1px 0 rgba(245, 237, 224, 0.06);
+}
+
+.founders-card-label {
+    font-family: var(--font-display);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--amber-light);
+    opacity: 0.8;
+}
+
+.founders-card-number {
+    font-family: var(--font-display);
+    font-size: 5.5rem;
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    color: var(--cream);
+    line-height: 1;
+}
+
+.founders-card-sub {
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--cream-3);
+}
+
+.founders-card-badge {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    background: var(--amber);
+    color: var(--cream);
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    font-weight: 800;
+    padding: 0.3rem 0.75rem;
+    border-radius: var(--r-pill);
+    letter-spacing: 0.02em;
 }
 
 

@@ -36,21 +36,25 @@
     <!-- Announcement bar -->
     <div class="announcement-bar">
         <div class="announcement-track">
-            <span>SPEDIZIONE GRATUITA OLTRE €50 <i class="ph-fill ph-truck"></i></span>
-            <span aria-hidden="true">·</span>
-            <span>ACCESSO ANTICIPATO DISPONIBILE <i class="ph-fill ph-sparkle"></i></span>
-            <span aria-hidden="true">·</span>
-            <span>BRAND PREMIUM PER LA LONGEVITÀ <i class="ph-fill ph-globe"></i></span>
-            <span aria-hidden="true">·</span>
-            <span>POSTI LIMITATI — ISCRIVITI ORA <i class="ph-fill ph-lock"></i></span>
-            <span aria-hidden="true">·</span>
-            <span>SPEDIZIONE GRATUITA OLTRE €50 <i class="ph-fill ph-truck"></i></span>
-            <span aria-hidden="true">·</span>
-            <span>ACCESSO ANTICIPATO DISPONIBILE <i class="ph-fill ph-sparkle"></i></span>
-            <span aria-hidden="true">·</span>
-            <span>BRAND PREMIUM PER LA LONGEVITÀ <i class="ph-fill ph-globe"></i></span>
-            <span aria-hidden="true">·</span>
-            <span>POSTI LIMITATI — ISCRIVITI ORA <i class="ph-fill ph-lock"></i></span>
+            <span>spedizione gratuita oltre €50</span>
+            <span class="announcement-sep" aria-hidden="true">—</span>
+            <span>solo 500 box disponibili</span>
+            <span class="announcement-sep" aria-hidden="true">—</span>
+            <span>formulazioni certificate</span>
+            <span class="announcement-sep" aria-hidden="true">—</span>
+            <span>accesso anticipato</span>
+            <span class="announcement-sep" aria-hidden="true">—</span>
+            <span>taylor-made per te</span>
+            <span class="announcement-sep" aria-hidden="true">—</span>
+            <span>spedizione gratuita oltre €50</span>
+            <span class="announcement-sep" aria-hidden="true">—</span>
+            <span>solo 500 box disponibili</span>
+            <span class="announcement-sep" aria-hidden="true">—</span>
+            <span>formulazioni certificate</span>
+            <span class="announcement-sep" aria-hidden="true">—</span>
+            <span>accesso anticipato</span>
+            <span class="announcement-sep" aria-hidden="true">—</span>
+            <span>taylor-made per te</span>
         </div>
     </div>
 
@@ -68,7 +72,6 @@
             <div class="header-actions">
                 <button class="action-icon cart-action" id="cartToggle" aria-label="Carrello">
                     <i class="ph ph-shopping-bag"></i>
-                    <span class="cart-label">Carrello</span>
                     <span class="cart-badge" id="cartCount" style="display:none">0</span>
                 </button>
                 <button class="mobile-menu-btn" aria-label="Menu">
@@ -154,7 +157,7 @@
 
 
         <!-- ══════════════════════════════════════
-             nura CLUB — Final CTA, no image
+             BOX — 500 founders, 20% off, taylor-made
              ══════════════════════════════════════ -->
         <section id="nura-club" class="club-section">
             <div class="club-bg-pattern" aria-hidden="true"></div>
@@ -162,57 +165,50 @@
 
                 <div class="club-content reveal-up">
                     <span class="eyebrow eyebrow-amber">
-                        <i class="ph-fill ph-crown-simple"></i>&nbsp;nura Club
+                        <i class="ph-fill ph-package"></i>&nbsp;Solo 500 box
                     </span>
                     <h2 class="club-title">
-                        Accesso esclusivo.<br>
-                        <em>Priorità assoluta.</em>
+                        Il tuo nura Box.<br>
+                        <em>Costruito su di te.</em>
                     </h2>
                     <p class="club-sub">
-                        Entra nel Club e ricevi accesso anticipato ai prodotti,<br>
-                        offerte di lancio esclusive e protocolli personalizzati.
+                        I primi 500 ricevono il <strong>20% di sconto</strong> su un box completamente<br>
+                        personalizzato — selezionato sul tuo profilo di salute.
                     </p>
 
                     <div class="club-benefits">
                         <div class="benefit-item">
-                            <i class="ph-fill ph-rocket-launch"></i>
-                            <span>Accesso anticipato</span>
-                        </div>
-                        <div class="benefit-item">
                             <i class="ph-fill ph-tag"></i>
-                            <span>Prezzi esclusivi</span>
+                            <span>20% di sconto</span>
                         </div>
                         <div class="benefit-item">
-                            <i class="ph-fill ph-dna"></i>
-                            <span>Protocolli custom</span>
+                            <i class="ph-fill ph-sliders"></i>
+                            <span>Box taylor-made</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="ph-fill ph-rocket-launch"></i>
+                            <span>Accesso prioritario</span>
                         </div>
                     </div>
 
-                    <form class="club-form" id="clubForm" onsubmit="handleClubEmail(event)">
-                        <div class="club-form-row">
-                            <input type="email" id="clubEmail" class="club-email-input"
-                                placeholder="La tua email..." required autocomplete="email">
-                            <button type="submit" class="cta-btn-amber">
-                                Entra nel Club <i class="ph ph-arrow-right"></i>
-                            </button>
-                        </div>
-                        <p class="form-note-light">
-                            <i class="ph ph-lock-simple"></i> Nessuno spam. Cancellazione con un click.
-                        </p>
-                    </form>
+                    <a href="quiz.html" class="box-cta">
+                        Compila il quiz e prenota il tuo Box <i class="ph ph-arrow-right"></i>
+                    </a>
 
-                    <div class="club-counter">
-                        <span class="counter-dot-amber"></span>
-                        <span id="clubCounterNum">247</span>&nbsp;persone già nel Club
+                    <div class="box-counter">
+                        <div class="box-counter-bar">
+                            <div class="box-counter-fill" style="width: 49%"></div>
+                        </div>
+                        <span><strong>253</strong> posti rimanenti su 500</span>
                     </div>
                 </div>
 
                 <div class="club-visual reveal-fade" style="transition-delay: 200ms" aria-hidden="true">
-                    <div class="club-orb">
-                        <span class="club-orb-letter">n.</span>
-                        <div class="club-ring club-ring-1"></div>
-                        <div class="club-ring club-ring-2"></div>
-                        <div class="club-ring club-ring-3"></div>
+                    <div class="founders-card">
+                        <span class="founders-card-label">nura Box</span>
+                        <div class="founders-card-number">500</div>
+                        <span class="founders-card-sub">edizione fondatori</span>
+                        <div class="founders-card-badge">−20%</div>
                     </div>
                 </div>
 
