@@ -291,6 +291,27 @@ document.addEventListener('DOMContentLoaded', () => {
         submitWaitlistAndRedirect(email);
     };
 
+    // ─── nura Club Form ──────────────────────────────────────
+    window.handleClubEmail = function(e) {
+        e.preventDefault();
+        const email = document.getElementById('clubEmail')?.value;
+        if (!email) return;
+        const list = JSON.parse(localStorage.getItem('nura_waitlist') || '[]');
+        if (!list.find(entry => entry.email === email)) {
+            list.push({ email, ts: Date.now(), source: 'club' });
+            localStorage.setItem('nura_waitlist', JSON.stringify(list));
+        }
+        animateCounter();
+        const btn = e.target.querySelector('button[type="submit"]');
+        if (btn) {
+            const original = btn.innerHTML;
+            btn.innerHTML = '<i class="ph ph-check"></i> Sei dentro!';
+            btn.disabled = true;
+            setTimeout(() => { btn.innerHTML = original; btn.disabled = false; }, 3000);
+        }
+        showToast('Benvenuto nel nura Club! Ti contatteremo presto.', 'success', 'ph-sparkle');
+    };
+
     function submitWaitlistAndRedirect(email) {
         // Save to localStorage
         const list = JSON.parse(localStorage.getItem('nura_waitlist') || '[]');
@@ -308,17 +329,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function animateCounter() {
-        const counters = document.querySelectorAll('#waitlistCounter, #listaCounterNum');
+        const counters = document.querySelectorAll('#waitlistCounter, #listaCounterNum, #clubCounterNum');
         counters.forEach(c => {
             const current = parseInt(c.textContent.replace(/\D/g, '')) || 247;
-            const target = current + 1;
-            c.textContent = target;
+            c.textContent = current + 1;
         });
     }
 
     // ─── Waitlist counter live animation ────────────────────
     // Simulate occasional signups for social proof
-    const counters = document.querySelectorAll('#waitlistCounter, #listaCounterNum');
+    const counters = document.querySelectorAll('#waitlistCounter, #listaCounterNum, #clubCounterNum');
     if (counters.length) {
         // Restore from localStorage
         const list = JSON.parse(localStorage.getItem('nura_waitlist') || '[]');
