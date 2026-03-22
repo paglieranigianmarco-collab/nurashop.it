@@ -1,0 +1,544 @@
+"use client";
+
+import { useState, useEffect, useRef, useMemo } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
+import { Shield, Lock, UserX, Plus } from "lucide-react";
+import WaitlistModal from "@/components/WaitlistModal";
+
+// ── Particles ──────────────────────────────────────────────────────────────
+function Particles({ dispersing = false }: { dispersing?: boolean }) {
+  const particles = useMemo(
+    () =>
+      Array.from({ length: 28 }, (_, i) => ({
+        id: i,
+        left: Math.random() * 100,
+        size: Math.random() * 1.5 + 0.8,
+        duration: Math.random() * 18 + 22,
+        delay: -(Math.random() * 22),
+        opacity: Math.random() * 0.35 + 0.08,
+        dx: (Math.random() - 0.5) * 300,
+        dy: -(Math.random() * 400 + 150),
+      })),
+    []
+  );
+
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {particles.map((p) => (
+        <motion.div
+          key={p.id}
+          className="absolute rounded-full bg-white"
+          style={{
+            left: `${p.left}%`,
+            bottom: "0px",
+            width: p.size,
+            height: p.size,
+          }}
+          animate={
+            dispersing
+              ? { x: p.dx, y: p.dy, opacity: 0 }
+              : {
+                  y: ["0vh", "-105vh"],
+                  opacity: [0, p.opacity, p.opacity, 0],
+                }
+          }
+          transition={
+            dispersing
+              ? { duration: 1.2, ease: "easeOut" }
+              : {
+                  duration: p.duration,
+                  delay: p.delay,
+                  repeat: Infinity,
+                  ease: "linear",
+                }
+          }
+        />
+      ))}
+    </div>
+  );
+}
+
+// ── Intro Animation ──────────────────────────────────────────────────────────
+function IntroAnimation({ onComplete }: { onComplete: () => void }) {
+  const [frame, setFrame] = useState(0);
+  const [showSkip, setShowSkip] = useState(false);
+  const [dispersing, setDispersing] = useState(false);
+
+  useEffect(() => {
+    const timers = [
+      setTimeout(() => setShowSkip(true), 2000),
+      setTimeout(() => setFrame(1), 3800),
+      setTimeout(() => setFrame(2), 7200),
+      setTimeout(() => {
+        setDispersing(true);
+        setTimeout(onComplete, 1400);
+      }, 10200),
+    ];
+    return () => timers.forEach(clearTimeout);
+  }, [onComplete]);
+
+  const skip = () => {
+    setDispersing(true);
+    setTimeout(onComplete, 1000);
+  };
+
+  const frames = ["We are Nura.", "We take care of you.", "Benvenuto."];
+  const sizes = [
+    "text-4xl md:text-6xl lg:text-7xl",
+    "text-3xl md:text-5xl lg:text-6xl",
+    "text-4xl md:text-6xl lg:text-7xl",
+  ];
+
+  return (
+    <motion.div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black"
+      animate={dispersing ? { opacity: 0 } : { opacity: 1 }}
+      transition={{ duration: 1.2 }}
+    >
+      <Particles dispersing={dispersing} />
+      <AnimatePresence mode="wait">
+        <motion.p
+          key={frame}
+          className={`relative z-10 font-light tracking-[0.2em] text-white text-center select-none ${sizes[frame]}`}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.9, ease: "easeInOut" }}
+        >
+          {frames[frame]}
+        </motion.p>
+      </AnimatePresence>
+      {showSkip && (
+        <motion.button
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.12 }}
+          onClick={skip}
+          className="absolute bottom-8 right-8 text-white text-xs tracking-[0.25em] uppercase cursor-pointer hover:opacity-30 transition-opacity z-10"
+        >
+          Skip
+        </motion.button>
+      )}
+    </motion.div>
+  );
+}
+
+// ── Body Silhouette SVG ────────────────────────────────────────────────────
+function BodySilhouette() {
+  return (
+    <svg viewBox="0 0 120 310" xmlns="http://www.w3.org/2000/svg" className="w-full h-full drop-shadow-[0_0_24px_rgba(201,168,76,0.06)]">
+      <defs>
+        <linearGradient id="bodyGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="#242424" />
+          <stop offset="50%" stopColor="#1A1A1A" />
+          <stop offset="100%" stopColor="#101010" />
+        </linearGradient>
+        <linearGradient id="rimLight" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="#1E3A3A" stopOpacity="0.6" />
+          <stop offset="100%" stopColor="transparent" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+      {/* Rim glow overlay */}
+      <ellipse cx="30" cy="155" rx="22" ry="130" fill="url(#rimLight)" opacity="0.4" />
+      {/* Head */}
+      <circle cx="60" cy="22" r="20" fill="url(#bodyGrad)" />
+      {/* Body */}
+      <path
+        d="M 52,40 L 52,58
+           C 36,63 22,73 16,90 L 9,144 L 30,144 L 38,106
+           L 38,168 L 22,262 L 46,262 L 57,188 L 57,264 L 63,264
+           L 63,188 L 74,262 L 98,262 L 82,168
+           L 82,106 L 90,144 L 111,144 L 104,90
+           C 98,73 84,63 68,58 L 68,40 Z"
+        fill="url(#bodyGrad)"
+      />
+    </svg>
+  );
+}
+
+// ── Body Map Labels ────────────────────────────────────────────────────────
+const BODY_LABELS = [
+  {
+    id: "mente",
+    label: "Mente",
+    desc: "Focus, lucidità, performance cognitiva",
+    left: "66%",
+    top: "5%",
+    side: "right" as const,
+  },
+  {
+    id: "sonno",
+    label: "Sonno",
+    desc: "Riposo profondo, rigenerazione totale",
+    left: "3%",
+    top: "13%",
+    side: "left" as const,
+  },
+  {
+    id: "energia",
+    label: "Energia",
+    desc: "Vitalità naturale, tutto il giorno",
+    left: "67%",
+    top: "31%",
+    side: "right" as const,
+  },
+  {
+    id: "cuore",
+    label: "Cuore",
+    desc: "Protezione cardiovascolare avanzata",
+    left: "3%",
+    top: "33%",
+    side: "left" as const,
+  },
+  {
+    id: "digestione",
+    label: "Digestione",
+    desc: "Equilibrio intestinale e assorbimento",
+    left: "65%",
+    top: "50%",
+    side: "right" as const,
+  },
+  {
+    id: "recupero",
+    label: "Recupero",
+    desc: "Muscoli, articolazioni, post-workout",
+    left: "3%",
+    top: "48%",
+    side: "left" as const,
+  },
+];
+
+// ── Main Page ──────────────────────────────────────────────────────────────
+export default function Home() {
+  const [showIntro, setShowIntro] = useState(true);
+  const [pageVisible, setPageVisible] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [hoveredLabel, setHoveredLabel] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && sessionStorage.getItem("nura_visited")) {
+      setShowIntro(false);
+      setPageVisible(true);
+    }
+  }, []);
+
+  const handleIntroComplete = () => {
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("nura_visited", "1");
+    }
+    setShowIntro(false);
+    setPageVisible(true);
+  };
+
+  const bodyMapRef = useRef(null);
+  const bodyMapInView = useInView(bodyMapRef, { once: true, margin: "-15%" });
+
+  return (
+    <>
+      <AnimatePresence>
+        {showIntro && <IntroAnimation onComplete={handleIntroComplete} />}
+      </AnimatePresence>
+
+      <motion.main
+        initial={{ opacity: 0 }}
+        animate={{ opacity: pageVisible ? 1 : 0 }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
+        className="bg-black text-white overflow-x-hidden"
+      >
+        {/* ── SECTION A: HERO ── */}
+        <section className="min-h-screen flex items-center relative overflow-hidden px-6 md:px-20 lg:px-28">
+          {/* Right side subtle orb */}
+          <div className="absolute right-0 top-0 bottom-0 w-1/2 pointer-events-none overflow-hidden">
+            <div className="absolute right-[-10%] top-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[radial-gradient(ellipse_at_center,_#081a14_0%,_transparent_65%)] opacity-70" />
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: pageVisible ? 1 : 0, y: pageVisible ? 0 : 40 }}
+            transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="max-w-2xl relative z-10"
+          >
+            {/* Badge */}
+            <span className="inline-flex items-center border border-[#C9A84C]/50 text-[#C9A84C] text-[10px] font-medium tracking-[0.3em] uppercase px-3.5 py-1.5 rounded-full mb-12">
+              Founders Club
+            </span>
+
+            {/* Headline */}
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-light tracking-tight leading-[1.08] text-white mb-7">
+              Crea la tua{" "}
+              <span className="text-[#C9A84C]">Nura Box</span>
+              <br />
+              con il 20% di sconto.
+            </h1>
+
+            {/* Subtitle */}
+            <p className="text-[#707070] text-lg font-light leading-relaxed mb-12 max-w-md">
+              La prima piattaforma in Italia che costruisce il tuo percorso di benessere. Entra nella waitlist.
+            </p>
+
+            {/* CTA */}
+            <motion.button
+              onClick={() => setIsModalOpen(true)}
+              whileHover={{ scale: 1.02, boxShadow: "0 0 50px rgba(255,255,255,0.08)" }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.2 }}
+              className="bg-white text-black font-medium rounded-full px-9 py-4 text-sm tracking-wide"
+            >
+              Crea la tua Nura Box
+            </motion.button>
+
+            <p className="mt-5 text-[#404040] text-[11px] tracking-[0.2em] uppercase">
+              30 secondi · Nessun impegno
+            </p>
+          </motion.div>
+        </section>
+
+        {/* ── SECTION B: BODY MAP ── */}
+        <section
+          ref={bodyMapRef}
+          className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden py-28 px-6 md:px-20"
+        >
+          {/* Section text */}
+          <div className="w-full max-w-5xl mb-20 md:mb-0 md:absolute md:top-28 md:left-20 z-10">
+            <p className="text-[#404040] text-[10px] tracking-[0.35em] uppercase mb-4">
+              La Piattaforma
+            </p>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-white mb-5 max-w-sm leading-[1.2]">
+              Il tuo corpo
+              <br />
+              ci ha parlato.
+            </h2>
+            <p className="text-[#606060] text-sm font-light max-w-[280px] leading-relaxed">
+              Nura analizza il tuo stile di vita e costruisce un percorso su misura. Non un integratore generico — il tuo.
+            </p>
+          </div>
+
+          {/* Desktop body map */}
+          <div className="hidden md:block relative w-full max-w-4xl" style={{ height: "680px" }}>
+            {/* Silhouette */}
+            <div
+              className="absolute"
+              style={{
+                left: "50%",
+                top: "50%",
+                transform: "translate(-50%, -50%)",
+                width: "170px",
+                height: "445px",
+              }}
+            >
+              <BodySilhouette />
+            </div>
+
+            {/* Labels */}
+            {BODY_LABELS.map((item, i) => (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, x: item.side === "right" ? 16 : -16 }}
+                animate={bodyMapInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ delay: i * 0.13, duration: 0.9, ease: "easeOut" }}
+                style={{ position: "absolute", left: item.left, top: item.top }}
+                onMouseEnter={() => setHoveredLabel(item.id)}
+                onMouseLeave={() => setHoveredLabel(null)}
+                className="cursor-default"
+              >
+                <motion.div
+                  animate={{ scale: hoveredLabel === item.id ? 1.06 : 1 }}
+                  transition={{ duration: 0.18 }}
+                  className="flex items-center gap-1.5 bg-[#0C1C15] border border-[#C9A84C]/35 text-[#C9A84C] px-3.5 py-1.5 rounded-full text-xs font-medium tracking-wide whitespace-nowrap select-none"
+                >
+                  <Plus className="w-3 h-3 flex-shrink-0" />
+                  {item.label}
+                </motion.div>
+                <AnimatePresence>
+                  {hoveredLabel === item.id && (
+                    <motion.p
+                      initial={{ opacity: 0, y: -4 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -4 }}
+                      transition={{ duration: 0.18 }}
+                      className={`absolute top-full mt-2 text-[#707070] text-[11px] max-w-[150px] leading-relaxed ${
+                        item.side === "right" ? "left-0" : "right-0 text-right"
+                      }`}
+                    >
+                      {item.desc}
+                    </motion.p>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Mobile simplified list */}
+          <div className="md:hidden w-full max-w-sm mt-4">
+            <div className="grid grid-cols-2 gap-2.5">
+              {BODY_LABELS.map((item, i) => (
+                <motion.div
+                  key={item.id}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={bodyMapInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: i * 0.1, duration: 0.6 }}
+                  className="flex items-center gap-2 bg-[#0C1C15] border border-[#C9A84C]/30 text-[#C9A84C] px-3.5 py-3 rounded-full text-sm font-medium"
+                >
+                  <Plus className="w-3 h-3 flex-shrink-0" />
+                  {item.label}
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── SECTION C: HOW IT WORKS ── */}
+        <section className="py-32 px-6 md:px-20 border-t border-[#111]">
+          <p className="text-[#404040] text-[10px] tracking-[0.35em] uppercase mb-20">
+            Come Funziona
+          </p>
+          <div className="grid md:grid-cols-3 gap-14 md:gap-10 max-w-5xl">
+            {[
+              {
+                num: "01",
+                title: "Rispondi a 3 domande",
+                desc: "Dicci chi sei e cosa vuoi raggiungere.",
+              },
+              {
+                num: "02",
+                title: "Entra nella waitlist",
+                desc: "Ti riserviamo un posto tra i primi 500 Founders.",
+              },
+              {
+                num: "03",
+                title: "Ricevi la tua Nura Box",
+                desc: "Una selezione esclusiva con il 20% di sconto al lancio.",
+              },
+            ].map((step, i) => (
+              <motion.div
+                key={step.num}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.15, duration: 0.8, ease: "easeOut" }}
+                viewport={{ once: true }}
+                className="flex gap-7 items-start"
+              >
+                <span className="text-[3.5rem] font-light text-[#C9A84C]/60 leading-none tabular-nums select-none flex-shrink-0 mt-1">
+                  {step.num}
+                </span>
+                <div className="pt-2">
+                  <h3 className="text-white font-light text-lg mb-2.5 tracking-tight">
+                    {step.title}
+                  </h3>
+                  <p className="text-[#555] text-sm leading-relaxed font-light">
+                    {step.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── SECTION D: TRUST ── */}
+        <section className="py-24 px-6 md:px-20 border-t border-[#111]">
+          <div className="grid md:grid-cols-3 gap-10 max-w-4xl">
+            {[
+              {
+                icon: Shield,
+                title: "Zero spam",
+                desc: "Solo aggiornamenti importanti, mai più di 2 al mese.",
+              },
+              {
+                icon: Lock,
+                title: "I tuoi dati sono al sicuro",
+                desc: "Non vendiamo né condividiamo le tue informazioni. Mai.",
+              },
+              {
+                icon: UserX,
+                title: "Cancellati quando vuoi",
+                desc: "Un click e sei fuori. Nessuna domanda.",
+              },
+            ].map(({ icon: Icon, title, desc }) => (
+              <div key={title} className="flex gap-4 items-start">
+                <Icon className="w-4 h-4 text-[#383838] mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="text-[#D0D0D0] font-light text-sm mb-1.5">{title}</p>
+                  <p className="text-[#484848] text-xs leading-relaxed font-light">{desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="mt-14 text-[#383838] text-xs font-light max-w-md">
+            Nura rispetta la tua privacy. I tuoi dati non saranno mai condivisi con terze parti.
+          </p>
+        </section>
+
+        {/* ── SECTION E: BRAND STATEMENT ── */}
+        <section className="relative py-44 px-6 md:px-20 text-center overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_#051510_0%,_transparent_65%)] opacity-80 pointer-events-none" />
+          <motion.div
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.3, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true }}
+            className="relative z-10 max-w-3xl mx-auto"
+          >
+            <p className="text-[2rem] md:text-[2.6rem] lg:text-[3.2rem] font-light leading-[1.75] tracking-tight text-white">
+              &ldquo;Nura non è un integratore.
+              <br />
+              È il sistema che costruisce
+              <br />
+              la salute che vuoi.&rdquo;
+            </p>
+            <p className="mt-10 text-[#383838] text-sm tracking-[0.25em]">— Nura</p>
+          </motion.div>
+        </section>
+
+        {/* ── SECTION F: FINAL CTA ── */}
+        <section className="py-36 px-6 md:px-20 text-center border-t border-[#111]">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-5xl font-light tracking-tight text-white mb-12">
+              Pronto a iniziare?
+            </h2>
+            <motion.button
+              onClick={() => setIsModalOpen(true)}
+              whileHover={{ scale: 1.02, boxShadow: "0 0 50px rgba(255,255,255,0.08)" }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.2 }}
+              className="bg-white text-black font-medium rounded-full px-9 py-4 text-sm tracking-wide"
+            >
+              Crea la tua Nura Box
+            </motion.button>
+            <p className="mt-5 text-[#404040] text-[11px] tracking-[0.2em] uppercase">
+              30 secondi · 20% di sconto riservato ai Founders
+            </p>
+          </motion.div>
+        </section>
+
+        {/* ── FOOTER ── */}
+        <footer className="py-16 px-6 border-t border-[#0E0E0E] text-center">
+          <p className="text-white font-light tracking-[0.6em] uppercase text-sm mb-6 select-none">
+            Nura
+          </p>
+          <p className="text-[#353535] text-xs tracking-[0.2em] mb-6">NURA © 2026</p>
+          <div className="flex items-center justify-center gap-5 mb-8">
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#404040] text-xs tracking-wide hover:text-white transition-colors"
+            >
+              Instagram
+            </a>
+            <span className="text-[#282828]">·</span>
+            <a href="#" className="text-[#404040] text-xs tracking-wide hover:text-white transition-colors">
+              Privacy Policy
+            </a>
+          </div>
+          <p className="text-[#252525] text-xs">Designed in Italy 🇮🇹</p>
+        </footer>
+      </motion.main>
+
+      <WaitlistModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+    </>
+  );
+}
