@@ -656,6 +656,222 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 }
 
 
+/* ── 8. PRODUCTS SECTION ──────────────────────────────────── */
+.products-section {
+    padding: 9rem 0;
+    background: var(--dark-3);
+    position: relative;
+}
+
+.products-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--border);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4.5rem;
+}
+
+.section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: var(--cream);
+    line-height: 1.15;
+    margin-top: 0.75rem;
+}
+
+.section-title em {
+    font-style: normal;
+    color: var(--amber-light);
+}
+
+.section-sub {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: var(--cream-2);
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.75;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+}
+
+.product-card {
+    background: var(--dark-card);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    transition: transform 0.3s var(--ease), box-shadow 0.3s, border-color 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-dark);
+    border-color: var(--border-amber);
+}
+
+.product-visual {
+    height: 190px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    position: relative;
+}
+
+.pv-sleep    { background: linear-gradient(145deg, rgba(139, 124, 232, 0.12) 0%, rgba(139, 124, 232, 0.04) 100%); }
+.pv-focus    { background: linear-gradient(145deg, rgba(74, 168, 212, 0.12) 0%, rgba(74, 168, 212, 0.04) 100%); }
+.pv-energy   { background: linear-gradient(145deg, rgba(232, 128, 64, 0.12) 0%, rgba(232, 128, 64, 0.04) 100%); }
+.pv-longevity { background: linear-gradient(145deg, rgba(60, 184, 112, 0.12) 0%, rgba(60, 184, 112, 0.04) 100%); }
+
+.product-icon-wrap {
+    width: 68px;
+    height: 68px;
+    background: rgba(245, 237, 224, 0.06);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    transition: transform 0.3s var(--ease-spring), border-color 0.3s;
+}
+
+.product-card:hover .product-icon-wrap {
+    transform: scale(1.08);
+    border-color: var(--border-mid);
+}
+
+.pv-sleep .product-icon-wrap i     { color: var(--sleep-c); }
+.pv-focus .product-icon-wrap i     { color: var(--focus-c); }
+.pv-energy .product-icon-wrap i    { color: var(--energy-c); }
+.pv-longevity .product-icon-wrap i { color: var(--longevity-c); }
+
+.product-cat-tag {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cream-3);
+}
+
+.product-body { padding: 1.5rem; }
+
+.product-brand {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--amber);
+    display: block;
+    margin-bottom: 0.4rem;
+}
+
+.product-name {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: var(--cream);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+.product-why {
+    font-size: 0.82rem;
+    color: var(--cream-2);
+    line-height: 1.6;
+    font-style: italic;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.product-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.product-price {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--cream);
+    letter-spacing: -0.03em;
+}
+
+.notify-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid var(--border-mid);
+    border-radius: var(--r-pill);
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--cream-2);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.notify-btn:hover {
+    background: var(--amber);
+    border-color: var(--amber);
+    color: var(--cream);
+    transform: translateY(-1px);
+}
+
+.notify-btn.notified {
+    background: var(--amber);
+    border-color: var(--amber);
+    color: var(--cream);
+}
+
+.products-cta-row {
+    margin-top: 3.5rem;
+    text-align: center;
+}
+
+.cta-btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 2rem;
+    border: 1px solid var(--border-amber);
+    border-radius: var(--r-pill);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--amber-light);
+    transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s var(--ease-spring);
+}
+
+.cta-btn-outline:hover {
+    background: rgba(200, 80, 16, 0.1);
+    border-color: var(--amber-light);
+    color: var(--amber-glow);
+    transform: translateY(-2px);
+}
+
+
 /* ── 9. nura CLUB SECTION ─────────────────────────────────── */
 .club-section {
     padding: 10rem 0;
@@ -1148,6 +1364,143 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 }
 
 
+/* ── 13. SEARCH OVERLAY ───────────────────────────────────── */
+.search-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(12, 5, 0, 0.96);
+    backdrop-filter: blur(20px);
+    z-index: 1300;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 120px;
+}
+
+.search-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.search-overlay-inner {
+    width: 100%;
+    max-width: 620px;
+    padding: 0 1.5rem;
+}
+
+.search-bar-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    background: var(--dark-card);
+    border: 1px solid var(--border-mid);
+    border-radius: var(--r-pill);
+    box-shadow: var(--shadow-dark);
+}
+
+.search-icon-inline { font-size: 1.2rem; color: var(--cream-3); flex-shrink: 0; }
+
+.search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    background: transparent;
+    color: var(--cream);
+}
+
+.search-input::placeholder { color: var(--cream-3); }
+
+.search-close-btn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(245, 237, 224, 0.06);
+    color: var(--cream-2);
+    font-size: 0.95rem;
+    transition: background 0.18s;
+    flex-shrink: 0;
+}
+
+.search-close-btn:hover { background: rgba(245, 237, 224, 0.12); }
+
+.search-popular { margin-top: 1.5rem; padding: 0 0.5rem; }
+
+.search-popular-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--cream-3);
+    margin-bottom: 0.75rem;
+}
+
+.search-chips { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+.search-chip {
+    padding: 0.4rem 0.875rem;
+    background: rgba(245, 237, 224, 0.04);
+    border: 1px solid var(--border-mid);
+    border-radius: var(--r-pill);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--cream-2);
+    transition: background 0.18s, border-color 0.18s, color 0.18s;
+}
+
+.search-chip:hover {
+    background: rgba(200, 80, 16, 0.15);
+    border-color: var(--border-amber);
+    color: var(--amber-light);
+}
+
+
+/* ── 14. FLOATING CTA BAR ─────────────────────────────────── */
+.floating-cta-bar {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    z-index: 900;
+    opacity: 0;
+    transition: transform 0.4s var(--ease), opacity 0.4s;
+    pointer-events: none;
+}
+
+.floating-cta-bar.visible {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+    pointer-events: all;
+}
+
+.floating-cta-inner {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 0.7rem 0.7rem 0.7rem 1.4rem;
+    background: var(--dark-card);
+    border: 1px solid var(--border-amber);
+    border-radius: var(--r-pill);
+    box-shadow: var(--shadow-dark), var(--shadow-amber);
+}
+
+.floating-cta-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.floating-cta-text strong { font-size: 0.875rem; color: var(--cream); font-weight: 700; }
+.floating-cta-text span   { font-size: 0.7rem; color: var(--cream-3); }
+
+
 /* ── 15. BUTTONS ──────────────────────────────────────────── */
 .btn {
     display: inline-flex;
@@ -1227,6 +1580,41 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .toast-success i { color: var(--amber-light); }
 
 
+/* ── 17. SCROLL TO TOP ────────────────────────────────────── */
+.scroll-to-top {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    width: 44px;
+    height: 44px;
+    background: var(--dark-card);
+    border: 1px solid var(--border-mid);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: var(--cream-2);
+    z-index: 900;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.3s, transform 0.3s, box-shadow 0.2s, border-color 0.2s, color 0.2s;
+    box-shadow: var(--shadow-sm);
+}
+
+.scroll-to-top.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scroll-to-top:hover {
+    box-shadow: var(--shadow-amber);
+    border-color: var(--border-amber);
+    color: var(--amber-light);
+}
+
+
 /* ── 18. SCROLL ANIMATIONS ────────────────────────────────── */
 .reveal-up {
     opacity: 0;
@@ -1260,6 +1648,10 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 
 /* ── 19. RESPONSIVE ───────────────────────────────────────── */
 @media (max-width: 1024px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     .pillars-inner {
         grid-template-columns: 1fr;
         gap: 3rem;
@@ -1293,6 +1685,12 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
         font-size: clamp(3rem, 11vw, 5rem);
     }
 
+    .products-grid {
+        grid-template-columns: 1fr;
+        max-width: 380px;
+        margin: 0 auto;
+    }
+
     .pillars-canvas {
         width: 280px;
         height: 280px;
@@ -1321,6 +1719,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
         justify-content: center;
     }
 
+    .floating-cta-bar { bottom: 1rem; }
 }
 
 @media (max-width: 480px) {
