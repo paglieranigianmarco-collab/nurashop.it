@@ -8,9 +8,45 @@
     <meta name="description"
         content="La prima piattaforma in Italia di integratori premium, personalizzati su di te.">
 
-    <!-- Restore language from localStorage before paint to avoid flash -->
+    <!-- TODO: replace YOUR_META_PIXEL_ID with actual ID -->
+    <!-- Meta Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+        document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', 'YOUR_META_PIXEL_ID');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=YOUR_META_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+    <!-- End Meta Pixel Code -->
+
+    <!-- TODO: replace YOUR_TIKTOK_PIXEL_ID with actual ID -->
+    <!-- TikTok Pixel Code -->
+    <script>
+        !function(w,d,t){w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];
+        ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"];
+        ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};
+        for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);
+        ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e};
+        ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{};
+        ttq._i[e]=[];ttq._i[e]._u=i;ttq._t=ttq._t||{};ttq._t[e]=+new Date;ttq._o=ttq._o||{};
+        ttq._o[e]=n||{};var o=document.createElement("script");o.type="text/javascript";
+        o.async=!0;o.src=i+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];
+        a.parentNode.insertBefore(o,a)};ttq.load('YOUR_TIKTOK_PIXEL_ID');ttq.page();}(window,document,'ttq');
+    </script>
+    <!-- End TikTok Pixel Code -->
+
+    <!-- Restore language + skip intro for paid ad traffic -->
     <script>
         (function () {
+            // Skip intro for paid traffic (ref= param: e.g. ?ref=tiktok, ?ref=ig)
+            if (new URLSearchParams(window.location.search).get('ref')) {
+                sessionStorage.setItem('nura_seen', '1');
+            }
+            // Restore language from localStorage before paint to avoid flash
             var l = localStorage.getItem('nura_lang');
             if (l === 'en') {
                 document.documentElement.dataset.lang = 'en';
@@ -58,10 +94,6 @@
                     <span class="it">EN</span>
                     <span class="en">IT</span>
                 </button>
-                <button class="action-icon cart-action" id="cartToggle" aria-label="Carrello">
-                    <i class="ph ph-shopping-bag"></i>
-                    <span class="cart-badge" id="cartCount" style="display:none">0</span>
-                </button>
                 <button class="mobile-menu-btn" aria-label="Menu">
                     <i class="ph ph-list"></i>
                 </button>
@@ -92,6 +124,11 @@
                     <p class="hero-sub">
                         <span class="it">La prima piattaforma in Italia di integratori premium, personalizzati su di te.</span>
                         <span class="en">Italy's first platform for premium supplements, personalized for you.</span>
+                    </p>
+
+                    <p class="hero-proof">
+                        <span class="it"><i class="ph-fill ph-users"></i> Oltre <strong>1.200 persone</strong> già in lista d'attesa</span>
+                        <span class="en"><i class="ph-fill ph-users"></i> Over <strong>1,200 people</strong> already on the waitlist</span>
                     </p>
 
                     <a href="#nura-club" class="hero-cta">
@@ -216,8 +253,11 @@
                 <div class="club-visual reveal-fade" style="transition-delay: 200ms" aria-hidden="true">
                     <div class="founders-card">
                         <span class="founders-card-label">nura.box</span>
-                        <div class="founders-card-number">500</div>
-                        <span class="founders-card-sub"><span class="it">edizione fondatori</span><span class="en">founders edition</span></span>
+                        <div class="founders-card-number">342 <span class="founders-card-of">/ 500</span></div>
+                        <span class="founders-card-sub"><span class="it">box già riservate</span><span class="en">boxes already reserved</span></span>
+                        <div class="founders-progress-bar">
+                            <div class="founders-progress-fill" style="width: 68.4%"></div>
+                        </div>
                         <div class="founders-card-badge">−20%</div>
                     </div>
                 </div>
@@ -281,25 +321,6 @@
         </div>
     </div>
 
-    <!-- Cart Drawer -->
-    <div class="drawer drawer-right" id="cartDrawer">
-        <div class="drawer-header">
-            <h3><i class="ph ph-shopping-bag" style="display:inline;margin-right:6px"></i> <span class="it">Carrello</span><span class="en">Cart</span></h3>
-            <button class="drawer-close" data-close-drawer><i class="ph ph-x"></i></button>
-        </div>
-        <div class="drawer-body" id="cartItems">
-            <div class="cart-empty-state">
-                <i class="ph ph-package"></i>
-                <p><span class="it">Il carrello è vuoto.<br>I prodotti saranno disponibili al lancio.</span><span class="en">Your cart is empty.<br>Products will be available at launch.</span></p>
-            </div>
-        </div>
-        <div class="drawer-footer">
-            <a href="#nura-club" class="btn btn-amber" style="width:100%;text-align:center;" data-close-drawer>
-                <span class="it">Entra nel nura Club</span><span class="en">Join nura Club</span>
-            </a>
-        </div>
-    </div>
-
     <!-- Mobile Navigation Drawer -->
     <div class="mobile-nav-drawer" id="mobileNavDrawer">
         <div class="mobile-nav-header">
@@ -332,6 +353,16 @@
                 document.documentElement.dataset.lang = next;
                 document.documentElement.lang = next;
                 localStorage.setItem('nura_lang', next);
+            });
+        })();
+    </script>
+
+    <!-- Pass UTM / ref params through to quiz.html -->
+    <script>
+        (function() {
+            var qs = window.location.search;
+            document.querySelectorAll('a[href="quiz.html"]').forEach(function(a) {
+                if (qs) a.href = 'quiz.html' + qs;
             });
         })();
     </script>

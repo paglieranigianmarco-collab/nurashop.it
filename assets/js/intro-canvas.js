@@ -238,17 +238,17 @@ document.addEventListener('DOMContentLoaded', () => {
     Object.assign(skipBtn.style, {
         position: 'absolute', bottom: '2rem', right: '2rem',
         fontFamily: "'DM Sans', sans-serif",
-        fontSize: '0.68rem', fontWeight: '500',
+        fontSize: '0.75rem', fontWeight: '500',
         letterSpacing: '0.14em', textTransform: 'uppercase',
-        color: 'rgba(255,255,255,0.35)',
+        color: 'rgba(255,255,255,0.55)',
         background: 'none', border: 'none', cursor: 'pointer',
         opacity: '0', transition: 'opacity 0.5s, color 0.2s',
         zIndex: '10', padding: '0.5rem 1rem',
     });
     overlay.appendChild(skipBtn);
-    setTimeout(() => { skipBtn.style.opacity = '1'; }, 1000);
-    skipBtn.onmouseenter = () => { skipBtn.style.color = 'rgba(255,255,255,0.7)'; };
-    skipBtn.onmouseleave = () => { skipBtn.style.color = 'rgba(255,255,255,0.35)'; };
+    setTimeout(() => { skipBtn.style.opacity = '1'; }, 500);
+    skipBtn.onmouseenter = () => { skipBtn.style.color = 'rgba(255,255,255,0.9)'; };
+    skipBtn.onmouseleave = () => { skipBtn.style.color = 'rgba(255,255,255,0.55)'; };
 
     const finish = (fast = false) => {
         if (done) return;

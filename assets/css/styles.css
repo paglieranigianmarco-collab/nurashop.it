@@ -532,6 +532,16 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 
 .hero-cta:active { transform: scale(0.98); }
 
+.hero-proof {
+    font-size: 0.85rem;
+    color: var(--amber-glow);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 0.25rem;
+}
+.hero-proof strong { color: var(--cream); }
+
 .hero-trust {
     display: flex;
     align-items: center;
@@ -1022,7 +1032,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 
 /* ── 9. nura CLUB SECTION ─────────────────────────────────── */
 .club-section {
-    padding: 0;
+    padding-top: var(--header-h);
     min-height: 100svh;
     background: var(--dark);
     position: relative;
@@ -1357,6 +1367,25 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
     padding: 0.3rem 0.75rem;
     border-radius: var(--r-pill);
     letter-spacing: 0.02em;
+}
+
+.founders-card-of {
+    font-size: 1.2rem;
+    font-weight: 300;
+    opacity: 0.55;
+}
+.founders-progress-bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(245,237,224,0.12);
+    border-radius: 100px;
+    margin: 0.75rem 0 0.25rem;
+    overflow: hidden;
+}
+.founders-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--amber), var(--amber-glow));
+    border-radius: 100px;
 }
 
 
@@ -1920,6 +1949,9 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
         gap: 3rem;
     }
 
+    /* Visual (pills/orbit) above text on tablet/mobile */
+    .pillars-right { order: -1; }
+
     .club-inner {
         grid-template-columns: 1fr;
         gap: 3rem;
@@ -1936,6 +1968,9 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
     .header-nav { display: none; }
 
     .mobile-menu-btn { display: flex; }
+
+    .pillars-section { padding: 5rem 0; }
+    .pillars-inner { gap: 2rem; }
 
     .hero-bg-image { background-attachment: scroll; }
 
