@@ -213,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // ── "Made for you." / "Fatto per te." element ─────────────
-    const isIT = (localStorage.getItem('nura_lang') || 'it') === 'it';
+    const isIT = (document.documentElement.dataset.lang || 'it') === 'it';
     const mfyEl = document.createElement('div');
     mfyEl.textContent = isIT ? 'Fatto per te.' : 'Made for you.';
     Object.assign(mfyEl.style, {

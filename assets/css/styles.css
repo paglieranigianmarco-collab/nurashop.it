@@ -485,6 +485,9 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
     letter-spacing: -0.045em;
     color: var(--cream);
     margin-bottom: 1.5rem;
+    white-space: nowrap;
+    max-width: none;
+    width: max-content;
 }
 
 .hero-headline em {
@@ -492,6 +495,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
     font-weight: 800;
     color: var(--amber-light);
     display: block;
+    white-space: nowrap;
 }
 
 .hero-sub {
@@ -1055,7 +1059,8 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
     align-items: center;
     position: relative;
     z-index: 1;
-    padding: 6rem 0;
+    padding: 2rem 0;
+    margin: auto 0;
 }
 
 .club-title {
@@ -1936,6 +1941,9 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 
     .hero-headline {
         font-size: clamp(3rem, 11vw, 5rem);
+        white-space: normal;
+        width: auto;
+        max-width: 100%;
     }
 
     .pillar-visual-wrap { height: 300px; }
@@ -1976,6 +1984,68 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
     .club-benefits { flex-direction: column; gap: 0.75rem; }
     .pillar-visual-wrap { height: 260px; }
     input, select, textarea { font-size: 16px; }
+
+    /* Hero headline tighter at very small screens */
+    .hero-headline {
+        font-size: clamp(2.4rem, 10vw, 3.5rem);
+    }
+
+    .hero-sub {
+        font-size: 0.95rem;
+    }
+
+    /* Ensure body text never below 16px */
+    body { font-size: 16px; }
+
+    /* Tap targets: minimum 44×44px */
+    .lang-toggle {
+        min-width: 44px;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .action-icon {
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    .mobile-menu-btn {
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    /* Club section: tighter padding on mobile for breathing room */
+    .club-inner {
+        padding: 1.5rem 0;
+    }
+
+    .club-title {
+        font-size: clamp(1.8rem, 7vw, 2.5rem);
+    }
+
+    .club-sub {
+        font-size: 0.95rem;
+    }
+
+    /* Pillars section mobile adjustments */
+    .pillars-section {
+        padding: 4rem 0;
+    }
+
+    .pillars-headline {
+        font-size: clamp(1.8rem, 7vw, 2.5rem);
+    }
+
+    .pillars-sub {
+        font-size: 0.95rem;
+    }
+
+    /* No horizontal overflow */
+    .hero-container {
+        overflow-x: hidden;
+    }
 }
 
 
