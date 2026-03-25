@@ -1387,6 +1387,88 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
     border-radius: 100px;
 }
 
+/* ── nura Club newsletter opt-in ─────────────────────────── */
+.club-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem 0 1.5rem;
+    color: var(--cream-3);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-family: var(--font-display);
+    font-weight: 300;
+}
+.club-divider::before,
+.club-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+}
+
+.club-newsletter {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.club-newsletter-label {
+    font-size: 0.88rem;
+    color: var(--cream-2);
+    line-height: 1.5;
+}
+
+.club-newsletter-form {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.club-newsletter-input {
+    flex: 1;
+    background: rgba(245, 237, 224, 0.05);
+    border: 1px solid var(--border-mid);
+    border-radius: var(--r-pill);
+    padding: 0.75rem 1.25rem;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--cream);
+    outline: none;
+    transition: border-color 0.2s;
+}
+.club-newsletter-input::placeholder { color: var(--cream-3); }
+.club-newsletter-input:focus { border-color: var(--amber); }
+
+.club-newsletter-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--border-mid);
+    color: var(--cream);
+    border: 1px solid var(--border-mid);
+    border-radius: var(--r-pill);
+    padding: 0.75rem 1.25rem;
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s, border-color 0.2s;
+}
+.club-newsletter-btn:hover {
+    background: var(--amber);
+    border-color: var(--amber);
+}
+
+.club-newsletter-fine {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    color: var(--cream-3);
+}
+
 
 /* ── 10. FOOTER ───────────────────────────────────────────── */
 .site-footer {
