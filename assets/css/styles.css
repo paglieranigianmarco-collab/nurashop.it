@@ -1354,7 +1354,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
         var(--amber) 300deg,
         var(--amber-light) 360deg
     );
-    animation: rotateBorderAngle 3s linear infinite;
+    animation: rotateBorderAngle 8s linear infinite;
     z-index: 0;
 }
 @keyframes rotateBorderAngle {
