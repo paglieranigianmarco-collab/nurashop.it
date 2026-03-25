@@ -1032,7 +1032,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 
 /* ── 9. nura CLUB SECTION ─────────────────────────────────── */
 .club-section {
-    padding-top: var(--header-h);
+    padding: 0;
     min-height: 100svh;
     background: var(--dark);
     position: relative;
