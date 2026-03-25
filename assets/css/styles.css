@@ -684,81 +684,131 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
     justify-content: center;
 }
 
-/* ── Pillar pill badges ───────────────────────── */
+/* ── Pillar orbital animation ─────────────────── */
 .pillar-visual-wrap {
     position: relative;
     width: min(480px, 100%);
-    height: 440px;
+    height: 480px;
     margin: auto;
 }
 
-.pillar-lines-svg {
+/* Decorative orbit ring */
+.pillar-visual-wrap::before,
+.pillar-visual-wrap::after {
+    content: '';
     position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
     pointer-events: none;
 }
-
-.pline {
-    stroke: rgba(200, 80, 16, 0.30);
-    stroke-width: 1;
-    stroke-dasharray: 600;
-    stroke-dashoffset: 600;
-    opacity: 0;
-    transition: stroke-dashoffset 1.2s ease 0.4s, opacity 0.5s ease 0.4s;
+.pillar-visual-wrap::before {
+    width: 280px; height: 280px;
+    border: 1px solid rgba(200, 80, 16, 0.22);
+    animation: orbitRingPulse 4s ease-in-out infinite;
+}
+.pillar-visual-wrap::after {
+    width: 200px; height: 200px;
+    border: 1px solid rgba(200, 80, 16, 0.10);
+    animation: orbitRingPulse 4s ease-in-out infinite 2s;
+}
+@keyframes orbitRingPulse {
+    0%, 100% { opacity: 0.4; }
+    50%       { opacity: 0.9; }
 }
 
-.pillar-lines-svg.visible .pline {
-    stroke-dashoffset: 0;
-    opacity: 1;
-}
+/* SVG lines hidden — orbit replaces them */
+.pillar-lines-svg { display: none; }
+.pline            { display: none; }
 
+/* Center: small glowing amber orb */
 .pillar-center-node {
     position: absolute;
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-    width: 58px; height: 58px;
+    width: 12px; height: 12px;
     border-radius: 50%;
-    background: rgba(200, 80, 16, 0.12);
-    border: 1px solid rgba(200, 80, 16, 0.35);
-    display: flex; align-items: center; justify-content: center;
-    font-family: var(--font-display);
-    font-size: 1.1rem; font-weight: 800;
-    color: var(--amber-light);
-    box-shadow: 0 0 40px rgba(200, 80, 16, 0.18);
-    z-index: 2;
+    background: var(--amber-glow);
+    box-shadow: 0 0 20px rgba(240, 160, 96, 0.8),
+                0 0 60px rgba(200, 80, 16, 0.4);
+    animation: centerGlow 3s ease-in-out infinite;
+    z-index: 4;
+}
+@keyframes centerGlow {
+    0%, 100% { box-shadow: 0 0 16px rgba(240, 160, 96, 0.6), 0 0 50px rgba(200, 80, 16, 0.3); }
+    50%       { box-shadow: 0 0 28px rgba(240, 160, 96, 0.9), 0 0 90px rgba(200, 80, 16, 0.5); }
 }
 
+/* ── Orbital keyframe ────────────────────────── */
+@keyframes orbit {
+    from { transform: rotate(0deg) translateX(140px) rotate(0deg) translate(-50%, -50%); }
+    to   { transform: rotate(360deg) translateX(140px) rotate(-360deg) translate(-50%, -50%); }
+}
+
+/* Pill base — all start at center, invisible */
 .pillar-pill {
     position: absolute;
+    top: 50%; left: 50%;
     display: inline-flex;
     align-items: center;
-    gap: 0.55rem;
-    background: var(--amber);
+    gap: 0.45rem;
+    background: rgba(22, 10, 3, 0.88);
     color: var(--cream);
-    padding: 0.7rem 1.35rem 0.7rem 0.6rem;
+    border: 1px solid rgba(200, 80, 16, 0.45);
+    padding: 0.55rem 1.1rem 0.55rem 0.5rem;
     border-radius: 50px;
     font-family: var(--font-display);
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 700;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     white-space: nowrap;
-    z-index: 2;
-    box-shadow: 0 4px 28px rgba(192, 80, 16, 0.38);
-    overflow: hidden;
+    z-index: 3;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
     cursor: default;
+    opacity: 0;
+    transition: opacity 0.8s ease;
 }
 
-/* Hover: expand to show description */
+/* Orbit starts when .visible added by JS */
+.pillar-pill[data-idx="0"].visible {
+    opacity: 1;
+    animation: orbit 28s linear infinite;
+    animation-delay: -21s; /* top: 270° → 75% through = -21s */
+}
+.pillar-pill[data-idx="1"].visible {
+    opacity: 1;
+    animation: orbit 28s linear infinite;
+    animation-delay: 0s;  /* right: 0° */
+}
+.pillar-pill[data-idx="2"].visible {
+    opacity: 1;
+    animation: orbit 28s linear infinite;
+    animation-delay: -7s; /* bottom: 90° → 25% through = -7s */
+}
+.pillar-pill[data-idx="3"].visible {
+    opacity: 1;
+    animation: orbit 28s linear infinite;
+    animation-delay: -14s; /* left: 180° → 50% through = -14s */
+}
+
+/* Hover: reveal description (pause orbit) */
+.pillar-pill:hover,
+.pillar-pill:active {
+    animation-play-state: paused;
+    border-color: rgba(200, 80, 16, 0.75);
+    background: rgba(30, 14, 5, 0.96);
+}
+
 .pp-desc {
     display: inline-block;
-    font-size: 0.68rem;
+    font-size: 0.65rem;
     font-weight: 400;
     letter-spacing: 0.01em;
     text-transform: none;
-    color: rgba(245, 237, 224, 0.82);
+    color: rgba(245, 237, 224, 0.75);
     white-space: nowrap;
     max-width: 0;
     overflow: hidden;
@@ -770,43 +820,18 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .pillar-pill:active .pp-desc {
     max-width: 200px;
     opacity: 1;
-    margin-left: 0.3rem;
+    margin-left: 0.25rem;
 }
-
-/* Cross-layout positions */
-.pillar-pill[data-idx="0"] {
-    top: 5%; left: 50%;
-    transform: translateX(-50%) translateY(12px);
-    opacity: 0; transition: opacity 0.5s ease, transform 0.5s var(--ease-spring);
-}
-.pillar-pill[data-idx="1"] {
-    top: 50%; right: 0;
-    transform: translateY(-50%) translateX(12px);
-    opacity: 0; transition: opacity 0.5s ease, transform 0.5s var(--ease-spring);
-}
-.pillar-pill[data-idx="2"] {
-    bottom: 5%; left: 50%;
-    transform: translateX(-50%) translateY(-12px);
-    opacity: 0; transition: opacity 0.5s ease, transform 0.5s var(--ease-spring);
-}
-.pillar-pill[data-idx="3"] {
-    top: 50%; left: 0;
-    transform: translateY(-50%) translateX(-12px);
-    opacity: 0; transition: opacity 0.5s ease, transform 0.5s var(--ease-spring);
-}
-
-.pillar-pill[data-idx="0"].visible { opacity: 1; transform: translateX(-50%) translateY(0); }
-.pillar-pill[data-idx="1"].visible { opacity: 1; transform: translateY(-50%) translateX(0); }
-.pillar-pill[data-idx="2"].visible { opacity: 1; transform: translateX(-50%) translateY(0); }
-.pillar-pill[data-idx="3"].visible { opacity: 1; transform: translateY(-50%) translateX(0); }
 
 .pp-plus {
-    width: 26px; height: 26px;
+    width: 22px; height: 22px;
     border-radius: 50%;
-    background: rgba(0, 0, 0, 0.18);
+    background: rgba(200, 80, 16, 0.3);
+    border: 1px solid rgba(200, 80, 16, 0.5);
     display: flex; align-items: center; justify-content: center;
-    font-size: 1.05rem; font-weight: 800;
+    font-size: 0.9rem; font-weight: 800;
     flex-shrink: 0; line-height: 1;
+    color: var(--amber-light);
 }
 
 /* Mobile: vertical list, no floating pills */
