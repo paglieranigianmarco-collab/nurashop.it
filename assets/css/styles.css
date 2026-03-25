@@ -246,6 +246,19 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
     letter-spacing: -0.01em;
     text-transform: lowercase;
     flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+}
+
+.brand-dot {
+    display: inline-block;
+    width: 0.22em;
+    height: 0.22em;
+    background: var(--amber-light);
+    border-radius: 50%;
+    margin-left: 0.04em;
+    margin-bottom: 0.06em;
+    flex-shrink: 0;
 }
 
 .header-nav {
@@ -1064,12 +1077,12 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 
 .club-inner {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: center;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 4rem;
+    align-items: start;
     position: relative;
     z-index: 1;
-    padding: 2rem 0;
+    padding: 5rem 0;
 }
 
 .club-title {
@@ -1097,21 +1110,22 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .club-benefits {
     display: flex;
     align-items: center;
-    gap: 2rem;
-    flex-wrap: wrap;
+    gap: 1.5rem;
+    flex-wrap: nowrap;
     margin-bottom: 2.5rem;
 }
 
 .benefit-item {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 0.84rem;
-    font-weight: 600;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    font-weight: 500;
     color: var(--cream-2);
+    white-space: nowrap;
 }
 
-.benefit-item i { color: var(--amber-light); font-size: 1rem; }
+.benefit-item i { color: var(--amber-light); font-size: 0.95rem; }
 
 /* Club form */
 .club-form-row {
