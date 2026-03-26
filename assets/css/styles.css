@@ -31,7 +31,7 @@
 
     /* Category accent colors — kept vibrant against dark bg */
     --sleep-c:    #8B7CE8;
-    --energy-c:   #E88040;
+    --energy-c:   #1BC9BE;
     --focus-c:    #4AA8D4;
     --gut-c:      #D4A040;
     --longevity-c: #3CB870;
@@ -739,8 +739,8 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 }
 .pc-wrap[data-idx="1"]::before {
     background: conic-gradient(from var(--border-angle),
-        var(--energy-c), rgba(232,128,64,0.1) 44%,
-        rgba(232,128,64,0.06) 56%, var(--energy-c));
+        var(--energy-c), rgba(27,201,190,0.1) 44%,
+        rgba(27,201,190,0.06) 56%, var(--energy-c));
     animation-delay: -2s;
 }
 .pc-wrap[data-idx="2"]::before {
@@ -762,7 +762,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
     z-index: 5;
 }
 .pc-wrap[data-idx="0"]:hover { box-shadow: 0 16px 52px rgba(139,124,232,0.25); }
-.pc-wrap[data-idx="1"]:hover { box-shadow: 0 16px 52px rgba(232,128, 64,0.25); }
+.pc-wrap[data-idx="1"]:hover { box-shadow: 0 16px 52px rgba( 27,201,190,0.25); }
 .pc-wrap[data-idx="2"]:hover { box-shadow: 0 16px 52px rgba( 60,184,112,0.25); }
 .pc-wrap[data-idx="3"]:hover { box-shadow: 0 16px 52px rgba( 74,168,212,0.25); }
 
@@ -784,7 +784,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
     background: linear-gradient(150deg, rgba(139,124,232,0.11) 0%, rgba(12,5,0,0.97) 75%);
 }
 .pc-wrap[data-idx="1"] .pc {
-    background: linear-gradient(150deg, rgba(232,128,64,0.11) 0%, rgba(12,5,0,0.97) 75%);
+    background: linear-gradient(150deg, rgba(27,201,190,0.11) 0%, rgba(12,5,0,0.97) 75%);
 }
 .pc-wrap[data-idx="2"] .pc {
     background: linear-gradient(150deg, rgba(60,184,112,0.11) 0%, rgba(12,5,0,0.97) 75%);
