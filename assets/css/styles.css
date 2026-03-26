@@ -685,266 +685,181 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 }
 
 /* ══════════════════════════════════════════════
-   PILLAR PRECISION SYSTEM
-   - Fixed compass pills (all visible at once)
-   - Category accent colours per pill
-   - Colored signal pulses from central orb
-   - Rotating precision ring + scan sonar
+   PILLAR GLASS CARDS — 2×2 grid
+   Same border technique as founders-card-wrap.
+   @property --border-angle + rotateBorderAngle
+   already defined above (founders section).
    ══════════════════════════════════════════════ */
 
 .pillar-visual-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.7rem;
+    width: 100%;
+    align-self: start;
+}
+
+/* ── Card border wrapper ─────────────────────── */
+.pc-wrap {
     position: relative;
-    width: min(480px, 100%);
-    height: 480px;
-    margin: auto;
-}
-
-/* ── SVG layer ──────────────────────────────── */
-.pillar-svg {
-    position: absolute;
-    inset: 0;
-    width: 100%; height: 100%;
-    pointer-events: none;
-    overflow: visible;
-}
-
-/* Outer precision ring (rotating) */
-.svg-ring-precision {
-    fill: none;
-    stroke: rgba(200, 80, 16, 0.3);
-    stroke-width: 1;
-    stroke-dasharray: 3 9;
-    transform-origin: 240px 240px;
-    animation: precisionRotate 55s linear infinite;
-}
-@keyframes precisionRotate {
-    to { transform: rotate(360deg); }
-}
-
-/* Orbit ring */
-.svg-ring-orbit {
-    fill: none;
-    stroke: rgba(200, 80, 16, 0.14);
-    stroke-width: 1;
-}
-
-/* Inner halo */
-.svg-ring-inner {
-    fill: none;
-    stroke: rgba(200, 80, 16, 0.1);
-    stroke-width: 1;
-    stroke-dasharray: 2 6;
-}
-
-/* Sonar scan pulses */
-.svg-scan {
-    fill: none;
-    stroke: rgba(200, 80, 16, 0.45);
-    stroke-width: 1;
-    transform-origin: 240px 240px;
-    animation: scanExpand 6s ease-out infinite;
-}
-.svg-scan-2 { animation-delay: -3s; }
-@keyframes scanExpand {
-    0%   { transform: scale(0.08); opacity: 0.8; }
-    60%  { opacity: 0.25; }
-    100% { transform: scale(7); opacity: 0; }
-}
-
-/* Base connector lines (very dim) */
-.svg-conn {
-    stroke: rgba(200, 80, 16, 0.12);
-    stroke-width: 1;
-}
-
-/* Colored signal pulses — travel center → pill */
-.svg-signal {
-    stroke-width: 1.5;
-    stroke-dasharray: 12 400;
-    stroke-dashoffset: 12;
+    border-radius: 20px;
+    padding: 1.5px;
     opacity: 0;
+    transform: translateY(18px) scale(0.96);
+    transition: opacity 0.65s ease, transform 0.65s var(--ease),
+                box-shadow 0.3s ease;
+    cursor: default;
+    z-index: 1;
 }
 
-/* Each signal: fade in → travel → fade out → reset */
-@keyframes sig {
-    0%   { stroke-dashoffset: 12;   opacity: 0;   }
-    6%   { opacity: 1;   }
-    82%  { stroke-dashoffset: -170; opacity: 0.9; }
-    90%  { stroke-dashoffset: -170; opacity: 0;   }
-    100% { stroke-dashoffset: 12;   opacity: 0;   }
+.pc-wrap.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
 }
 
-.svg-sig-0 { stroke: var(--sleep-c);     animation: sig 3.2s ease-in-out infinite; }
-.svg-sig-1 { stroke: var(--energy-c);    animation: sig 3.2s ease-in-out infinite 0.8s; }
-.svg-sig-2 { stroke: var(--longevity-c); animation: sig 3.2s ease-in-out infinite 1.6s; }
-.svg-sig-3 { stroke: var(--focus-c);     animation: sig 3.2s ease-in-out infinite 2.4s; }
+/* Stagger entry per card */
+.pc-wrap[data-idx="1"] { transition-delay: 0.1s; }
+.pc-wrap[data-idx="2"] { transition-delay: 0.2s; }
+.pc-wrap[data-idx="3"] { transition-delay: 0.3s; }
 
-/* Center orb — 3 glow layers */
-.svg-core-3 {
-    fill: rgba(200, 80, 16, 0.04);
-    animation: coreBreath 3.5s ease-in-out infinite;
-}
-.svg-core-2 {
-    fill: rgba(200, 80, 16, 0.10);
-    animation: coreBreath 3.5s ease-in-out infinite 0.4s;
-}
-.svg-core-1 {
-    fill: var(--amber-glow);
-    filter: blur(1px);
-    animation: coreGlow 3.5s ease-in-out infinite;
-}
-@keyframes coreBreath {
-    0%, 100% { opacity: 0.6; }
-    50%       { opacity: 1; }
-}
-@keyframes coreGlow {
-    0%, 100% { opacity: 0.75; }
-    50%       { opacity: 1; filter: blur(0px); }
-}
-
-/* ── Pill positions ─────────────────────────── */
-.pillar-pill {
+/* Spinning conic gradient border */
+.pc-wrap::before {
+    content: '';
     position: absolute;
-    display: inline-flex;
+    inset: -1.5px;
+    border-radius: 21px;
+    animation: rotateBorderAngle 8s linear infinite;
+    z-index: 0;
+}
+
+.pc-wrap[data-idx="0"]::before {
+    background: conic-gradient(from var(--border-angle),
+        var(--sleep-c), rgba(139,124,232,0.1) 44%,
+        rgba(139,124,232,0.06) 56%, var(--sleep-c));
+}
+.pc-wrap[data-idx="1"]::before {
+    background: conic-gradient(from var(--border-angle),
+        var(--energy-c), rgba(232,128,64,0.1) 44%,
+        rgba(232,128,64,0.06) 56%, var(--energy-c));
+    animation-delay: -2s;
+}
+.pc-wrap[data-idx="2"]::before {
+    background: conic-gradient(from var(--border-angle),
+        var(--longevity-c), rgba(60,184,112,0.1) 44%,
+        rgba(60,184,112,0.06) 56%, var(--longevity-c));
+    animation-delay: -4s;
+}
+.pc-wrap[data-idx="3"]::before {
+    background: conic-gradient(from var(--border-angle),
+        var(--focus-c), rgba(74,168,212,0.1) 44%,
+        rgba(74,168,212,0.06) 56%, var(--focus-c));
+    animation-delay: -6s;
+}
+
+/* ── Hover: lift + glow ──────────────────────── */
+.pc-wrap:hover {
+    transform: translateY(-5px) scale(1.04);
+    z-index: 5;
+}
+.pc-wrap[data-idx="0"]:hover { box-shadow: 0 16px 52px rgba(139,124,232,0.25); }
+.pc-wrap[data-idx="1"]:hover { box-shadow: 0 16px 52px rgba(232,128, 64,0.25); }
+.pc-wrap[data-idx="2"]:hover { box-shadow: 0 16px 52px rgba( 60,184,112,0.25); }
+.pc-wrap[data-idx="3"]:hover { box-shadow: 0 16px 52px rgba( 74,168,212,0.25); }
+
+/* ── Inner glass card ────────────────────────── */
+.pc {
+    position: relative;
+    z-index: 1;
+    border-radius: 18px;
+    padding: 1.6rem 1.4rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    min-height: 160px;
+    overflow: hidden;
+}
+
+/* Category colour tint per card */
+.pc-wrap[data-idx="0"] .pc {
+    background: linear-gradient(150deg, rgba(139,124,232,0.11) 0%, rgba(12,5,0,0.97) 75%);
+}
+.pc-wrap[data-idx="1"] .pc {
+    background: linear-gradient(150deg, rgba(232,128,64,0.11) 0%, rgba(12,5,0,0.97) 75%);
+}
+.pc-wrap[data-idx="2"] .pc {
+    background: linear-gradient(150deg, rgba(60,184,112,0.11) 0%, rgba(12,5,0,0.97) 75%);
+}
+.pc-wrap[data-idx="3"] .pc {
+    background: linear-gradient(150deg, rgba(74,168,212,0.11) 0%, rgba(12,5,0,0.97) 75%);
+}
+
+/* ── Card header: dot + label ────────────────── */
+.pc-header {
+    display: flex;
     align-items: center;
     gap: 0.45rem;
-    background: rgba(16, 7, 2, 0.82);
-    color: var(--cream);
-    border: 1px solid rgba(200, 80, 16, 0.35);
-    padding: 0.55rem 1rem 0.55rem 0.5rem;
-    border-radius: 50px;
-    font-family: var(--font-display);
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-    white-space: nowrap;
-    z-index: 3;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    box-shadow: 0 4px 28px rgba(0, 0, 0, 0.55);
-    cursor: default;
-    opacity: 0;
-    transition: opacity 0.9s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    margin-bottom: 0.35rem;
 }
 
-/* Top — Sonno / Sleep */
-.pillar-pill[data-idx="0"] {
-    top: 38px; left: 50%;
-    transform: translateX(-50%);
-    border-color: rgba(139, 124, 232, 0.45);
-    box-shadow: 0 0 22px rgba(139, 124, 232, 0.12), 0 4px 24px rgba(0,0,0,0.5);
-}
-/* Right — Energia / Energy */
-.pillar-pill[data-idx="1"] {
-    top: 50%; right: 14px;
-    transform: translateY(-50%);
-    border-color: rgba(232, 128, 64, 0.45);
-    box-shadow: 0 0 22px rgba(232, 128, 64, 0.12), 0 4px 24px rgba(0,0,0,0.5);
-}
-/* Bottom — Longevità */
-.pillar-pill[data-idx="2"] {
-    bottom: 38px; left: 50%;
-    transform: translateX(-50%);
-    border-color: rgba(60, 184, 112, 0.45);
-    box-shadow: 0 0 22px rgba(60, 184, 112, 0.12), 0 4px 24px rgba(0,0,0,0.5);
-}
-/* Left — Focus */
-.pillar-pill[data-idx="3"] {
-    top: 50%; left: 14px;
-    transform: translateY(-50%);
-    border-color: rgba(74, 168, 212, 0.45);
-    box-shadow: 0 0 22px rgba(74, 168, 212, 0.12), 0 4px 24px rgba(0,0,0,0.5);
-}
-
-/* Float animations (gentle bob, staggered per pill) */
-.pillar-pill[data-idx="0"].visible {
-    opacity: 1;
-    animation: floatTopBot 5s ease-in-out infinite;
-}
-.pillar-pill[data-idx="1"].visible {
-    opacity: 1;
-    animation: floatSideR 5.4s ease-in-out infinite 0.6s;
-}
-.pillar-pill[data-idx="2"].visible {
-    opacity: 1;
-    animation: floatTopBot 5.8s ease-in-out infinite 1.1s;
-}
-.pillar-pill[data-idx="3"].visible {
-    opacity: 1;
-    animation: floatSideL 5.2s ease-in-out infinite 1.8s;
-}
-
-@keyframes floatTopBot {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50%       { transform: translateX(-50%) translateY(-8px); }
-}
-@keyframes floatSideR {
-    0%, 100% { transform: translateY(-50%) translateX(0); }
-    50%       { transform: translateY(-50%) translateX(5px); }
-}
-@keyframes floatSideL {
-    0%, 100% { transform: translateY(-50%) translateX(0); }
-    50%       { transform: translateY(-50%) translateX(-5px); }
-}
-
-/* Hover — brighten glow, reveal description */
-.pillar-pill[data-idx="0"]:hover { box-shadow: 0 0 40px rgba(139, 124, 232, 0.3), 0 4px 24px rgba(0,0,0,0.5); border-color: rgba(139, 124, 232, 0.8); }
-.pillar-pill[data-idx="1"]:hover { box-shadow: 0 0 40px rgba(232, 128, 64,  0.3), 0 4px 24px rgba(0,0,0,0.5); border-color: rgba(232, 128, 64,  0.8); }
-.pillar-pill[data-idx="2"]:hover { box-shadow: 0 0 40px rgba(60,  184, 112, 0.3), 0 4px 24px rgba(0,0,0,0.5); border-color: rgba(60,  184, 112, 0.8); }
-.pillar-pill[data-idx="3"]:hover { box-shadow: 0 0 40px rgba(74,  168, 212, 0.3), 0 4px 24px rgba(0,0,0,0.5); border-color: rgba(74,  168, 212, 0.8); }
-
-/* Category accent dot (replaces pp-plus) */
-.pp-dot {
-    width: 8px; height: 8px;
+.pc-dot {
+    width: 7px; height: 7px;
     border-radius: 50%;
     flex-shrink: 0;
 }
-.pillar-pill[data-idx="0"] .pp-dot { background: var(--sleep-c);     box-shadow: 0 0 8px var(--sleep-c); }
-.pillar-pill[data-idx="1"] .pp-dot { background: var(--energy-c);    box-shadow: 0 0 8px var(--energy-c); }
-.pillar-pill[data-idx="2"] .pp-dot { background: var(--longevity-c); box-shadow: 0 0 8px var(--longevity-c); }
-.pillar-pill[data-idx="3"] .pp-dot { background: var(--focus-c);     box-shadow: 0 0 8px var(--focus-c); }
+.pc-wrap[data-idx="0"] .pc-dot { background: var(--sleep-c);     box-shadow: 0 0 7px var(--sleep-c); }
+.pc-wrap[data-idx="1"] .pc-dot { background: var(--energy-c);    box-shadow: 0 0 7px var(--energy-c); }
+.pc-wrap[data-idx="2"] .pc-dot { background: var(--longevity-c); box-shadow: 0 0 7px var(--longevity-c); }
+.pc-wrap[data-idx="3"] .pc-dot { background: var(--focus-c);     box-shadow: 0 0 7px var(--focus-c); }
 
-/* Description — expand on hover */
-.pp-desc {
-    display: inline-block;
-    font-size: 0.63rem;
-    font-weight: 400;
-    letter-spacing: 0.01em;
-    text-transform: none;
-    color: rgba(245, 237, 224, 0.7);
-    white-space: nowrap;
-    max-width: 0;
+.pc-label {
+    font-family: var(--font-display);
+    font-size: 0.57rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cream-3);
+}
+
+/* ── Main name ───────────────────────────────── */
+.pc-name {
+    font-family: var(--font-display);
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: var(--cream);
+    flex: 1;
+}
+
+/* ── Description (hidden, expands on hover) ──── */
+.pc-desc {
+    font-size: 0.71rem;
+    color: var(--cream-3);
+    line-height: 1.6;
+    max-height: 0;
     overflow: hidden;
     opacity: 0;
-    transition: max-width 0.45s ease, opacity 0.3s ease, margin-left 0.3s ease;
-    margin-left: 0;
+    transform: translateY(6px);
+    transition: max-height 0.42s var(--ease),
+                opacity 0.3s ease 0.08s,
+                transform 0.35s var(--ease) 0.06s;
+    margin-top: 0;
 }
-.pillar-pill:hover .pp-desc,
-.pillar-pill:active .pp-desc {
-    max-width: 200px;
+.pc-wrap:hover .pc-desc {
+    max-height: 100px;
     opacity: 1;
-    margin-left: 0.3rem;
+    transform: translateY(0);
+    margin-top: 0.4rem;
 }
 
-/* Mobile: vertical list */
+/* ── Mobile ──────────────────────────────────── */
 @media (max-width: 640px) {
-    .pillar-visual-wrap {
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-        align-items: flex-start;
-        padding: 0.5rem 0;
-    }
-    .pillar-svg { display: none; }
-    .pillar-pill[data-idx] {
-        position: static !important;
-        transform: none !important;
-        opacity: 1 !important;
-        animation: none !important;
-        max-width: 100%;
-    }
+    .pillar-visual-wrap { gap: 0.55rem; }
+    .pc { padding: 1.2rem; min-height: 140px; }
+    .pc-name { font-size: 1rem; }
+}
+@media (max-width: 380px) {
+    .pillar-visual-wrap { grid-template-columns: 1fr; }
 }
 
 
@@ -2233,7 +2148,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
         max-width: 100%;
     }
 
-    .pillar-visual-wrap { height: 300px; }
+    /* pillar-visual-wrap height removed — grid layout is auto height */
 
     .hero-cta,
     .box-cta {
@@ -2269,7 +2184,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 @media (max-width: 480px) {
     .hero-trust { flex-direction: column; gap: 0.75rem; align-items: flex-start; }
     .club-benefits { flex-direction: column; gap: 0.75rem; }
-    .pillar-visual-wrap { height: 260px; }
+    /* pillar-visual-wrap height removed — grid layout is auto height */
     input, select, textarea { font-size: 16px; }
 
     /* Hero headline tighter at very small screens */

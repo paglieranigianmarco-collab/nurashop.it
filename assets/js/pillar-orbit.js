@@ -1,18 +1,18 @@
 /**
- * pillar-orbit.js — Precision System reveal
- * Staggered fade-in of floating category pills when section enters viewport.
- * SVG animations (signals, scan, rings) run via CSS keyframes automatically.
+ * pillar-orbit.js — Pillar glass cards reveal
+ * Staggered fade-in + scale-in when section enters viewport.
+ * Border spin animations run via CSS @property --border-angle.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
     const wrap = document.getElementById('pillarVisual');
     if (!wrap) return;
 
-    const pills = wrap.querySelectorAll('.pillar-pill');
+    const cards = wrap.querySelectorAll('.pc-wrap');
 
     const reveal = () => {
-        pills.forEach((pill, i) => {
-            setTimeout(() => pill.classList.add('visible'), i * 180);
+        cards.forEach((card, i) => {
+            setTimeout(() => card.classList.add('visible'), i * 110);
         });
     };
 
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 observer.disconnect();
             }
         });
-    }, { threshold: 0.25 });
+    }, { threshold: 0.2 });
 
     observer.observe(wrap);
 });
