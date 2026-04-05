@@ -1,143 +1,0 @@
-nura.
-COMPREHENSIVE BUSINESS PLAN
-"Longevity, semplificata."
-Italy's First Curated Longevity & Wellness Marketplace
-Founders: Gianmarco & Gianmaria Paglierani
-Location: Italy | March 2026
-
-TABLE OF CONTENTS
-1. Executive Summary
-2. Company Formation (SRL)
-3. Digital Infrastructure Setup
-4. Brand Identity
-5. Product Strategy & Supplier Sourcing
-6. Legal & Regulatory
-7. Financial Plan
-8. Marketing & Growth Strategy
-9. Operations & Logistics
-10. Technology Roadmap
-11. Risk Analysis
-12. 90-Day Action Plan
-13. Key Metrics to Track
-
-1. EXECUTIVE SUMMARY
-Nura is Italy's first curated longevity and wellness marketplace, designed to solve a critical market gap for Italian consumers seeking premium international supplements and wellness products.
-THE PROBLEM
-Must navigate multiple international websites with language barriers
-High shipping costs and variable delivery times from foreign suppliers
-Customs complications and potential import delays
-No centralized Italian-language customer support
-Lack of trusted curation—hard to distinguish quality from hype
-THE SOLUTION
-Single-destination marketplace with pre-vetted, premium international brands
-Subscription discounts (15-20% off) for recurring customers
-Free shipping on orders over €50
-Italian-language website, product descriptions, and customer support
-Personalization via science-backed quiz
-Content hub with Italian-language longevity education
-MARKET OPPORTUNITY
-Italian wellness market: €4.5B+ annually
-Supplement segment growth: 8-10% annually
-Benchmark: Healf.com (UK) valued at €100M+, 5,000+ SKUs
-REVENUE MODEL
-Product margins: 25-40% markup on wholesale
-Subscription fees: Premium members pay for monthly/annual subscriptions
-Affiliate commissions: Partnerships with health creators
-Data & insights: Anonymized longevity trends for brands (future)
-FINANCIAL TARGETS
-Year 1: €50,000-100,000 revenue with break-even by Month 4-6
-Year 2: €250,000+ revenue with profitability
-Timeline: 1-2 months to MVP, soft launch Week 9-10
-
-2. COMPANY FORMATION (SRL)
-Structure: SRL Semplificata (minimum €1 capital, €400-600 notary fees)
-Formation cost: €1,500-2,500 total, 2-4 weeks timeline
-Process: Notary appointment → Camera di Commercio registration → bank account → Partita IVA → SCIA → INPS
-Ongoing: Accountant €150-250/month for compliance
-
-3. DIGITAL INFRASTRUCTURE SETUP
-Domain: nura.it (€10-15/year via Aruba)
-Email: Google Workspace €6/user/month (info@, team@, support@)
-Platform: Shopify Basic €36/month (upgrade to €96 at Month 3+)
-Apps: Recharge €99/month, Klaviyo/Tidio/Judge.me €100-200/month combined
-PEC: €10/year (Italian law requirement)
-Total 3-month setup: ~€766
-
-4. BRAND IDENTITY
-Name: nura. (lowercase with period—modern, minimal)
-Tagline: "Longevity, semplificata."
-Colors: Dark Green #1B4332 (trust, health), Gold #C9A84C (premium), Off-White #FAFAF5
-Voice: Scientific yet approachable, Italian-first with English supplement terminology
-Differentiators: Curated selection, international brands, science-backed, subscription model
-
-5. PRODUCT STRATEGY & SOURCING
-Launch SKUs: 15-25 products across 5 categories (Sonno, Energia, Focus, Gut, Longevità)
-Brands: Thorne, LMNT, Four Sigmatic, Vital Proteins, NOW Foods, Life Extension
-Sourcing: EU distributors, direct brand partnerships, B2B marketplaces (Faire, Brandsdistribution)
-Compliance: Register with Ministero della Salute via notifica (1-3 weeks per product)
-Pricing: Wholesale +30-50% margin, subscription 15-20% discount
-Model: Dropshipping to minimize inventory risk
-
-6. LEGAL & REGULATORY
-Regulations: D.Lgs. 169/2004 (Italian food supplement law)
-Claims: NO medical claims ("cures," "treats," "prevents"); only wellness ("supports," "maintains")
-Labels: Italian language mandatory (ingredients, dosage, allergen warnings, manufacturer info)
-Registration: Submit to Ministero della Salute (€50-100 per product)
-Data: GDPR compliance, Privacy Policy, Terms of Service (Iubenda €29/year)
-Insurance: Product liability €500-1,000/year
-
-7. FINANCIAL PLAN
-Budget €15,000: Formation €2K, Digital €500, Inventory €4K, Branding €1K, Photos €500, Marketing €3K, Legal €1.5K, Contingency €2K
-Revenue: Month 1-3 €2-5K/mo, Month 4-6 €5-10K/mo, Month 7-12 €10-20K/mo
-Profitability: 30-40% product margin, 2.9% payment fees, €4.99 shipping
-Break-even: Month 4-6 (target 50-80 orders/month at €75-100 AOV)
-Fixed costs: €1,900-4,000/month (Shopify, email, marketing, support)
-
-8. MARKETING & GROWTH STRATEGY
-Phase 1 (Pre-launch): Grow waitlist 247→500+, social media content, email sequences
-Phase 2 (Week 9-10): Soft launch with 20% discount (expect 12-50 conversions)
-Phase 3 (Month 1-6): Google Ads €4K/year, Meta Ads €3K, TikTok €1K (target 3:1 ROAS)
-Content: 1-2 blog posts/week, YouTube channel, target 30-50% organic traffic by Month 12
-Community: Influencer seeding (20-30 micro-creators), Discord (target 500+ members M6)
-Subscriptions: Promote 15-20% discount, target 100+ subscribers by Month 6
-
-9. OPERATIONS & LOGISTICS
-Fulfillment: Dropship from suppliers (primary), alternatives ShipBob/Sendcloud
-Shipping: Free >€50, €4.99 flat (3-5 days mainland, 5-7 islands via BRT/GLS/PosteItaliane)
-Returns: 14-day right (EU law), 30-day guarantee (competitive advantage), expect 5-8% return rate
-Service: Email + Tidio chat, <24h response, Gorgias integration
-Team: Gianmarco (tech/marketing), Gianmaria (operations/suppliers)
-Scaling: Hire part-time support €400-600/month at Month 6
-
-10. TECHNOLOGY ROADMAP
-Phase 1 (Launch): Shopify Basic + Dawn theme, Recharge, Klaviyo, Tidio, Judge.me
-Phase 2 (Month 3-6): Shopify Standard, full Klaviyo, Gorgias, blog content
-Phase 3 (Month 7-12): Quiz/personalization engine, AI recommendations, advanced analytics
-Future: Mobile app (iOS/Android), community platform, B2B wholesale, health tracker APIs
-
-11. RISK ANALYSIS
-Regulatory: Engage Ministero della Salute early, maintain compliance documentation
-Low traffic: Leverage 247 waitlist + aggressive Google Ads (target 3:1 ROAS)
-Suppliers: Build relationships with 3-5 suppliers per product category
-Cash flow: Dropship model eliminates inventory risk, manage marketing spend conservatively
-Competition (Amazon): Differentiate via curation, subscriptions, Italian expertise
-Product safety: Source reputable brands, verify certifications, maintain liability insurance
-Burnout: Split responsibilities, hire support staff by Month 3-6
-
-12. 90-DAY ACTION PLAN
-Week 1-2: SRL notary appointment, register nura.it, setup Google Workspace, create Shopify account
-Week 3-4: Install Shopify apps, configure store (shipping, tax, categories), outreach to 5-8 suppliers
-Week 5-6: Finalize branding, select 15-25 SKUs, negotiate wholesale pricing and terms
-Week 7-8: Complete SRL registration, submit products to Ministero della Salute, hire photographer
-Week 9-10: Soft launch to 247 waitlist with 20% offer, test checkout, gather feedback
-Week 11-12: Public launch, activate Google/Meta Ads, seed influencers (free products), publish blog posts
-
-13. KEY METRICS TO TRACK
-Acquisition: Waitlist→customer 5-10%, CPA €10-20, visitors 1K (M3)→5K (M6), conversion 2-3%
-Revenue: AOV €75-100, MRR €1K (M3)→€5K (M6), CLV €200-300, monthly €2-5K→€10-20K
-Profitability: Gross 30-40%, contribution 20-30%, CAC payback 2-3 months, break-even M4-6
-Retention: Repeat 15-25%, subscription retention 85%+, NPS 50+, return rate 5-8%
-Social: Instagram 500→2K followers, TikTok 300→1K, email list 500→2K, community 500+ M6
-Dashboard: Google Data Studio, Shopify analytics, Klaviyo reports, weekly KPI sheet, monthly reviews
-
-End of Business Plan
