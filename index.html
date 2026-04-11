@@ -8,45 +8,12 @@
     <meta name="description"
         content="nura cura i migliori brand di longevità al mondo. Selezionati per te, personalizzati sul tuo profilo di salute, consegnati in Italia.">
 
-    <!-- TODO: replace YOUR_META_PIXEL_ID with actual ID -->
-    <!-- Meta Pixel Code -->
-    <script>
-        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-        document,'script','https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', 'YOUR_META_PIXEL_ID');
-        fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-        src="https://www.facebook.com/tr?id=YOUR_META_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
-    <!-- End Meta Pixel Code -->
-
-    <!-- TODO: replace YOUR_TIKTOK_PIXEL_ID with actual ID -->
-    <!-- TikTok Pixel Code -->
-    <script>
-        !function(w,d,t){w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];
-        ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"];
-        ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};
-        for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);
-        ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e};
-        ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{};
-        ttq._i[e]=[];ttq._i[e]._u=i;ttq._t=ttq._t||{};ttq._t[e]=+new Date;ttq._o=ttq._o||{};
-        ttq._o[e]=n||{};var o=document.createElement("script");o.type="text/javascript";
-        o.async=!0;o.src=i+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];
-        a.parentNode.insertBefore(o,a)};ttq.load('YOUR_TIKTOK_PIXEL_ID');ttq.page();}(window,document,'ttq');
-    </script>
-    <!-- End TikTok Pixel Code -->
-
     <!-- Restore language + skip intro for paid ad traffic -->
     <script>
         (function () {
-            // Skip intro for paid traffic (ref= param: e.g. ?ref=tiktok, ?ref=ig)
             if (new URLSearchParams(window.location.search).get('ref')) {
                 sessionStorage.setItem('nura_seen', '1');
             }
-            // Restore language from localStorage before paint to avoid flash
             var l = localStorage.getItem('nura_lang');
             if (l === 'en') {
                 document.documentElement.dataset.lang = 'en';
@@ -85,13 +52,26 @@
         <div class="header-inner container">
             <a href="#" class="brand-logo">nura.</a>
 
-            <nav class="header-nav"></nav>
+            <nav class="header-nav">
+                <a href="#pillars" class="nav-link">
+                    <span class="it">La selezione</span>
+                    <span class="en">Curation</span>
+                </a>
+                <a href="#how-it-works" class="nav-link">
+                    <span class="it">Come funziona</span>
+                    <span class="en">How it works</span>
+                </a>
+            </nav>
 
             <div class="header-actions">
                 <button class="lang-toggle" id="langToggle" aria-label="Switch language">
                     <span class="it">EN</span>
                     <span class="en">IT</span>
                 </button>
+                <a href="#early-access" class="nav-link-club">
+                    <span class="it">Accesso anticipato</span>
+                    <span class="en">Early access</span>
+                </a>
                 <button class="mobile-menu-btn" aria-label="Menu">
                     <i class="ph ph-list"></i>
                 </button>
@@ -102,7 +82,7 @@
     <main>
 
         <!-- ══════════════════════════════════════
-             HERO — Full-bleed image, editorial split
+             HERO — Full-bleed image + inline email capture
              ══════════════════════════════════════ -->
         <section class="hero-section" id="heroSection">
 
@@ -120,20 +100,27 @@
                     </h1>
 
                     <p class="hero-sub">
-                        <span class="it">Integratori d'élite, selezionati nel mondo. Personalizzati per te.</span>
-                        <span class="en">Elite supplements, curated worldwide. Personalised for you.</span>
+                        <span class="it">La prima piattaforma in Italia che seleziona i migliori integratori premium al mondo. Personalizzati per te.</span>
+                        <span class="en">The first platform in Italy curating the world's best premium supplements. Personalised for you.</span>
                     </p>
 
-                    <p class="hero-proof">
-                        <span class="it"><i class="ph-fill ph-users"></i> Oltre <strong>1.200 persone</strong> già in lista d'attesa</span>
-                        <span class="en"><i class="ph-fill ph-users"></i> Over <strong>1,200 people</strong> already on the waitlist</span>
-                    </p>
-
-                    <a href="#nura-club" class="hero-cta">
-                        <span class="it">Assicurati la tua nura.box</span>
-                        <span class="en">Secure your nura.box</span>
-                        <i class="ph ph-arrow-right"></i>
-                    </a>
+                    <!-- Inline email capture -->
+                    <form class="hero-email-form" id="heroEmailForm" onsubmit="handleHeroEmail(event)">
+                        <div class="hero-email-row">
+                            <input type="email" id="heroEmail" class="hero-email-input"
+                                placeholder="la-tua@email.com" required autocomplete="email">
+                            <button type="submit" class="hero-email-btn">
+                                <span class="it">Accesso anticipato</span>
+                                <span class="en">Early access</span>
+                                <i class="ph ph-arrow-right"></i>
+                            </button>
+                        </div>
+                        <p class="hero-email-hint">
+                            <i class="ph-fill ph-tag"></i>
+                            <span class="it">Iscriviti e ricevi il <strong>15% di sconto</strong> sul primo ordine</span>
+                            <span class="en">Subscribe and get <strong>15% off</strong> your first order</span>
+                        </p>
+                    </form>
 
                     <div class="hero-trust">
                         <span><i class="ph-fill ph-seal-check"></i> <span class="it">Solo brand certificati</span><span class="en">Certified brands only</span></span>
@@ -183,7 +170,7 @@
                                     <span class="pc-label"><span class="it">Sonno</span><span class="en">Sleep</span></span>
                                 </div>
                                 <p class="pc-name"><span class="it">Recupero<br>d'élite</span><span class="en">Elite<br>Recovery</span></p>
-                                <p class="pc-desc"><span class="it">I migliori integratori per la qualità del sonno e il recupero notturno profondo.</span><span class="en">The best supplements for sleep quality and deep overnight recovery.</span></p>
+                                <p class="pc-desc"><span class="it">Magnesio, melatonina, adattogeni — i migliori protocolli per la qualità del sonno e il recupero notturno profondo.</span><span class="en">Magnesium, melatonin, adaptogens — the best protocols for sleep quality and deep overnight recovery.</span></p>
                             </div>
                         </div>
 
@@ -195,7 +182,7 @@
                                     <span class="pc-label"><span class="it">Energia</span><span class="en">Energy</span></span>
                                 </div>
                                 <p class="pc-name"><span class="it">Performance<br>totale</span><span class="en">Total<br>Performance</span></p>
-                                <p class="pc-desc"><span class="it">Supporto naturale per energia sostenuta, senza crash o dipendenze.</span><span class="en">Natural support for sustained energy, no crash or dependency.</span></p>
+                                <p class="pc-desc"><span class="it">CoQ10, vitamina B12, cordyceps — supporto naturale per energia sostenuta, senza crash o dipendenze.</span><span class="en">CoQ10, vitamin B12, cordyceps — natural support for sustained energy, no crash or dependency.</span></p>
                             </div>
                         </div>
 
@@ -207,7 +194,7 @@
                                     <span class="pc-label"><span class="it">Longevità</span><span class="en">Longevity</span></span>
                                 </div>
                                 <p class="pc-name"><span class="it">Vitalità<br>cellulare</span><span class="en">Cellular<br>Vitality</span></p>
-                                <p class="pc-desc"><span class="it">Protocolli di longevità validati dalla scienza moderna.</span><span class="en">Longevity protocols validated by modern science.</span></p>
+                                <p class="pc-desc"><span class="it">NMN, resveratrolo, omega-3 — protocolli di longevità validati dalla scienza moderna.</span><span class="en">NMN, resveratrol, omega-3 — longevity protocols validated by modern science.</span></p>
                             </div>
                         </div>
 
@@ -219,7 +206,7 @@
                                     <span class="pc-label">Focus</span>
                                 </div>
                                 <p class="pc-name"><span class="it">Mente<br>al massimo</span><span class="en">Peak<br>Clarity</span></p>
-                                <p class="pc-desc"><span class="it">Nootropi e adattogeni per performance cognitiva d'élite.</span><span class="en">Nootropics and adaptogens for elite cognitive performance.</span></p>
+                                <p class="pc-desc"><span class="it">Lion's Mane, L-teanina, bacopa — nootropi e adattogeni per performance cognitiva d'élite.</span><span class="en">Lion's Mane, L-theanine, bacopa — nootropics and adaptogens for elite cognitive performance.</span></p>
                             </div>
                         </div>
 
@@ -231,94 +218,119 @@
 
 
         <!-- ══════════════════════════════════════
-             BOX — 500 founders, 20% off, personalized
+             HOW IT WORKS — 3 steps
              ══════════════════════════════════════ -->
-        <section id="nura-club" class="club-section">
-            <div class="club-bg-pattern" aria-hidden="true"></div>
-            <div class="container club-inner">
+        <section id="how-it-works" class="how-section">
+            <div class="container how-inner">
 
-                <div class="club-content reveal-up">
+                <div class="section-header reveal-up">
                     <span class="eyebrow eyebrow-amber">
-                        <span class="it">solo 555 nura.box</span><span class="en">555 nura.box only</span>
+                        <span class="it">Come funziona</span>
+                        <span class="en">How it works</span>
                     </span>
-                    <h2 class="club-title">
-                        <span class="it">La tua nura.box.<br><em>Il meglio al mondo,<br>scelto per te.</em></span>
-                        <span class="en">Your nura.box.<br><em>The world's best,<br>chosen for you.</em></span>
+                    <h2 class="section-title">
+                        <span class="it">Tre passi verso<br>il tuo <em>benessere.</em></span>
+                        <span class="en">Three steps to<br>your <em>wellness.</em></span>
                     </h2>
-                    <p class="club-sub">
-                        <span class="it">Accesso anticipato, <strong>20% di sconto</strong> permanente e una selezione costruita esattamente sul tuo profilo di benessere — solo per i primi 555.</span>
-                        <span class="en">Early access, permanent <strong>20% discount</strong> and a selection built precisely around your wellness profile — reserved for the first 555.</span>
-                    </p>
+                </div>
 
-                    <!-- Mobile-only scarcity indicator (founders card hidden on mobile) -->
-                    <div class="mobile-scarcity">
-                        <div class="mobile-scarcity-bar">
-                            <div class="mobile-scarcity-fill" id="mobileScarcityFill" style="width: 76.2%"></div>
-                        </div>
-                        <p class="mobile-scarcity-label">
-                            <span class="it"><strong id="mobileScarcityCount">423</strong> / 555 box già riservate — <em>solo <span id="mobileScarcityLeft">132</span> rimaste</em></span>
-                            <span class="en"><strong id="mobileScarcityCountEn">423</strong> / 555 boxes reserved — <em>only <span id="mobileScarcityLeftEn">132</span> left</em></span>
+                <div class="how-steps">
+
+                    <div class="how-step reveal-up" style="transition-delay: 100ms">
+                        <div class="how-step-number">01</div>
+                        <div class="how-step-icon"><i class="ph ph-target"></i></div>
+                        <h3 class="how-step-title">
+                            <span class="it">Dicci i tuoi obiettivi</span>
+                            <span class="en">Tell us your goals</span>
+                        </h3>
+                        <p class="how-step-desc">
+                            <span class="it">Sonno, energia, longevità, focus — ogni percorso di benessere è unico. Il tuo profilo personalizzato ci guida nella selezione.</span>
+                            <span class="en">Sleep, energy, longevity, focus — every wellness journey is unique. Your personalised profile guides our selection.</span>
                         </p>
                     </div>
 
-                    <div class="club-benefits">
+                    <div class="how-step reveal-up" style="transition-delay: 200ms">
+                        <div class="how-step-number">02</div>
+                        <div class="how-step-icon"><i class="ph ph-flask"></i></div>
+                        <h3 class="how-step-title">
+                            <span class="it">Selezioniamo per te</span>
+                            <span class="en">We curate for you</span>
+                        </h3>
+                        <p class="how-step-desc">
+                            <span class="it">Analizziamo centinaia di brand internazionali. Solo quelli con standard clinici rigorosi, ingredienti trasparenti e risultati documentati entrano nella piattaforma.</span>
+                            <span class="en">We analyse hundreds of international brands. Only those with rigorous clinical standards, transparent ingredients and documented results make it onto the platform.</span>
+                        </p>
+                    </div>
+
+                    <div class="how-step reveal-up" style="transition-delay: 300ms">
+                        <div class="how-step-number">03</div>
+                        <div class="how-step-icon"><i class="ph ph-package"></i></div>
+                        <h3 class="how-step-title">
+                            <span class="it">Consegnato a casa tua</span>
+                            <span class="en">Delivered to your door</span>
+                        </h3>
+                        <p class="how-step-desc">
+                            <span class="it">I migliori integratori al mondo, finalmente disponibili in Italia. Spedizione veloce, packaging premium, tutto tracciato.</span>
+                            <span class="en">The world's best supplements, finally available in Italy. Fast shipping, premium packaging, fully tracked.</span>
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ══════════════════════════════════════
+             EARLY ACCESS — Newsletter CTA
+             ══════════════════════════════════════ -->
+        <section id="early-access" class="early-access-section">
+            <div class="early-access-bg" aria-hidden="true"></div>
+            <div class="container early-access-inner">
+
+                <div class="early-access-content reveal-up">
+                    <span class="eyebrow eyebrow-amber">
+                        <span class="it">Accesso anticipato</span>
+                        <span class="en">Early access</span>
+                    </span>
+                    <h2 class="early-access-title">
+                        <span class="it">Sii tra i primi.<br><em>Ottieni il 15% di sconto.</em></span>
+                        <span class="en">Be among the first.<br><em>Get 15% off.</em></span>
+                    </h2>
+                    <p class="early-access-sub">
+                        <span class="it">Iscriviti alla newsletter per ricevere accesso anticipato alla piattaforma e uno sconto esclusivo del <strong>15%</strong> sul tuo primo ordine.</span>
+                        <span class="en">Subscribe to the newsletter for early access to the platform and an exclusive <strong>15% discount</strong> on your first order.</span>
+                    </p>
+
+                    <form class="early-access-form" id="earlyAccessForm">
+                        <div class="early-access-form-row">
+                            <input type="email" class="early-access-email" id="earlyAccessEmail"
+                                placeholder="la-tua@email.com" required autocomplete="email">
+                            <button type="submit" class="early-access-btn">
+                                <span class="it">Iscriviti</span><span class="en">Subscribe</span>
+                                <i class="ph ph-arrow-right"></i>
+                            </button>
+                        </div>
+                        <p class="early-access-fine">
+                            <i class="ph-fill ph-lock-simple"></i>
+                            <span class="it">Zero spam. Cancellati quando vuoi.</span>
+                            <span class="en">No spam. Unsubscribe anytime.</span>
+                        </p>
+                    </form>
+
+                    <div class="early-access-benefits">
                         <div class="benefit-item">
                             <i class="ph-fill ph-tag"></i>
-                            <span><span class="it">20% di sconto fondatori</span><span class="en">20% founders discount</span></span>
-                        </div>
-                        <div class="benefit-item">
-                            <i class="ph-fill ph-sparkle"></i>
-                            <span><span class="it">Selezione curata per te</span><span class="en">Curated for you</span></span>
+                            <span><span class="it">15% di sconto sul primo ordine</span><span class="en">15% off your first order</span></span>
                         </div>
                         <div class="benefit-item">
                             <i class="ph-fill ph-rocket-launch"></i>
                             <span><span class="it">Accesso prioritario al lancio</span><span class="en">Priority access at launch</span></span>
                         </div>
-                    </div>
-
-                    <a href="quiz.html" class="box-cta">
-                        <span class="it">Assicurati la tua nura.box</span>
-                        <span class="en">Secure your nura.box</span>
-                        <i class="ph ph-arrow-right"></i>
-                    </a>
-
-                    <div class="club-divider">
-                        <span class="it">oppure entra nel club gratuito</span>
-                        <span class="en">or join the free club</span>
-                    </div>
-
-                    <div class="club-newsletter">
-                        <p class="club-newsletter-label">
-                            <span class="it">nura.club — brand esclusivi, offerte riservate, spedizione gratuita sul primo ordine.</span>
-                            <span class="en">nura.club — exclusive brands, members-only offers, free shipping on your first order.</span>
-                        </p>
-                        <form class="club-newsletter-form" id="clubNewsletterForm">
-                            <input type="email" class="club-newsletter-input" id="clubNewsletterEmail"
-                                placeholder="la-tua@email.com" required autocomplete="email">
-                            <button type="submit" class="club-newsletter-btn">
-                                <span class="it">Entra</span><span class="en">Join</span>
-                                <i class="ph ph-arrow-right"></i>
-                            </button>
-                        </form>
-                        <p class="club-newsletter-fine">
-                            <i class="ph-fill ph-lock-simple"></i>
-                            <span class="it">Zero spam. Cancellati quando vuoi.</span>
-                            <span class="en">No spam. Unsubscribe anytime.</span>
-                        </p>
-                    </div>
-                </div>
-
-                <div class="club-visual reveal-fade" style="transition-delay: 200ms" aria-hidden="true">
-                    <div class="founders-card-wrap">
-                    <div class="founders-card">
-                        <span class="founders-card-label">nura.box</span>
-                        <div class="founders-card-number"><span id="foundersCount">423</span> <span class="founders-card-of">/ 555</span></div>
-                        <span class="founders-card-sub"><span class="it">box già riservate</span><span class="en">boxes already reserved</span></span>
-                        <div class="founders-progress-bar">
-                            <div class="founders-progress-fill" id="foundersProgressFill" style="width: 76.2%"></div>
+                        <div class="benefit-item">
+                            <i class="ph-fill ph-sparkle"></i>
+                            <span><span class="it">Contenuti esclusivi sul benessere</span><span class="en">Exclusive wellness content</span></span>
                         </div>
-                        <div class="founders-card-badge">−20%</div>
-                    </div>
                     </div>
                 </div>
 
@@ -336,7 +348,7 @@
             <a href="#" class="brand-logo footer-logo">nura.</a>
             <div class="footer-links">
                 <a href="mailto:hello@nura.life">hello@nura.life</a>
-                <a href="#">Privacy</a>
+                <a href="#"><span class="it">Privacy</span><span class="en">Privacy</span></a>
                 <a href="#"><span class="it">Termini</span><span class="en">Terms</span></a>
             </div>
             <div class="footer-right">
@@ -360,27 +372,6 @@
     <!-- Backdrop overlay -->
     <div class="drawer-overlay" id="drawerOverlay"></div>
 
-    <!-- Profile Drawer (hidden, kept for drawers.js compatibility) -->
-    <div class="drawer drawer-right" id="profileDrawer" style="display:none">
-        <div class="drawer-header">
-            <h3><span class="it">Il Mio Profilo</span><span class="en">My Profile</span></h3>
-            <button class="drawer-close" data-close-drawer><i class="ph ph-x"></i></button>
-        </div>
-        <div class="drawer-body">
-            <form class="profile-form" id="profileForm">
-                <div class="form-group">
-                    <label><span class="it">Nome</span><span class="en">Name</span></label>
-                    <input type="text" placeholder="Il tuo nome" id="profileName">
-                </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" placeholder="la-tua@email.com" id="profileEmail">
-                </div>
-                <button type="submit" class="btn btn-amber" style="width:100%;margin-top:1rem;"><span class="it">Salva Profilo</span><span class="en">Save Profile</span></button>
-            </form>
-        </div>
-    </div>
-
     <!-- Mobile Navigation Drawer -->
     <div class="mobile-nav-drawer" id="mobileNavDrawer">
         <div class="mobile-nav-header">
@@ -392,18 +383,18 @@
                 <span class="it">La nostra selezione</span><span class="en">Our curation</span>
                 <i class="ph ph-caret-right" style="margin-left:auto;opacity:0.35;font-size:0.8rem"></i>
             </a>
-            <a href="#nura-club" class="mobile-nav-link" data-close-mobile>
-                nura.box
+            <a href="#how-it-works" class="mobile-nav-link" data-close-mobile>
+                <span class="it">Come funziona</span><span class="en">How it works</span>
                 <i class="ph ph-caret-right" style="margin-left:auto;opacity:0.35;font-size:0.8rem"></i>
             </a>
-            <a href="#nura-club" class="mobile-nav-link" data-close-mobile>
-                nura.club
+            <a href="#early-access" class="mobile-nav-link" data-close-mobile>
+                <span class="it">Accesso anticipato</span><span class="en">Early access</span>
                 <i class="ph ph-caret-right" style="margin-left:auto;opacity:0.35;font-size:0.8rem"></i>
             </a>
         </nav>
         <div class="mobile-nav-footer">
-            <a href="#nura-club" class="btn btn-amber" style="width:100%;text-align:center;" data-close-mobile>
-                <span class="it">Entra nel nura.club</span><span class="en">Join nura.club</span>
+            <a href="#early-access" class="btn btn-amber" style="width:100%;text-align:center;" data-close-mobile>
+                <span class="it">Iscriviti alla newsletter</span><span class="en">Subscribe to newsletter</span>
             </a>
         </div>
     </div>
@@ -411,16 +402,16 @@
     <!-- Toast Container -->
     <div id="toastContainer" class="toast-container"></div>
 
-    <!-- Mobile sticky CTA bar — primary conversion driver for social ad traffic -->
+    <!-- Mobile sticky CTA bar -->
     <div class="mobile-sticky-cta" id="mobileStickyCta">
-        <a href="quiz.html" class="mobile-sticky-cta-btn" id="mobileStickyCta-link">
-            <span class="it">Assicurati la tua nura.box</span>
-            <span class="en">Secure your nura.box</span>
+        <a href="#early-access" class="mobile-sticky-cta-btn" id="mobileStickyCta-link">
+            <span class="it">Iscriviti — 15% di sconto</span>
+            <span class="en">Subscribe — 15% off</span>
             <i class="ph ph-arrow-right"></i>
         </a>
         <p class="mobile-sticky-cta-hint">
-            <span class="it"><span id="stickyScarcityLeft">132</span> posti rimasti · −20% per i fondatori</span>
-            <span class="en"><span id="stickyScarcityLeftEn">132</span> spots left · −20% for founders</span>
+            <span class="it">Accesso anticipato alla piattaforma</span>
+            <span class="en">Early access to the platform</span>
         </p>
     </div>
 
@@ -441,52 +432,105 @@
         })();
     </script>
 
-    <!-- nura Club newsletter form -->
+    <!-- Early access newsletter form — Supabase -->
     <script>
         (function() {
-            var form = document.getElementById('clubNewsletterForm');
-            if (!form) return;
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                var email = document.getElementById('clubNewsletterEmail').value;
-                if (!email) return;
-                // Store locally + show confirmation
-                var existing = JSON.parse(localStorage.getItem('nura_club_emails') || '[]');
-                existing.push({ email: email, date: new Date().toISOString() });
-                localStorage.setItem('nura_club_emails', JSON.stringify(existing));
-                // Increment local signups counter for scarcity
-                var cur = parseInt(localStorage.getItem('nura_local_signups') || '0');
-                localStorage.setItem('nura_local_signups', cur + 1);
-                updateScarcityCounters();
+            var SUPABASE_URL = 'https://uructgabqrfpcdcdosdz.supabase.co';
+            var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVydWN0Z2FicXJmcGNkY2Rvc2R6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU5MTMxMTAsImV4cCI6MjA5MTQ4OTExMH0.KwCCJ05WcrYu7cPRZ-ejlL_8Z-upGn32N2z1F5GTQFA';
+
+            function submitToSupabase(email, source) {
                 var lang = document.documentElement.dataset.lang || 'it';
-                var btn = form.querySelector('.club-newsletter-btn');
-                btn.innerHTML = lang === 'it'
-                    ? '<i class="ph-fill ph-check-circle"></i> Benvenuto nel Club'
-                    : '<i class="ph-fill ph-check-circle"></i> Welcome to the Club';
-                btn.style.background = 'var(--longevity-c)';
-                btn.style.borderColor = 'var(--longevity-c)';
-                form.querySelector('input').disabled = true;
-            });
+                return fetch(SUPABASE_URL + '/rest/v1/subscribers', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'apikey': SUPABASE_KEY,
+                        'Authorization': 'Bearer ' + SUPABASE_KEY,
+                        'Prefer': 'return=minimal'
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        source: source,
+                        lang: lang
+                    })
+                });
+            }
+
+            function handleEmailSubmit(formId, emailId, source) {
+                var form = document.getElementById(formId);
+                if (!form) return;
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    var emailInput = document.getElementById(emailId);
+                    var email = emailInput ? emailInput.value.trim().toLowerCase() : '';
+                    if (!email) return;
+
+                    var btn = form.querySelector('button[type="submit"]');
+                    if (btn) btn.disabled = true;
+
+                    submitToSupabase(email, source)
+                        .then(function(res) {
+                            var lang = document.documentElement.dataset.lang || 'it';
+
+                            if (res.ok || res.status === 409) {
+                                // Success or duplicate — both are fine
+                                if (btn) {
+                                    btn.innerHTML = lang === 'it'
+                                        ? '<i class="ph-fill ph-check-circle"></i> Sei dentro!'
+                                        : '<i class="ph-fill ph-check-circle"></i> You\'re in!';
+                                    btn.style.background = 'var(--longevity-c)';
+                                    btn.style.borderColor = 'var(--longevity-c)';
+                                }
+                                if (emailInput) emailInput.disabled = true;
+
+                                if (typeof window.showToast === 'function') {
+                                    window.showToast(
+                                        lang === 'it'
+                                            ? 'Iscritto! Riceverai il tuo codice sconto via email.'
+                                            : 'Subscribed! You\'ll receive your discount code by email.',
+                                        'success', 'ph-sparkle'
+                                    );
+                                }
+                            } else {
+                                // Unexpected error — re-enable
+                                if (btn) btn.disabled = false;
+                                if (typeof window.showToast === 'function') {
+                                    window.showToast(
+                                        lang === 'it'
+                                            ? 'Qualcosa è andato storto. Riprova.'
+                                            : 'Something went wrong. Please try again.',
+                                        'info', 'ph-warning'
+                                    );
+                                }
+                            }
+                        })
+                        .catch(function() {
+                            if (btn) btn.disabled = false;
+                            var lang = document.documentElement.dataset.lang || 'it';
+                            if (typeof window.showToast === 'function') {
+                                window.showToast(
+                                    lang === 'it'
+                                        ? 'Errore di rete. Controlla la connessione.'
+                                        : 'Network error. Check your connection.',
+                                    'info', 'ph-wifi-slash'
+                                );
+                            }
+                        });
+                });
+            }
+
+            handleEmailSubmit('heroEmailForm', 'heroEmail', 'hero');
+            handleEmailSubmit('earlyAccessForm', 'earlyAccessEmail', 'early-access');
         })();
     </script>
 
-    <!-- Pass UTM / ref params through to quiz.html (including mobile sticky CTA) -->
-    <script>
-        (function() {
-            var qs = window.location.search;
-            document.querySelectorAll('a[href="quiz.html"]').forEach(function(a) {
-                if (qs) a.href = 'quiz.html' + qs;
-            });
-        })();
-    </script>
-
-    <!-- Mobile sticky CTA: hide when club CTA section is in view -->
+    <!-- Mobile sticky CTA: hide when early access section is in view -->
     <script>
         (function() {
             var bar = document.getElementById('mobileStickyCta');
             if (!bar) return;
-            var clubSection = document.getElementById('nura-club');
-            if (!clubSection) return;
+            var earlySection = document.getElementById('early-access');
+            if (!earlySection) return;
 
             var obs = new IntersectionObserver(function(entries) {
                 entries.forEach(function(e) {
@@ -498,58 +542,8 @@
                 });
             }, { threshold: 0.25 });
 
-            obs.observe(clubSection);
+            obs.observe(earlySection);
         })();
-    </script>
-
-    <!-- Live scarcity counter — no backend required
-         Formula: base grows ~1 spot every 2 days since Feb 1 2026
-         + any local signups from this device = realtime feel -->
-    <script>
-        function getSpotsTaken() {
-            var start = new Date('2026-02-01T00:00:00Z');
-            var days = Math.max(0, Math.floor((Date.now() - start.getTime()) / 86400000));
-            var base = 395 + Math.floor(days / 2);
-            var local = parseInt(localStorage.getItem('nura_local_signups') || '0');
-            return Math.min(554, base + local);
-        }
-
-        function updateScarcityCounters() {
-            var total = 555;
-            var taken = getSpotsTaken();
-            var left = total - taken;
-            var pct = (taken / total * 100).toFixed(1) + '%';
-
-            // Founders card (desktop)
-            var fc = document.getElementById('foundersCount');
-            if (fc) fc.textContent = taken;
-
-            var fp = document.getElementById('foundersProgressFill');
-            if (fp) fp.style.width = pct;
-
-            // Mobile scarcity strip
-            var ms = document.getElementById('mobileScarcityCount');
-            if (ms) ms.textContent = taken;
-            var msEn = document.getElementById('mobileScarcityCountEn');
-            if (msEn) msEn.textContent = taken;
-
-            var ml = document.getElementById('mobileScarcityLeft');
-            if (ml) ml.textContent = left;
-            var mlEn = document.getElementById('mobileScarcityLeftEn');
-            if (mlEn) mlEn.textContent = left;
-
-            var mf = document.getElementById('mobileScarcityFill');
-            if (mf) mf.style.width = pct;
-
-            // Mobile sticky CTA hint
-            var sl = document.getElementById('stickyScarcityLeft');
-            if (sl) sl.textContent = left;
-            var slEn = document.getElementById('stickyScarcityLeftEn');
-            if (slEn) slEn.textContent = left;
-        }
-
-        // Run on page load
-        updateScarcityCounters();
     </script>
 
 </body>

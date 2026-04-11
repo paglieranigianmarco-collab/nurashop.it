@@ -540,6 +540,80 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 
 .hero-cta:active { transform: scale(0.98); }
 
+/* ── Hero inline email form ───────────────── */
+.hero-email-form {
+    margin-bottom: 2.5rem;
+}
+
+.hero-email-row {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    background: rgba(245, 237, 224, 0.04);
+    border: 1px solid var(--border-mid);
+    border-radius: var(--r-pill);
+    padding: 0.35rem 0.35rem 0.35rem 1.25rem;
+    transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.hero-email-row:focus-within {
+    border-color: var(--amber);
+    box-shadow: 0 0 0 3px rgba(200, 80, 16, 0.15);
+}
+
+.hero-email-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--cream);
+    padding: 0.65rem 0;
+    min-width: 0;
+}
+
+.hero-email-input::placeholder {
+    color: var(--cream-3);
+}
+
+.hero-email-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--amber);
+    color: var(--cream);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--r-pill);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: background 0.2s, transform 0.15s var(--ease-spring), box-shadow 0.2s;
+    flex-shrink: 0;
+}
+
+.hero-email-btn:hover {
+    background: var(--amber-mid);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-amber);
+}
+
+.hero-email-btn:active { transform: scale(0.97); }
+
+.hero-email-hint {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.75rem;
+    font-size: 0.82rem;
+    color: var(--amber-glow);
+    font-weight: 500;
+}
+
+.hero-email-hint i { opacity: 0.8; }
+.hero-email-hint strong { color: var(--cream); }
+
 .hero-proof {
     font-size: 0.85rem;
     color: var(--amber-glow);
@@ -686,9 +760,8 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 
 /* ══════════════════════════════════════════════
    PILLAR GLASS CARDS — 2×2 grid
-   Same border technique as founders-card-wrap.
-   @property --border-angle + rotateBorderAngle
-   already defined above (founders section).
+   Uses @property --border-angle + rotateBorderAngle
+   defined in section 9 (border animation).
    ══════════════════════════════════════════════ */
 
 .pillar-visual-wrap {
@@ -861,6 +934,298 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 }
 @media (max-width: 380px) {
     .pillar-visual-wrap { grid-template-columns: 1fr; }
+}
+
+
+/* ── 7b. HOW IT WORKS SECTION ─────────────────────────────── */
+.how-section {
+    padding: 9rem 0;
+    background: var(--dark-3);
+    position: relative;
+    overflow: hidden;
+}
+
+.how-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--border);
+}
+
+.how-inner {
+    position: relative;
+    z-index: 1;
+}
+
+.how-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 4.5rem;
+}
+
+.how-step {
+    position: relative;
+    padding: 2.5rem 2rem;
+    background: var(--dark-card);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    transition: transform 0.3s var(--ease), box-shadow 0.3s, border-color 0.3s;
+}
+
+.how-step:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-dark);
+    border-color: var(--border-amber);
+}
+
+.how-step-number {
+    font-family: var(--font-display);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--amber);
+    margin-bottom: 1.5rem;
+}
+
+.how-step-icon {
+    width: 52px;
+    height: 52px;
+    background: rgba(200, 80, 16, 0.1);
+    border: 1px solid rgba(200, 80, 16, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    color: var(--amber-light);
+    margin-bottom: 1.25rem;
+    transition: transform 0.3s var(--ease-spring);
+}
+
+.how-step:hover .how-step-icon {
+    transform: scale(1.1);
+}
+
+.how-step-title {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--cream);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+}
+
+.how-step-desc {
+    font-size: 0.88rem;
+    color: var(--cream-2);
+    line-height: 1.7;
+}
+
+@media (max-width: 1024px) {
+    .how-steps { grid-template-columns: 1fr; gap: 1.25rem; }
+}
+
+@media (max-width: 768px) {
+    .how-section { padding: 5rem 0; }
+    .how-steps { margin-top: 3rem; }
+}
+
+
+/* ── 7c. EARLY ACCESS SECTION ────────────────────────────── */
+.early-access-section {
+    padding: 0;
+    min-height: 100svh;
+    background: var(--dark);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.early-access-bg {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at 30% 60%, rgba(200, 80, 16, 0.08) 0%, transparent 55%),
+        radial-gradient(ellipse at 70% 30%, rgba(94, 200, 122, 0.04) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.early-access-inner {
+    display: flex;
+    justify-content: center;
+    padding: 6rem 0;
+}
+
+.early-access-content {
+    max-width: 560px;
+    text-align: center;
+}
+
+.early-access-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 5vw, 3.75rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: var(--cream);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.early-access-title em {
+    font-style: normal;
+    color: var(--amber-light);
+}
+
+.early-access-sub {
+    font-size: 1rem;
+    color: var(--cream-2);
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+}
+
+.early-access-sub strong {
+    color: var(--cream);
+}
+
+.early-access-form {
+    margin-bottom: 2.5rem;
+}
+
+.early-access-form-row {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    background: rgba(245, 237, 224, 0.04);
+    border: 1px solid var(--border-mid);
+    border-radius: var(--r-pill);
+    padding: 0.35rem 0.35rem 0.35rem 1.25rem;
+    transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.early-access-form-row:focus-within {
+    border-color: var(--amber);
+    box-shadow: 0 0 0 3px rgba(200, 80, 16, 0.15);
+}
+
+.early-access-email {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--cream);
+    padding: 0.65rem 0;
+    min-width: 0;
+}
+
+.early-access-email::placeholder {
+    color: var(--cream-3);
+}
+
+.early-access-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--amber);
+    color: var(--cream);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--r-pill);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: background 0.2s, transform 0.15s var(--ease-spring), box-shadow 0.2s;
+    flex-shrink: 0;
+}
+
+.early-access-btn:hover {
+    background: var(--amber-mid);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-amber);
+}
+
+.early-access-btn:active { transform: scale(0.97); }
+
+.early-access-fine {
+    margin-top: 0.75rem;
+    font-size: 0.76rem;
+    color: var(--cream-3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+}
+
+.early-access-benefits {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.75rem;
+    flex-wrap: wrap;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.84rem;
+    font-weight: 500;
+    color: var(--cream-2);
+}
+
+.benefit-item i {
+    color: var(--amber);
+    opacity: 0.85;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+    .early-access-inner { padding: 4rem 0; }
+
+    .early-access-form-row {
+        flex-direction: column;
+        padding: 0.75rem;
+        border-radius: var(--r-lg);
+    }
+
+    .early-access-email {
+        width: 100%;
+        padding: 0.5rem 0.25rem;
+        text-align: center;
+    }
+
+    .early-access-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 0.875rem 1.5rem;
+    }
+
+    .early-access-benefits {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: flex-start;
+        margin: 0 auto;
+        width: fit-content;
+    }
+}
+
+@media (max-width: 480px) {
+    .early-access-title {
+        font-size: clamp(1.8rem, 7vw, 2.5rem);
+    }
+
+    .early-access-sub {
+        font-size: 0.95rem;
+    }
 }
 
 
@@ -1080,480 +1445,15 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 }
 
 
-/* ── 9. nura CLUB SECTION ─────────────────────────────────── */
-.club-section {
-    padding: 0;
-    min-height: 100svh;
-    background: var(--dark);
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: stretch;
-}
-
-.club-bg-pattern {
-    position: absolute;
-    inset: 0;
-    background:
-        radial-gradient(ellipse at 20% 50%, rgba(200, 80, 16, 0.07) 0%, transparent 55%),
-        radial-gradient(ellipse at 80% 20%, rgba(200, 80, 16, 0.04) 0%, transparent 45%);
-    pointer-events: none;
-}
-
-.club-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: var(--border);
-}
-
-.club-inner {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 4rem;
-    align-items: start;
-    position: relative;
-    z-index: 1;
-    padding: 5rem 0;
-}
-
-.club-title {
-    font-family: var(--font-display);
-    font-size: clamp(2.2rem, 4.5vw, 3.75rem);
-    font-weight: 800;
-    letter-spacing: -0.04em;
-    color: var(--cream);
-    line-height: 1.1;
-    margin: 0.75rem 0 1.25rem;
-}
-
-.club-title em {
-    font-style: normal;
-    color: var(--amber-light);
-}
-
-.club-sub {
-    font-size: 1.05rem;
-    color: var(--cream-2);
-    line-height: 1.75;
-    margin-bottom: 2rem;
-}
-
-.club-benefits {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    flex-wrap: nowrap;
-    margin-bottom: 2.5rem;
-}
-
-.benefit-item {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: var(--cream-2);
-    white-space: nowrap;
-}
-
-.benefit-item i { color: var(--amber-light); font-size: 0.95rem; }
-
-/* Club form */
-.club-form-row {
-    display: flex;
-    gap: 0.4rem;
-    background: rgba(245, 237, 224, 0.04);
-    border: 1.5px solid var(--border-mid);
-    border-radius: var(--r-pill);
-    padding: 0.3rem 0.3rem 0.3rem 1.25rem;
-    transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-.club-form-row:focus-within {
-    border-color: var(--amber);
-    box-shadow: 0 0 0 3px rgba(200, 80, 16, 0.15);
-}
-
-.club-email-input {
-    flex: 1;
-    border: none;
-    outline: none;
-    font-family: var(--font-body);
-    font-size: 0.95rem;
-    color: var(--cream);
-    background: transparent;
-    min-width: 0;
-}
-
-.club-email-input::placeholder { color: var(--cream-3); }
-
-.cta-btn-amber {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    background: var(--amber);
-    color: var(--cream);
-    padding: 0.75rem 1.5rem;
-    border-radius: var(--r-pill);
-    font-family: var(--font-body);
-    font-size: 0.875rem;
-    font-weight: 600;
-    border: none;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: background 0.2s, transform 0.2s var(--ease-spring), box-shadow 0.2s;
-}
-
-.cta-btn-amber:hover {
-    background: var(--amber-mid);
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-amber);
-}
-
-.cta-btn-amber:active { transform: scale(0.98); }
-
-.form-note-light {
-    font-size: 0.76rem;
-    color: var(--cream-3);
-    margin-top: 0.875rem;
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-}
-
-.form-note-light i { color: var(--amber); opacity: 0.7; }
-
-.club-counter {
-    margin-top: 1.75rem;
-    font-size: 0.82rem;
-    color: var(--cream-3);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.counter-dot-amber {
-    width: 7px;
-    height: 7px;
-    background: var(--amber-light);
-    border-radius: 50%;
-    animation: pulseDot 2.5s ease-in-out infinite;
-    flex-shrink: 0;
-}
-
-/* Club visual (right) */
-.club-visual {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.club-orb {
-    position: relative;
-    width: 300px;
-    height: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.club-orb-letter {
-    font-family: var(--font-display);
-    font-size: 3.5rem;
-    font-weight: 800;
-    color: var(--amber-light);
-    letter-spacing: -0.06em;
-    position: relative;
-    z-index: 2;
-    text-shadow: 0 0 40px rgba(232, 128, 64, 0.45);
-    text-transform: lowercase;
-}
-
-.club-ring {
-    position: absolute;
-    border-radius: 50%;
-    border: 1px solid;
-}
-
-.club-ring-1 {
-    width: 160px;
-    height: 160px;
-    border-color: rgba(200, 80, 16, 0.2);
-    animation: clubSpin 20s linear infinite;
-}
-
-.club-ring-2 {
-    width: 230px;
-    height: 230px;
-    border-color: rgba(200, 80, 16, 0.1);
-    animation: clubSpin 32s linear infinite reverse;
-}
-
-.club-ring-3 {
-    width: 295px;
-    height: 295px;
-    border-color: rgba(200, 80, 16, 0.05);
-    animation: clubSpin 50s linear infinite;
-}
-
-@keyframes clubSpin {
-    from { transform: rotate(0deg); }
-    to   { transform: rotate(360deg); }
-}
-
-
-/* Box CTA + counter */
-.box-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: var(--amber);
-    color: var(--cream);
-    padding: 1rem 2.2rem;
-    border-radius: var(--r-pill);
-    font-size: 0.95rem;
-    font-weight: 600;
-    margin-bottom: 2rem;
-    transition: background 0.22s, transform 0.22s var(--ease-spring), box-shadow 0.22s;
-}
-
-.box-cta:hover {
-    background: var(--amber-mid);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-amber);
-}
-
-.box-cta:active { transform: scale(0.98); }
-
-.box-counter {
-    margin-top: 0.25rem;
-}
-
-.box-counter-bar {
-    width: 100%;
-    max-width: 340px;
-    height: 2px;
-    background: rgba(245, 237, 224, 0.08);
-    border-radius: 2px;
-    margin-bottom: 0.6rem;
-    overflow: hidden;
-}
-
-.box-counter-fill {
-    height: 100%;
-    background: linear-gradient(to right, var(--amber), var(--amber-light));
-    border-radius: 2px;
-}
-
-.box-counter span {
-    font-size: 0.8rem;
-    color: var(--cream-3);
-    letter-spacing: 0.01em;
-}
-
-.box-counter strong { color: var(--amber-light); }
-
-/* Founders card animated border wrapper */
+/* ── 9. BORDER ANIMATION (used by pillar cards) ──────────── */
 @property --border-angle {
     syntax: '<angle>';
     initial-value: 0deg;
     inherits: false;
 }
 
-.founders-card-wrap {
-    position: relative;
-    width: 244px;
-    height: 324px;
-    border-radius: 22px;
-    margin: auto;
-}
-.founders-card-wrap::before {
-    content: '';
-    position: absolute;
-    inset: -2px;
-    border-radius: 24px;
-    background: conic-gradient(
-        from var(--border-angle),
-        var(--amber-light) 0deg,
-        var(--amber) 60deg,
-        rgba(200, 80, 16, 0.12) 140deg,
-        rgba(200, 80, 16, 0.08) 220deg,
-        var(--amber) 300deg,
-        var(--amber-light) 360deg
-    );
-    animation: rotateBorderAngle 8s linear infinite;
-    z-index: 0;
-}
 @keyframes rotateBorderAngle {
     to { --border-angle: 360deg; }
-}
-
-/* Founders card (right visual) */
-.founders-card {
-    width: 240px;
-    height: 320px;
-    border: none;
-    border-radius: 20px;
-    background: linear-gradient(145deg, rgba(26, 13, 6, 0.97) 0%, rgba(12, 5, 0, 0.98) 100%);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.4rem;
-    padding: 2rem;
-    position: relative;
-    margin: 0;
-    z-index: 1;
-    box-shadow: 0 0 60px rgba(200, 80, 16, 0.12), inset 0 1px 0 rgba(245, 237, 224, 0.06);
-}
-
-.founders-card-label {
-    font-family: var(--font-display);
-    font-size: 0.62rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--amber-light);
-    opacity: 0.8;
-}
-
-.founders-card-number {
-    font-family: var(--font-display);
-    font-size: 5.5rem;
-    font-weight: 800;
-    letter-spacing: -0.05em;
-    color: var(--cream);
-    line-height: 1;
-}
-
-.founders-card-sub {
-    font-size: 0.7rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--cream-3);
-}
-
-.founders-card-badge {
-    position: absolute;
-    top: 1.25rem;
-    right: 1.25rem;
-    background: var(--amber);
-    color: var(--cream);
-    font-family: var(--font-display);
-    font-size: 0.78rem;
-    font-weight: 800;
-    padding: 0.3rem 0.75rem;
-    border-radius: var(--r-pill);
-    letter-spacing: 0.02em;
-}
-
-.founders-card-of {
-    font-size: 1.2rem;
-    font-weight: 300;
-    opacity: 0.55;
-}
-.founders-progress-bar {
-    width: 100%;
-    height: 4px;
-    background: rgba(245,237,224,0.12);
-    border-radius: 100px;
-    margin: 0.75rem 0 0.25rem;
-    overflow: hidden;
-}
-.founders-progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--amber), var(--amber-glow));
-    border-radius: 100px;
-}
-
-/* ── nura Club newsletter opt-in ─────────────────────────── */
-.club-divider {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin: 2rem 0 1.5rem;
-    color: var(--cream-3);
-    font-size: 0.78rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    font-family: var(--font-display);
-    font-weight: 300;
-}
-.club-divider::before,
-.club-divider::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-}
-
-.club-newsletter {
-    display: flex;
-    flex-direction: column;
-    gap: 0.85rem;
-}
-
-.club-newsletter-label {
-    font-size: 0.88rem;
-    color: var(--cream-2);
-    line-height: 1.5;
-}
-
-.club-newsletter-form {
-    display: flex;
-    gap: 0.5rem;
-}
-
-.club-newsletter-input {
-    flex: 1;
-    background: rgba(245, 237, 224, 0.05);
-    border: 1px solid var(--border-mid);
-    border-radius: var(--r-pill);
-    padding: 0.75rem 1.25rem;
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    color: var(--cream);
-    outline: none;
-    transition: border-color 0.2s;
-}
-.club-newsletter-input::placeholder { color: var(--cream-3); }
-.club-newsletter-input:focus { border-color: var(--amber); }
-
-.club-newsletter-btn {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    background: var(--border-mid);
-    color: var(--cream);
-    border: 1px solid var(--border-mid);
-    border-radius: var(--r-pill);
-    padding: 0.75rem 1.25rem;
-    font-family: var(--font-body);
-    font-size: 0.88rem;
-    font-weight: 500;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: background 0.2s, border-color 0.2s;
-}
-.club-newsletter-btn:hover {
-    background: var(--amber);
-    border-color: var(--amber);
-}
-
-.club-newsletter-fine {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: 0.75rem;
-    color: var(--cream-3);
 }
 
 
@@ -2120,12 +2020,9 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
     /* Visual (pills/orbit) above text on tablet/mobile */
     .pillars-right { order: -1; }
 
-    .club-inner {
-        grid-template-columns: 1fr;
-        gap: 3rem;
+    .early-access-inner {
+        padding: 4rem 0;
     }
-
-    .club-visual { display: none; }
 }
 
 @media (max-width: 768px) {
@@ -2151,11 +2048,32 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 
     /* pillar-visual-wrap height removed — grid layout is auto height */
 
-    .hero-cta,
-    .box-cta {
+    .hero-cta {
         width: 100%;
         justify-content: center;
         min-height: 48px;
+    }
+
+    .hero-email-row {
+        flex-direction: column;
+        padding: 0.75rem;
+        border-radius: var(--r-lg);
+    }
+
+    .hero-email-input {
+        width: 100%;
+        padding: 0.5rem 0.25rem;
+        text-align: center;
+    }
+
+    .hero-email-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 0.875rem 1.5rem;
+    }
+
+    .hero-email-hint {
+        justify-content: center;
     }
 
     .footer-inner {
@@ -2166,27 +2084,11 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 
     .footer-right { align-items: flex-start; }
 
-    .club-form-row {
-        flex-direction: column;
-        padding: 0.75rem;
-        border-radius: var(--r-lg);
-    }
-
-    .club-email-input {
-        padding: 0.5rem 0.25rem;
-    }
-
-    .cta-btn-amber {
-        width: 100%;
-        justify-content: center;
-    }
 }
 
 @media (max-width: 480px) {
     /* hero-trust: keep horizontal, allow wrap — vertical stacking hurts mobile conversion */
     .hero-trust { gap: 0.6rem 1rem; flex-wrap: wrap; align-items: center; }
-    /* club-benefits: wrap horizontally instead of stacking */
-    .club-benefits { flex-wrap: wrap; gap: 0.6rem; }
     .benefit-item { white-space: normal; }
     /* pillar-visual-wrap height removed — grid layout is auto height */
     input, select, textarea { font-size: 16px; }
@@ -2222,18 +2124,6 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
         min-height: 44px;
     }
 
-    /* Club section: tighter padding on mobile for breathing room */
-    .club-inner {
-        padding: 1.5rem 0;
-    }
-
-    .club-title {
-        font-size: clamp(1.8rem, 7vw, 2.5rem);
-    }
-
-    .club-sub {
-        font-size: 0.95rem;
-    }
 
     /* Pillars section mobile adjustments */
     .pillars-section {
@@ -2286,7 +2176,7 @@ html {
 }
 .hero-section,
 .pillars-section,
-.club-section {
+.early-access-section {
     scroll-snap-align: start;
 }
 .pillars-section {
@@ -2300,7 +2190,7 @@ html {
     }
     .hero-section,
     .pillars-section,
-    .club-section {
+    .early-access-section {
         scroll-snap-align: none;
     }
     .pillars-section {
@@ -2382,49 +2272,6 @@ html {
 }
 
 
-/* ── 23. MOBILE SCARCITY STRIP ───────────────────────────── */
-/* Founders card (423/555) is hidden on mobile via club-visual display:none.
-   This inline strip brings the scarcity signal back into the content flow. */
-.mobile-scarcity {
-    display: none;
-}
-
-@media (max-width: 1024px) {
-    .mobile-scarcity {
-        display: block;
-        margin: 0.75rem 0 1.5rem;
-    }
-
-    .mobile-scarcity-bar {
-        height: 5px;
-        background: rgba(245, 237, 224, 0.08);
-        border-radius: 3px;
-        overflow: hidden;
-        margin-bottom: 0.45rem;
-    }
-
-    .mobile-scarcity-fill {
-        height: 100%;
-        background: linear-gradient(to right, var(--amber), var(--amber-glow));
-        border-radius: 3px;
-    }
-
-    .mobile-scarcity-label {
-        font-size: 0.8rem;
-        color: var(--cream-3);
-        line-height: 1.5;
-    }
-
-    .mobile-scarcity-label strong {
-        color: var(--amber-light);
-        font-weight: 700;
-    }
-
-    .mobile-scarcity-label em {
-        color: var(--cream-2);
-        font-style: normal;
-    }
-}
 
 
 /* ── 24. SAFE AREA + PERFORMANCE ─────────────────────────── */
@@ -2441,8 +2288,7 @@ html {
 
 /* Respect system preference for reduced motion */
 @media (prefers-reduced-motion: reduce) {
-    .pc-wrap::before,
-    .founders-card-wrap::before {
+    .pc-wrap::before {
         animation: none;
     }
 

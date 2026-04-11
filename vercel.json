@@ -1,9 +1,5 @@
 {
   "buildCommand": null,
   "outputDirectory": ".",
-  "framework": null,
-  "rewrites": [
-    { "source": "/quiz", "destination": "/quiz.html" },
-    { "source": "/routine", "destination": "/routine.html" }
-  ]
+  "framework": null
 }
