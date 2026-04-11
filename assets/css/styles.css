@@ -38,7 +38,7 @@
     --fitness-c:  #E84444;
 
     /* Typography */
-    --font-display: 'Nunito', sans-serif;
+    --font-display: 'DM Sans', sans-serif;
     --font-body:    'Libre Franklin', sans-serif;
 
     /* Motion */
@@ -361,6 +361,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
     font-family: var(--font-display);
     font-size: clamp(3.8rem, 8.5vw, 8rem);
     font-weight: 1000;
+    font-variation-settings: 'opsz' 40;
     line-height: 0.95;
     letter-spacing: -0.04em;
     color: var(--cream);
